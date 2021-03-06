@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.orange,
+        primarySwatch: Colors.deepOrange,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(title: 'klook'),
@@ -94,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.widgets_rounded),
             label: 'Categories',
-            backgroundColor: Colors.orange,
+            backgroundColor: Colors.deepOrange,
           ),
           BottomNavigationBarItem(
             icon: Icon(
