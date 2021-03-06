@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:klook2/components/categories.dart';
 import 'package:klook2/components/home.dart';
 
 void main() {
@@ -32,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
   // int _counter = 0;
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
-      TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.red);
+  TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.red);
   static const List<Widget> _widgetOptions = <Widget>[
     Text(
       'Index 0: Home',
@@ -59,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _onItemTapped(int index) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => Home()),
+      MaterialPageRoute(builder: (context) => Categories()),
     );
     setState(() {
       _selectedIndex = index;
