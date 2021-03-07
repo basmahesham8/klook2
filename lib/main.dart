@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:klook2/components/categories.dart';
 import 'package:klook2/components/home.dart';
+
+import 'components/destination.dart';
 
 void main() {
   runApp(MyApp());
@@ -59,19 +62,12 @@ class _MyHomePageState extends State<MyHomePage> {
   void _onItemTapped(int index) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => Home()),
+      MaterialPageRoute(builder: (context) => Destination()),
     );
     setState(() {
       _selectedIndex = index;
     });
   }
-
-  // void _incrementCounter() {
-  //   setState(() {
-
-  //     _counter++;
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -113,31 +109,5 @@ class _MyHomePageState extends State<MyHomePage> {
         onTap: _onItemTapped,
       ),
     );
-
-    // return Scaffold(
-    //   appBar: AppBar(
-    //     title: Text(widget.title),
-    //   ),
-    //   body:
-    //         // Center(
-    //   //   child: Column(
-    //   //     mainAxisAlignment: MainAxisAlignment.center,
-    //   //     children: <Widget>[
-    //   //       Text(
-    //   //         'You have pushed the button this many times:',
-    //   //       ),
-    //   //       Text(
-    //   //         '$_counter',
-    //   //         style: Theme.of(context).textTheme.headline4,
-    //   //       ),
-    //   //     ],
-    //   //   ),
-    //   // ),
-    //   // floatingActionButton: FloatingActionButton(
-    //   //   onPressed: _incrementCounter,
-    //   //   tooltip: 'Increment',
-    //   //   child: Icon(Icons.add),
-    //   // ),
-    // );
   }
 }
