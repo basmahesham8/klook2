@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//import 'package:klook2/components/recentlyHome.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -17,11 +18,50 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('home'),
+        title: const Text('AppBar Demo'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.close,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              // do something
+            },
+          )
+        ],
       ),
+      // appBar: AppBar(
+      //   title: Text('klook'),
+      //   actions: <Widget>[
+      //     Container(
+      //       height: 100,
+      //       child: Row(
+      //         children: [
+      //           TextField(
+      //             decoration: InputDecoration(
+      //               icon: Icon(Icons.search_rounded),
+      //               border: new OutlineInputBorder(
+      //                 borderRadius: const BorderRadius.all(
+      //                   const Radius.circular(10.0),
+      //                 ),
+      //               ),
+      //               hintText: 'Search by destination or Activity ',
+      //             ),
+      //           ),
+      //           Icon(Icons.shopping_cart_outlined),
+      //         ],
+      //       ),
+      //     ),
+      //   ],
+      //   //   actions: <Widget>[
+      //   //
+      //   // ]
+      //   //Text('home'),
+      // ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
+        child: ListView(
           children: [
             //////////////// drop down list ///////////////////////////////
             DropdownButton(
@@ -419,10 +459,49 @@ class _HomeState extends State<Home> {
             Column(
               children: [
                 Row(
-                  children: [Card()],
+                  children: [
+                    // Container(
+                    //   height: 270,
+                    //   child: ListView(
+                    //     scrollDirection: Axis.horizontal,
+                    //     children: <Widget>[
+                    //       popularStays(
+                    //           img: 'images/1.webp',
+                    //           title: 'camel and bike tour in Giza Pyramids',
+                    //           city: 'cairo',
+                    //           price: 'From EGP 2,195',
+                    //           date: 'tommorow'),
+                    //       // popularStays(
+                    //       //     staysImages: 'images/marriotHotel.jpg',
+                    //       //     rate: '5.0/5',
+                    //       //     name: 'Cairo Marriott',
+                    //       //     price: 'From EGP 1,113',
+                    //       //     stars: '5 Stars'),
+                    //       // popularStays(
+                    //       //     staysImages: 'images/sofitelHotel.jpg',
+                    //       //     rate: '5.0/5',
+                    //       //     name: 'Sofitel Cairo Nile',
+                    //       //     price: 'From EGP 1,135',
+                    //       //     stars: '5 Stars'),
+                    //       // popularStays(
+                    //       //     staysImages: 'images/fairmontHotel.jpg',
+                    //       //     rate: '5.0/5',
+                    //       //     name: 'Fairmont Nile City',
+                    //       //     price: 'From EGP 1,129',
+                    //       //     stars: '5 Stars'),
+                    //       // popularStays(
+                    //       //     staysImages: 'images/royalHotel.jpg',
+                    //       //     rate: '5.0/5',
+                    //       //     name: 'Kempinski Nile',
+                    //       //     price: 'From EGP 1,152',
+                    //       //     stars: '5 Stars'),
+                    //     ],
+                    //   ),
+                    // ),
+                  ],
                 )
               ],
-            )
+            ),
 
             // top things to do ///////////////////////////////////
 
@@ -441,3 +520,13 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
+// Widget popularStays({img, title, city, price, date}) {
+//   return RecentlyHomeCard(
+//     img: img,
+//     title: title,
+//     city: city,
+//     price: price,
+//     date: date,
+//   );
+// }
