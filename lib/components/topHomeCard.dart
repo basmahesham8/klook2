@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class RecentlyHomeCard extends StatefulWidget {
+class TopThingsCard extends StatefulWidget {
   final String img;
   final String price;
   final String city;
   final String title;
   final String date;
 
-  RecentlyHomeCard({this.img, this.city, this.date, this.title, this.price});
+  TopThingsCard({this.img, this.city, this.date, this.title, this.price});
   @override
-  _RecentlyHomeCardState createState() => _RecentlyHomeCardState();
+  _TopThingsCardState createState() => _TopThingsCardState();
 }
 
-class _RecentlyHomeCardState extends State<RecentlyHomeCard> {
+class _TopThingsCardState extends State<TopThingsCard> {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
