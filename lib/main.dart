@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:klook2/components/categories.dart';
-import 'package:klook2/components/home.dart';
+// import 'package:klook2/components/categories.dart';
+// import 'package:klook2/components/home.dart';
 
 import 'components/destination.dart';
 

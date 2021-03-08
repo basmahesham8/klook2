@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:klook2/components/hotel.dart';
+// import 'package:klook2/components/hotel.dart';
 import 'package:klook2/components/StaysCard.dart';
 
 // void main(){
