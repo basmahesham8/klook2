@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:klook2/components/hotel.dart';
 
-// void main(){
-//   runApp(Categories());
-// }
 class Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -128,37 +125,6 @@ class Categories extends StatelessWidget {
                   );
                 },
               ),
-
-              // Padding(
-              //   padding: const EdgeInsets.all(10),
-              //   child: Column(
-              //     children: [
-              //       Icon(Icons.home_work_outlined, color: Colors.deepOrange,size: 35,),
-              //       SizedBox(height: 10,),
-              //       Text('Hotels & more', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900),)
-              //     ],
-              //   ),
-              // ),
-
-              // Center(
-              //   child: ElevatedButton(
-              //     onPressed: (){
-              //       Navigator.push(context, new MaterialPageRoute(
-              //           builder: (context) => Hotel()));
-              //     }, child: null,
-              //   ),
-              // )
-
-              // GestureDetector(
-              //   onTap: (){
-              //     Navigator.push(
-              //       context,
-              //       MaterialPageRoute(
-              //           builder: (context) => Hotel()
-              //       ),
-              //     );
-              //   },
-              // )
             ],
           ),
         ),

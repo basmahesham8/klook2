@@ -16,7 +16,7 @@ class _StaysCardState extends State<StaysCard> {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 1.4/2,
+      aspectRatio: 1.4 / 2,
       child: Padding(
         padding: const EdgeInsets.only(right: 4),
         child: Card(
@@ -28,40 +28,63 @@ class _StaysCardState extends State<StaysCard> {
                 children: <Widget>[
                   Container(
                       height: 120,
-                      child: Image(image: AssetImage(widget.staysImages),  height: 100,
+                      child: Image(
+                        image: AssetImage(widget.staysImages),
+                        height: 100,
                         width: 200,
-                        fit: BoxFit.fitWidth,)),
+                        fit: BoxFit.fitWidth,
+                      )),
                   Padding(
                     padding: new EdgeInsets.only(top: 80, left: 15, right: 5),
                     child: Card(
                         child: Padding(
-                          padding: const EdgeInsets.all(3),
-                          child: Text(widget.rate, style: TextStyle(fontSize: 15, color: Colors.deepOrange, fontWeight: FontWeight.bold, backgroundColor: Colors.white),),
-                        )
-                    ),
+                      padding: const EdgeInsets.all(3),
+                      child: Text(
+                        widget.rate,
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.deepOrange,
+                            fontWeight: FontWeight.bold,
+                            backgroundColor: Colors.white),
+                      ),
+                    )),
                   ),
                 ],
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 8),
                 child: Align(
                   alignment: Alignment.topLeft,
-                  child: Text(widget.stars, style: TextStyle(color: Color.fromRGBO(120, 80, 41, 1)),),
+                  child: Text(
+                    widget.stars,
+                    style: TextStyle(color: Color.fromRGBO(120, 80, 41, 1)),
+                  ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 8, top: 6),
                 child: Align(
                     alignment: Alignment.topLeft,
-                    child: Text(widget.name, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),)),
+                    child: Text(
+                      widget.name,
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    )),
               ),
-              SizedBox(height: 50,),
+              SizedBox(
+                height: 50,
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 8),
                 child: Align(
                   alignment: Alignment.topLeft,
-                  child: Text(widget.price, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
+                  child: Text(
+                    widget.price,
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
                 ),
               )
             ],
