@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:klook2/components/categories.dart';
 import 'package:klook2/components/recentlyHome.dart';
 import 'package:klook2/components/topHomeCard.dart';
+import 'package:klook2/components/getInspiredHome.dart';
 
 import 'hotel.dart';
 
@@ -69,35 +70,38 @@ class _HomeState extends State<Home> {
               ),
 
               //////////////// drop down list ///////////////////////////////
-              ClipRRect(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(50),
-                  topRight: Radius.elliptical(10, 20),
-                ),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: DropdownButton(
-                        value: recommended,
-                        onChanged: (newCity) {
-                          setState(() {
-                            recommended = newCity;
-                          });
-                        },
-                        items: recommendedCities.map(
-                          (city) {
-                            return DropdownMenuItem(
-                              value: city,
-                              child: Text(
-                                city,
-                              ),
-                            );
+              Align(
+                alignment: Alignment.centerLeft,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(50),
+                    topRight: Radius.elliptical(10, 20),
+                  ),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: DropdownButton(
+                          value: recommended,
+                          onChanged: (newCity) {
+                            setState(() {
+                              recommended = newCity;
+                            });
                           },
-                        ).toList(),
+                          items: recommendedCities.map(
+                            (city) {
+                              return DropdownMenuItem(
+                                value: city,
+                                child: Text(
+                                  city,
+                                ),
+                              );
+                            },
+                          ).toList(),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               //////////// small cards ////////////////////
@@ -483,11 +487,21 @@ class _HomeState extends State<Home> {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: 25,
               ),
               ////////////////////////////// recently viewed /////////////////////////////////////////
               Column(
                 children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Recently Viewed',
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                   Row(
                     children: [
                       Container(
@@ -573,11 +587,24 @@ class _HomeState extends State<Home> {
               //   ],
               // ),
               SizedBox(
-                height: 15,
+                height: 25,
               ),
               // top things to do ///////////////////////////////////
               Column(
                 children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 5),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Top Things to Do',
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
                   Row(
                     children: [
                       Container(
@@ -615,18 +642,144 @@ class _HomeState extends State<Home> {
                       ),
                     ],
                   ),
-                  Row(
-                    children: [
-                      FlatButton(
-                        onPressed: null,
-                        child: Text('View all'),
-                      )
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15, top: 5),
+                    child: Row(
+                      children: [
+                        RaisedButton(
+                          elevation: 150,
+                          color: Colors.transparent,
+                          padding: EdgeInsets.symmetric(
+                            vertical: 10,
+                            horizontal: 140,
+                          ),
+                          //   highlightElevation: 50,
+                          splashColor: Colors.deepOrange,
+                          shape:
+                              // RoundedRectangleBorder(
+                              //   borderRadius: BorderRadius.circular(
+                              //     30,
+                              //   ),
+                              // ),
+                              Border.all(
+                            // BorderRadius:BorderRadius.circular(30),
+                            color: Colors.grey[400],
+                            width: 1,
+                          ),
+
+                          onPressed: () {
+                            print('button tapped.');
+                          },
+                          highlightColor: Colors.deepOrange,
+                          child: Text('View all'),
+                          textColor: Colors.grey[600],
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),
-
+              SizedBox(
+                height: 25,
+              ),
               ///////// get inspired////////////////////////////
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 5),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Get inspired',
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('images/home/3.jfif'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Align(
+                              alignment: Alignment.bottomLeft,
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 0, top: 10, bottom: 15),
+                                    child: Text(
+                                      'Treat yourself to something sweet',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'Lorem Ipsum is simply dummy text of the \nprinting and typesetting industry . Lorem Ipsum has\n been the standard  dummy text ever since the 1500s,',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  //   fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              height: 250,
+                              width: 175,
+                              child: ListView(
+                                scrollDirection: Axis.horizontal,
+                                children: <Widget>[
+                                  getInspired(
+                                    img: 'images/home/1.webp',
+                                    title: 'After Tea Cruise',
+                                    city: 'London',
+                                    price: ' 47.05',
+                                    rate: '4.4',
+                                    total: '24',
+                                  ),
+                                  RecentlyCard(
+                                    img: 'images/home/1.webp',
+                                    title:
+                                        'camel and bike tour in Giza Pyramids',
+                                    city: 'cairo',
+                                    price: ' 2,195',
+                                    date: 'tommorow',
+                                  ),
+                                  RecentlyCard(
+                                    img: 'images/home/1.webp',
+                                    title:
+                                        'camel and bike tour in Giza Pyramids',
+                                    city: 'cairo',
+                                    price: ' 2,195',
+                                    date: 'tommorow',
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
 
               // ediscover /////////////////////
 
@@ -662,5 +815,16 @@ Widget TopCard({img, title, type, price, rate, total, booked}) {
     rate: rate,
     total: total,
     booked: booked,
+  );
+}
+
+Widget getInspired({img, title, type, price, rate, total, city}) {
+  return getInspiredCard(
+    img: img,
+    title: title,
+    city: city,
+    price: price,
+    rate: rate,
+    total: total,
   );
 }
