@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:klook2/components/categories.dart';
 import 'package:klook2/components/recentlyHome.dart';
 import 'package:klook2/components/topHomeCard.dart';
+
+import 'hotel.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -200,29 +203,37 @@ class _HomeState extends State<Home> {
                             onTap: () {
                               print('Card tapped.');
                             },
-                            child: Container(
-                              width: 106,
-                              height: 90,
-                              child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: (Column(
-                                  children: [
-                                    Icon(
-                                      Icons.location_city_rounded,
-                                      color: Color.fromRGBO(74, 206, 134, 1),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(2.0),
-                                      child: Text(
-                                        'Accomoditions',
-                                        style: TextStyle(
-                                            fontSize: 9,
-                                            fontWeight: FontWeight.bold),
+                            child: GestureDetector(
+                              child: Container(
+                                width: 106,
+                                height: 90,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: (Column(
+                                    children: [
+                                      Icon(
+                                        Icons.location_city_rounded,
+                                        color: Color.fromRGBO(74, 206, 134, 1),
                                       ),
-                                    )
-                                  ],
-                                )),
+                                      Padding(
+                                        padding: const EdgeInsets.all(2.0),
+                                        child: Text(
+                                          'Accomodation',
+                                          style: TextStyle(
+                                              fontSize: 9,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      )
+                                    ],
+                                  )),
+                                ),
                               ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => Hotel()),
+                                );
+                              },
                             ),
                           ),
                         ),
