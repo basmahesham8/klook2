@@ -49,6 +49,7 @@ flutter:
     - images/mountain.jpg
     - images/
     - images/home/1.webp
+    - images/home/2.PNG
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
