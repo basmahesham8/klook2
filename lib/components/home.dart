@@ -231,7 +231,8 @@ class _HomeState extends State<Home> {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => Hotel()),
+                                  MaterialPageRoute(
+                                      builder: (context) => Hotel()),
                                 );
                               },
                             ),
