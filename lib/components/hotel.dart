@@ -223,7 +223,9 @@ class Hotel extends StatelessWidget {
                                     children: [
                                       Text('Special Savings', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                                       SizedBox(height: 10,),
-                                      Text("Get great prices and find a deal that's right for you.", style: TextStyle(color: Colors.grey,fontSize: 13, fontWeight: FontWeight.bold),),
+                                      Container(
+                                          width: 230,
+                                          child: Text("Get great prices and find a deal that's right for you.", style: TextStyle(color: Colors.grey,fontSize: 13, fontWeight: FontWeight.bold),)),
                                     ],
                                   ),
                                 ),
@@ -255,7 +257,9 @@ class Hotel extends StatelessWidget {
                                     children: [
                                       Text('24/7 Customer Support', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                                       SizedBox(height: 10,),
-                                      Text("We're always here when you need us.", style: TextStyle(color: Colors.grey,fontSize: 13, fontWeight: FontWeight.bold),),
+                                      Container(
+                                          width: 230,
+                                          child: Text("We're always here when you need us.", style: TextStyle(color: Colors.grey,fontSize: 13, fontWeight: FontWeight.bold),)),
                                     ],
                                   ),
                                 ),
@@ -287,7 +291,9 @@ class Hotel extends StatelessWidget {
                                     children: [
                                       Text('One-stop Travel Platform', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                                       SizedBox(height: 10,),
-                                      Text("Our Services cover range of payment methods.", style: TextStyle(color: Colors.grey,fontSize: 13, fontWeight: FontWeight.bold),),
+                                      Container(
+                                          width: 230,
+                                          child: Text("Our Services cover range of payment methods.", style: TextStyle(color: Colors.grey,fontSize: 13, fontWeight: FontWeight.bold),)),
                                     ],
                                   ),
                                 ),
@@ -296,7 +302,6 @@ class Hotel extends StatelessWidget {
                           ),
                         ),
                       ),
-
                     ],
                   ),
 

@@ -488,39 +488,34 @@ class _HomeState extends State<Home> {
               ////////////////////////////// recently viewed /////////////////////////////////////////
               Column(
                 children: [
-                  Row(
-                    children: [
-                      Container(
-                        height: 250,
-                        width: 175,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: <Widget>[
-                            RecentlyCard(
-                              img: 'images/home/1.webp',
-                              title: 'camel and bike tour in Giza Pyramids',
-                              city: 'cairo',
-                              price: ' 2,195',
-                              date: 'tommorow',
-                            ),
-                            RecentlyCard(
-                              img: 'images/home/1.webp',
-                              title: 'camel and bike tour in Giza Pyramids',
-                              city: 'cairo',
-                              price: ' 2,195',
-                              date: 'tommorow',
-                            ),
-                            RecentlyCard(
-                              img: 'images/home/1.webp',
-                              title: 'camel and bike tour in Giza Pyramids',
-                              city: 'cairo',
-                              price: ' 2,195',
-                              date: 'tommorow',
-                            ),
-                          ],
+                  Container(
+                    height: 250,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: <Widget>[
+                        RecentlyCard(
+                          img: 'images/home/1.webp',
+                          title: 'camel and bike tour in Giza Pyramids',
+                          city: 'cairo',
+                          price: ' 2,195',
+                          date: 'tommorow',
                         ),
-                      ),
-                    ],
+                        RecentlyCard(
+                          img: 'images/home/1.webp',
+                          title: 'camel and bike tour in Giza Pyramids',
+                          city: 'cairo',
+                          price: ' 2,195',
+                          date: 'tommorow',
+                        ),
+                        RecentlyCard(
+                          img: 'images/home/1.webp',
+                          title: 'camel and bike tour in Giza Pyramids',
+                          city: 'cairo',
+                          price: ' 2,195',
+                          date: 'tommorow',
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
