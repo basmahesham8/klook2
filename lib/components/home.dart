@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:klook2/components/categories.dart';
 import 'package:klook2/components/recentlyHome.dart';
+import 'package:klook2/components/topHomeCard.dart';
+
+import 'hotel.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -46,6 +50,7 @@ class _HomeState extends State<Home> {
                             cursorColor: Colors.orange[900],
                             // obscureText: true,
                             decoration: InputDecoration(
+                              fillColor: Colors.grey,
                               icon: Icon(Icons.search_rounded),
                               border: new OutlineInputBorder(
                                 borderRadius: const BorderRadius.all(
@@ -198,29 +203,38 @@ class _HomeState extends State<Home> {
                             onTap: () {
                               print('Card tapped.');
                             },
-                            child: Container(
-                              width: 106,
-                              height: 90,
-                              child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: (Column(
-                                  children: [
-                                    Icon(
-                                      Icons.location_city_rounded,
-                                      color: Color.fromRGBO(74, 206, 134, 1),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(2.0),
-                                      child: Text(
-                                        'Accomoditions',
-                                        style: TextStyle(
-                                            fontSize: 9,
-                                            fontWeight: FontWeight.bold),
+                            child: GestureDetector(
+                              child: Container(
+                                width: 106,
+                                height: 90,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: (Column(
+                                    children: [
+                                      Icon(
+                                        Icons.location_city_rounded,
+                                        color: Color.fromRGBO(74, 206, 134, 1),
                                       ),
-                                    )
-                                  ],
-                                )),
+                                      Padding(
+                                        padding: const EdgeInsets.all(2.0),
+                                        child: Text(
+                                          'Accomodation',
+                                          style: TextStyle(
+                                              fontSize: 9,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      )
+                                    ],
+                                  )),
+                                ),
                               ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Hotel()),
+                                );
+                              },
                             ),
                           ),
                         ),
@@ -474,39 +488,34 @@ class _HomeState extends State<Home> {
               ////////////////////////////// recently viewed /////////////////////////////////////////
               Column(
                 children: [
-                  Row(
-                    children: [
-                      Container(
-                        height: 250,
-                        width: 175,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: <Widget>[
-                            popularStays(
-                              img: 'images/home/1.webp',
-                              title: 'camel and bike tour in Giza Pyramids',
-                              city: 'cairo',
-                              price: ' 2,195',
-                              date: 'tommorow',
-                            ),
-                            popularStays(
-                              img: 'images/home/1.webp',
-                              title: 'camel and bike tour in Giza Pyramids',
-                              city: 'cairo',
-                              price: ' 2,195',
-                              date: 'tommorow',
-                            ),
-                            popularStays(
-                              img: 'images/home/1.webp',
-                              title: 'camel and bike tour in Giza Pyramids',
-                              city: 'cairo',
-                              price: ' 2,195',
-                              date: 'tommorow',
-                            ),
-                          ],
+                  Container(
+                    height: 250,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: <Widget>[
+                        RecentlyCard(
+                          img: 'images/home/1.webp',
+                          title: 'camel and bike tour in Giza Pyramids',
+                          city: 'cairo',
+                          price: ' 2,195',
+                          date: 'tommorow',
                         ),
-                      ),
-                    ],
+                        RecentlyCard(
+                          img: 'images/home/1.webp',
+                          title: 'camel and bike tour in Giza Pyramids',
+                          city: 'cairo',
+                          price: ' 2,195',
+                          date: 'tommorow',
+                        ),
+                        RecentlyCard(
+                          img: 'images/home/1.webp',
+                          title: 'camel and bike tour in Giza Pyramids',
+                          city: 'cairo',
+                          price: ' 2,195',
+                          date: 'tommorow',
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -520,32 +529,32 @@ class _HomeState extends State<Home> {
               //           child: ListView(
               //             scrollDirection: Axis.horizontal,
               //             children: <Widget>[
-              //               popularStays(
+              //               RecentlyCard(
               //                   img: 'images/1.webp',
               //                   title: 'camel and bike tour in Giza Pyramids',
               //                   city: 'cairo',
               //                   price: 'From EGP 2,195',
               //                   date: 'tommorow'),
 
-              //         //       // popularStays(
+              //         //       // RecentlyCard(
               //         //       //     staysImages: 'images/marriotHotel.jpg',
               //         //       //     rate: '5.0/5',
               //         //       //     name: 'Cairo Marriott',
               //         //       //     price: 'From EGP 1,113',
               //         //       //     stars: '5 Stars'),
-              //         //       // popularStays(
+              //         //       // RecentlyCard(
               //         //       //     staysImages: 'images/sofitelHotel.jpg',
               //         //       //     rate: '5.0/5',
               //         //       //     name: 'Sofitel Cairo Nile',
               //         //       //     price: 'From EGP 1,135',
               //         //       //     stars: '5 Stars'),
-              //         //       // popularStays(
+              //         //       // RecentlyCard(
               //         //       //     staysImages: 'images/fairmontHotel.jpg',
               //         //       //     rate: '5.0/5',
               //         //       //     name: 'Fairmont Nile City',
               //         //       //     price: 'From EGP 1,129',
               //         //       //     stars: '5 Stars'),
-              //         //       // popularStays(
+              //         //       // RecentlyCard(
               //         //       //     staysImages: 'images/royalHotel.jpg',
               //         //       //     rate: '5.0/5',
               //         //       //     name: 'Kempinski Nile',
@@ -559,9 +568,58 @@ class _HomeState extends State<Home> {
               //   ],
               // ),
               SizedBox(
-                height: 50,
-              )
+                height: 15,
+              ),
               // top things to do ///////////////////////////////////
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        height: 270,
+                        width: 290,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: <Widget>[
+                            TopCard(
+                              img: 'images/home/2.PNG',
+                              title:
+                                  'JR Pass for Whole Japan (7, 14,or 21 days )',
+                              type: 'Public transport . JR Pass',
+                              rate: '4.8',
+                              total: '13,755',
+                              booked: '200K+',
+                              price: ' 273.50',
+                            ),
+                            // RecentlyCard(
+                            //   img: 'images/home/1.webp',
+                            //   title: 'camel and bike tour in Giza Pyramids',
+                            //   city: 'cairo',
+                            //   price: ' 2,195',
+                            //   date: 'tommorow',
+                            // ),
+                            // RecentlyCard(
+                            //   img: 'images/home/1.webp',
+                            //   title: 'camel and bike tour in Giza Pyramids',
+                            //   city: 'cairo',
+                            //   price: ' 2,195',
+                            //   date: 'tommorow',
+                            // ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      FlatButton(
+                        onPressed: null,
+                        child: Text('View all'),
+                      )
+                    ],
+                  )
+                ],
+              ),
 
               ///////// get inspired////////////////////////////
 
@@ -580,12 +638,24 @@ class _HomeState extends State<Home> {
   }
 }
 
-Widget popularStays({img, title, city, price, date}) {
+Widget RecentlyCard({img, title, city, price, date}) {
   return RecentlyHomeCard(
     img: img,
     title: title,
     city: city,
     price: price,
     date: date,
+  );
+}
+
+Widget TopCard({img, title, type, price, rate, total, booked}) {
+  return TopThingsCard(
+    img: img,
+    title: title,
+    type: type,
+    price: price,
+    rate: rate,
+    total: total,
+    booked: booked,
   );
 }

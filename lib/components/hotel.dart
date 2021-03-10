@@ -81,31 +81,31 @@ class Hotel extends StatelessWidget {
                           staysImages: 'images/fourSeasonHotel.jpg',
                           rate: '4.5/5',
                           name: 'Four Seasons Cairo',
-                          price: 'From EGP 2,195',
+                          price: '2,195',
                           stars: '5 Stars'),
                       popularStays(
                           staysImages: 'images/marriotHotel.jpg',
                           rate: '5.0/5',
                           name: 'Cairo Marriott',
-                          price: 'From EGP 1,113',
+                          price: '1,113',
                           stars: '5 Stars'),
                       popularStays(
                           staysImages: 'images/sofitelHotel.jpg',
                           rate: '5.0/5',
                           name: 'Sofitel Cairo Nile',
-                          price: 'From EGP 1,135',
+                          price: '1,135',
                           stars: '5 Stars'),
                       popularStays(
                           staysImages: 'images/fairmontHotel.jpg',
                           rate: '5.0/5',
                           name: 'Fairmont Nile City',
-                          price: 'From EGP 1,129',
+                          price: '1,129',
                           stars: '5 Stars'),
                       popularStays(
                           staysImages: 'images/royalHotel.jpg',
                           rate: '5.0/5',
                           name: 'Kempinski Nile',
-                          price: 'From EGP 1,152',
+                          price: '1,152',
                           stars: '5 Stars'),
                     ],
                   ),
@@ -158,49 +158,49 @@ class Hotel extends StatelessWidget {
                               staysImages: 'images/steigenbergerVoucher.jpg',
                               title:
                                   'Steigenberger Hotel El Tahrir (Overnight Stay) with Walking Tour',
-                              price: 'From EGP 773',
+                              price: '773',
                               city: 'Cairo',
                               validity:
                                   'Voucher Validity: 2021-03-08 - 2021-07-31',
-                              priceBefore: 'EGP 900',
+                              priceBefore: '900',
                             ),
                             VoucherCard(
                               staysImages: 'images/interContinentalVoucher.jpg',
                               title:
                                   'InterContinental Cairo Semiramis (Overnight Stay) Exclusive Offers',
-                              price: 'From EGP 973',
+                              price: '973',
                               city: 'Cairo',
                               validity:
                                   'Voucher Validity: 2021-03-08 - 2021-08-31',
-                              priceBefore: 'EGP 1000',
+                              priceBefore: '1000',
                             ),
                             VoucherCard(
                               staysImages: 'images/hiltonVoucher.jpg',
                               title: 'Hilton Cairo Zamalek Stay with Breakfast',
-                              price: 'From EGP 777',
+                              price: '777',
                               city: 'Cairo',
                               validity:
                                   'Voucher Validity: 2021-02-08 - 2021-07-31',
-                              priceBefore: 'EGP 950',
+                              priceBefore: '950',
                             ),
                             VoucherCard(
                                 staysImages: 'images/sonestaVoucher.jpg',
                                 title:
                                     'Sonesta Hotel Tower with Breakfast & Dinner',
-                                price: 'From EGP 816',
+                                price: '816',
                                 city: 'Cairo',
                                 validity:
                                     'Voucher Validity: 2021-02-08 - 2021-07-31',
-                                priceBefore: 'EGP 1200'),
+                                priceBefore: '1200'),
                             VoucherCard(
                                 staysImages: 'images/safirVoucher.jpg',
                                 title:
                                     'Safir Hotel Cairo (Overnight Stay) with Breakfast',
-                                price: 'From EGP 668',
+                                price: '668',
                                 city: 'Cairo',
                                 validity:
                                     'Voucher Validity: 2021-02-08 - 2021-07-31',
-                                priceBefore: 'EGP 800'),
+                                priceBefore: '800'),
                           ],
                         ),
                       ),
@@ -257,13 +257,15 @@ class Hotel extends StatelessWidget {
                                       SizedBox(
                                         height: 10,
                                       ),
-                                      Text(
-                                        "Get great prices and find a deal that's right for you.",
-                                        style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.bold),
-                                      ),
+                                      Container(
+                                          width: 230,
+                                          child: Text(
+                                            "Get great prices and find a deal that's right for you.",
+                                            style: TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.bold),
+                                          )),
                                     ],
                                   ),
                                 ),
@@ -307,13 +309,15 @@ class Hotel extends StatelessWidget {
                                       SizedBox(
                                         height: 10,
                                       ),
-                                      Text(
-                                        "We're always here when you need us.",
-                                        style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.bold),
-                                      ),
+                                      Container(
+                                          width: 230,
+                                          child: Text(
+                                            "We're always here when you need us.",
+                                            style: TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.bold),
+                                          )),
                                     ],
                                   ),
                                 ),
@@ -357,13 +361,15 @@ class Hotel extends StatelessWidget {
                                       SizedBox(
                                         height: 10,
                                       ),
-                                      Text(
-                                        "Our Services cover range of payment methods.",
-                                        style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.bold),
-                                      ),
+                                      Container(
+                                          width: 230,
+                                          child: Text(
+                                            "Our Services cover range of payment methods.",
+                                            style: TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.bold),
+                                          )),
                                     ],
                                   ),
                                 ),
