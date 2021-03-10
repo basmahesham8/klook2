@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:klook2/components/destinationDetails.dart';
 
-class CityCards extends StatefulWidget {
+class DestinationCityCard extends StatefulWidget {
   final String images;
   final String cityName;
-  CityCards({this.images, this.cityName});
+  final String distance;
+
+  DestinationCityCard({this.images, this.cityName, this.distance});
   @override
-  _CityCardsState createState() => _CityCardsState();
+  _DestinationCityCardState createState() => _DestinationCityCardState();
 }
 
-class _CityCardsState extends State<CityCards> {
+class _DestinationCityCardState extends State<DestinationCityCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,6 +30,16 @@ class _CityCardsState extends State<CityCards> {
                         width: 200,
                         fit: BoxFit.fitWidth,
                       )),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5, left: 3),
+                    child: Text(
+                      widget.distance,
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(top: 80, left: 20),
                     child: Text(
