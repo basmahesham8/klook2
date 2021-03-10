@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:klook2/components/bookings.dart';
+import 'package:klook2/components/database.dart';
 // import 'package:klook2/components/destination.dart';
 import 'package:klook2/components/hotel.dart';
 import 'package:klook2/components/login.dart';
@@ -40,26 +41,15 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   // int _counter = 0;
   int _selectedIndex = 0;
+  // var imageFile = AddUser.iduser;
+
   // static TextStyle optionStyle =
   // TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.red);
   static List<Widget> _widgetOptions = <Widget>[
     Home(),
     // MCard(),
     // Destination(),
-    MCard(
-        id: 5,
-        title: 'j',
-        city: 'j',
-        section: 'k',
-        image: 'images/cairo.png',
-        booked: 'm',
-        categories: 'bnm',
-        date: 'bvg',
-        oldPrice: 'bv',
-        price: 'nb',
-        rate: 'bgh',
-        review: 'bv',
-        distance: 'kjh'),
+    AddUser('fullName', 'company', 'djd'),
     Hotel(),
     Booking(),
     LoginPage(),

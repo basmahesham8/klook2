@@ -1,45 +1,34 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_app/services/database.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 
-// import 'package:intl_phone_number_input/intl_phone_number_input.dart';
-
 class SignUp extends StatefulWidget {
+  final TextEditingController emailController = new TextEditingController();
+
+  TextEditingController passwordController = new TextEditingController();
+
+  SignUp();
+
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+  // String iduser = '52563';
+  Future<void> addUser(emails, passwords) {
+    // Call the user's CollectionReference to add a new user
+    return users
+        .add({
+          'Email': emails, // John Doe
+          'Password': passwords, // Stokes and Sons
+          // 'age': age // 42
+        })
+        .then((value) => print("User Added"))
+        .catchError((error) => print("Failed to add user: $error"));
+  }
+
   @override
   _SignUpState createState() => _SignUpState();
 }
 
 class _SignUpState extends State<SignUp> {
-  bool userlogin = false;
-  var login = [];
-
-  @override
-  void initState() {
-    super.initState();
-    // fetchDatabaseList();
-  }
-
-  // fetchDatabaseList() {
-  // dynamic resultant = SignService().getUserLogin();
-  //   login = SignService().getUserLogin('hagar@elgarh998.com', '123123');
-
-  // if (resultant == null) {
-  //   print('Unable to retrieve');
-  // } else {
-  //   print('dhhh');
-  //   setState(() {
-  //     login = resultant;
-  //   });
-  // }
-  // }
-  // @override
-  // void initState() {
-  //   super.initState();
-
-  //   login = SignService().getUserLogin('hagar@elgarh998.com', '123123');
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,6 +79,8 @@ class _SignUpState extends State<SignUp> {
                                   Text('sdfg'),
                                   Padding(padding: EdgeInsets.only(bottom: 20)),
                                   TextField(
+                                    controller: widget.emailController,
+
                                     cursorColor: Colors.orange[900],
                                     // obscureText: true,
                                     decoration: InputDecoration(
@@ -102,13 +93,30 @@ class _SignUpState extends State<SignUp> {
                                         hintText: 'Email Address'),
                                   ),
                                   Padding(padding: EdgeInsets.only(bottom: 20)),
+                                  TextField(
+                                    controller: widget.passwordController,
+
+                                    cursorColor: Colors.orange[900],
+                                    // obscureText: true,
+                                    decoration: InputDecoration(
+
+                                        // focusedBorder: OutlineInputBorder(
+                                        //   borderSide: const BorderSide(
+                                        //       color: Colors.orange,
+                                        //       width: 2.0),
+                                        // ),
+                                        hintText: 'Password'),
+                                  ),
+                                  Padding(padding: EdgeInsets.only(bottom: 20)),
                                   MaterialButton(
                                     minWidth: MediaQuery.of(context).size.width,
                                     shape: RoundedRectangleBorder(
                                       side:
                                           BorderSide(color: Colors.orange[900]),
                                     ),
-                                    onPressed: () {},
+                                    onPressed: () => widget.addUser(
+                                        widget.emailController.text,
+                                        widget.passwordController.text),
                                     padding: EdgeInsets.all(10.0),
                                     color: Colors.orange[900],
                                     textColor: Colors.white,
