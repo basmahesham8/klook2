@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:klook2/components/bookings.dart';
+// import 'package:klook2/components/destination.dart';
+import 'package:klook2/components/hotel.dart';
+import 'package:klook2/components/login.dart';
+import 'package:klook2/components/home.dart';
+import 'package:klook2/components/tourCard.dart';
 // import 'package:klook2/components/categories.dart';
-// import 'package:klook2/components/home.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-import 'components/destination.dart';
-
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -14,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.orange,
+        primarySwatch: Colors.deepOrange,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(title: 'klook'),
@@ -34,36 +40,58 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   // int _counter = 0;
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.red);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Destination',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: Categories',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 3: Bookings',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 4: Account ',
-      style: optionStyle,
-    ),
+  // static TextStyle optionStyle =
+  // TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.red);
+  static List<Widget> _widgetOptions = <Widget>[
+    Home(),
+    // MCard(),
+    // Destination(),
+    MCard(
+        id: 5,
+        title: 'j',
+        city: 'j',
+        section: 'k',
+        image: 'images/cairo.png',
+        booked: 'm',
+        categories: 'bnm',
+        date: 'bvg',
+        oldPrice: 'bv',
+        price: 'nb',
+        rate: 'bgh',
+        review: 'bv',
+        distance: 'kjh'),
+    Hotel(),
+    Booking(),
+    LoginPage(),
+
+    // Text(
+    //   'Index 0: Home',
+    //   style: optionStyle,
+    // ),
+
+    // Text(
+    //   'Index 1: Description',
+    //   style: optionStyle,
+    // ),
+    // Text(
+    //   'Index 2: Categories',
+    //   style: optionStyle,
+    // ),
+    // Text(
+    //   'Index 3: Bookings',
+    //   style: optionStyle,
+    // ),
+    // // Text(
+    // //   'Index 4: Account ',
+    // //   style: optionStyle,
+    // // ),
   ];
 
   void _onItemTapped(int index) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => Destination()),
-    );
+    // Navigator.push(
+    //   context,
+    //   MaterialPageRoute(builder: (context) => LoginPage('jbv')),
+    // );
     setState(() {
       _selectedIndex = index;
     });
@@ -77,25 +105,29 @@ class _MyHomePageState extends State<MyHomePage> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.red,
-        items: const <BottomNavigationBarItem>[
+        backgroundColor: Colors.green,
+        unselectedItemColor: Colors.grey,
+        showUnselectedLabels: true,
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.explore),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.location_on_rounded),
+            icon: Icon(
+              Icons.location_on_rounded,
+            ),
             label: 'Destination',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.widgets_rounded),
             label: 'Categories',
-            backgroundColor: Colors.orange,
+            // backgroundColor: Colors.deepOrange,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.article_outlined,
-              color: Colors.white,
+              // color: Colors.white,
             ),
             label: 'Bookings',
           ),

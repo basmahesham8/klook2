@@ -1,4 +1,4 @@
-package com.example.klook2
+package com.iti.klook2
 
 import io.flutter.embedding.android.FlutterActivity
 
