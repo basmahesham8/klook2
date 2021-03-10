@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "402072663413",
+    "firebase_url": "https://friendlychat-e399d-default-rtdb.firebaseio.com",
+    "project_id": "friendlychat-e399d",
+    "storage_bucket": "friendlychat-e399d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402072663413:android:9495417638490dac8f8f3c",
+        "android_client_info": {
+          "package_name": "com.iti.klook2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "402072663413-00skelnatkprlontcmccrtni46569lfs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_7Y9A6k9fx-dfdj10XyMlJUEES9t84c4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "402072663413-00skelnatkprlontcmccrtni46569lfs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402072663413:android:0910a41299369f878f8f3c",
+        "android_client_info": {
+          "package_name": "com.iti.klookapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "402072663413-00skelnatkprlontcmccrtni46569lfs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_7Y9A6k9fx-dfdj10XyMlJUEES9t84c4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "402072663413-00skelnatkprlontcmccrtni46569lfs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

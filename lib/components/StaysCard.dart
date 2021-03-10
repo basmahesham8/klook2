@@ -78,12 +78,17 @@ class _StaysCardState extends State<StaysCard> {
                 height: 50,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 8),
+                padding:  EdgeInsets.only(left: 8),
                 child: Align(
                   alignment: Alignment.topLeft,
-                  child: Text(
-                    widget.price,
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  child: Text.rich(
+                    TextSpan(
+                      text: 'From', // default text style
+                      children: <TextSpan>[
+                        TextSpan(text: ' EGP ', style: TextStyle(fontWeight: FontWeight.bold)),
+                        TextSpan(text: widget.price, style: TextStyle(fontWeight: FontWeight.bold)),
+                      ],
+                    ),
                   ),
                 ),
               )
