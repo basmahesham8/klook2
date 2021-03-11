@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:klook2/components/bookings.dart';
 import 'package:klook2/components/database.dart';
+import 'package:klook2/components/destination.dart';
 // import 'package:klook2/components/destination.dart';
 import 'package:klook2/components/hotel.dart';
 import 'package:klook2/components/login.dart';
@@ -48,8 +49,8 @@ class _MyHomePageState extends State<MyHomePage> {
   static List<Widget> _widgetOptions = <Widget>[
     Home(),
     // MCard(),
-    // Destination(),
-    AddUser('fullName', 'company', 'djd'),
+    Destination(),
+    //AddUser('fullName', 'company', 'djd'),
     Hotel(),
     Booking(),
     LoginPage(),

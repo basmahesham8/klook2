@@ -71,11 +71,155 @@ class _DestinationDetailsState extends State<DestinationDetails> {
                             ),
                           ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 300, left: 80),
+                      padding: const EdgeInsets.only(top: 350),
                       child: Card(
                         color: Colors.white,
-                        child: Text("hello",
-                            style: TextStyle(color: Colors.deepOrange)),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  children: [
+                                    Icon(
+                                      Icons.local_activity,
+                                      color: Colors.deepOrange,
+                                      size: 20,
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      'Attractions',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w900),
+                                    )
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    Icon(
+                                      Icons.emoji_nature,
+                                      color: Colors.green,
+                                      size: 20,
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Container(
+                                      width: 80,
+                                      child: Text(
+                                        'Outdoors & sports',
+                                        textAlign: TextAlign.center,
+                                        maxLines: 2,
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w900),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    Icon(
+                                      Icons.self_improvement,
+                                      color: Colors.lightBlueAccent,
+                                      size: 20,
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Container(
+                                      width: 90,
+                                      child: Text(
+                                        'Relaxation & beauty',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w900),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    Icon(
+                                      Icons.border_color,
+                                      color: Colors.blueAccent,
+                                      size: 20,
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Container(
+                                      width: 90,
+                                      child: Text(
+                                        'Culture & workshops',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w900),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Column(
+                                  children: [
+                                    Icon(
+                                      Icons.wine_bar,
+                                      color: Colors.pink,
+                                      size: 20,
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Container(
+                                      width: 80,
+                                      child: Center(
+                                        child: Text(
+                                          'Fun & nightlife',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w900),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    Icon(
+                                      Icons.beach_access_outlined,
+                                      color: Colors.purple,
+                                      size: 20,
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Container(
+                                      width: 80,
+                                      child: Text(
+                                        'Tours',
+                                        maxLines: 2,
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w900),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     )
                   ],
