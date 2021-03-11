@@ -59,14 +59,31 @@ class _StaysCardState extends State<VoucherCard> {
                 padding: const EdgeInsets.only(left: 8),
                 child: Align(
                   alignment: Alignment.topLeft,
-                  child: Text(widget.priceBefore, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.grey, decoration: TextDecoration.lineThrough,decorationThickness: 2),),
+                  child: Text.rich(
+                    TextSpan(
+                      children: <TextSpan>[
+                        TextSpan(text: ' EGP ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.grey, decoration: TextDecoration.lineThrough,decorationThickness: 2),),
+                        TextSpan(text: widget.priceBefore, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.grey, decoration: TextDecoration.lineThrough,decorationThickness: 2),),
+                      ],
+                    ),
+                  ),
+                  // child: Text(widget.priceBefore, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.grey, decoration: TextDecoration.lineThrough,decorationThickness: 2),),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 8),
                 child: Align(
                   alignment: Alignment.topLeft,
-                  child: Text(widget.price, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                  child: Text.rich(
+                    TextSpan(
+                      text: 'From',
+                      style: TextStyle(fontSize: 18),// default text style
+                      children: <TextSpan>[
+                        TextSpan(text: ' EGP ', style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
+                        TextSpan(text: widget.price, style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                  ),
                 ),
               ),
             ],

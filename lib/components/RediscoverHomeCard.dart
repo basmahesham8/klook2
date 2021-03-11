@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class GetInspiredCard extends StatefulWidget {
+class RediscoverCard extends StatefulWidget {
   final String img;
   final String price;
   final String city;
@@ -8,13 +8,13 @@ class GetInspiredCard extends StatefulWidget {
   final String rate;
   final String total;
 
-  GetInspiredCard(
+  RediscoverCard(
       {this.img, this.city, this.rate, this.total, this.title, this.price});
   @override
-  _GetInspiredCardState createState() => _GetInspiredCardState();
+  _RediscoverCardState createState() => _RediscoverCardState();
 }
 
-class _GetInspiredCardState extends State<GetInspiredCard> {
+class _RediscoverCardState extends State<RediscoverCard> {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
