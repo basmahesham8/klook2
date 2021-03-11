@@ -246,7 +246,7 @@ class _HomeState extends State<Home> {
                           ),
                         ),
 
-                        //************** other cards  */
+                        //****** other cards  */
                       ],
                     ),
                     ////////////// second row ///////////////////////

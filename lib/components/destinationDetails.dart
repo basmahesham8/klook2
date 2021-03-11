@@ -42,189 +42,191 @@ class _DestinationDetailsState extends State<DestinationDetails> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(30),
-                    bottomRight: Radius.circular(30)),
-                child: Stack(
-                  children: <Widget>[
-                    Image(image: AssetImage(widget.img), fit: BoxFit.fitWidth),
-                    widget.text == "Cairo"
-                        ? Padding(
-                            padding: const EdgeInsets.only(top: 30, left: 140),
-                            child: Text(
-                              widget.text,
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          )
-                        : Padding(
-                            padding: const EdgeInsets.only(top: 30, left: 80),
-                            child: Text(
-                              widget.text,
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
+              // ClipRRect(
+              //   borderRadius: BorderRadius.only(
+              //       bottomLeft: Radius.circular(30),
+              //       bottomRight: Radius.circular(30)),
+              Stack(
+                children: <Widget>[
+                  //backgroundImage
+                  Image(image: AssetImage(widget.img), fit: BoxFit.fitWidth),
+                  widget.text == "Cairo"
+                      ? Padding(
+                          padding: const EdgeInsets.only(top: 30, left: 140),
+                          child: Text(
+                            widget.text,
+                            style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
                           ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 350),
-                      child: Card(
-                        color: Colors.white,
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  children: [
-                                    Icon(
-                                      Icons.local_activity,
-                                      color: Colors.deepOrange,
-                                      size: 20,
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      'Attractions',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.w900),
-                                    )
-                                  ],
-                                ),
-                                Column(
-                                  children: [
-                                    Icon(
-                                      Icons.emoji_nature,
-                                      color: Colors.green,
-                                      size: 20,
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Container(
-                                      width: 80,
-                                      child: Text(
-                                        'Outdoors & sports',
-                                        textAlign: TextAlign.center,
-                                        maxLines: 2,
-                                        style: TextStyle(
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.w900),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                Column(
-                                  children: [
-                                    Icon(
-                                      Icons.self_improvement,
-                                      color: Colors.lightBlueAccent,
-                                      size: 20,
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Container(
-                                      width: 90,
-                                      child: Text(
-                                        'Relaxation & beauty',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.w900),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                Column(
-                                  children: [
-                                    Icon(
-                                      Icons.border_color,
-                                      color: Colors.blueAccent,
-                                      size: 20,
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Container(
-                                      width: 90,
-                                      child: Text(
-                                        'Culture & workshops',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.w900),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Column(
-                                  children: [
-                                    Icon(
-                                      Icons.wine_bar,
-                                      color: Colors.pink,
-                                      size: 20,
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Container(
-                                      width: 80,
-                                      child: Center(
-                                        child: Text(
-                                          'Fun & nightlife',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.w900),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                Column(
-                                  children: [
-                                    Icon(
-                                      Icons.beach_access_outlined,
-                                      color: Colors.purple,
-                                      size: 20,
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Container(
-                                      width: 80,
-                                      child: Text(
-                                        'Tours',
-                                        maxLines: 2,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.w900),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
+                        )
+                      : Padding(
+                          padding: const EdgeInsets.only(top: 30, left: 80),
+                          child: Text(
+                            widget.text,
+                            style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
-                      ),
-                    )
-                  ],
-                ),
+                  //categories
+                  // Padding(
+                  //   padding: const EdgeInsets.only(top: 350),
+                  //   child: Card(
+                  //     color: Colors.white,
+                  //     child: Column(
+                  //       children: [
+                  //         Row(
+                  //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //           children: [
+                  //             Column(
+                  //               children: [
+                  //                 Icon(
+                  //                   Icons.local_activity,
+                  //                   color: Colors.deepOrange,
+                  //                   size: 20,
+                  //                 ),
+                  //                 SizedBox(
+                  //                   height: 10,
+                  //                 ),
+                  //                 Text(
+                  //                   'Attractions',
+                  //                   textAlign: TextAlign.center,
+                  //                   style: TextStyle(
+                  //                       fontSize: 13,
+                  //                       fontWeight: FontWeight.w900),
+                  //                 )
+                  //               ],
+                  //             ),
+                  //             Column(
+                  //               children: [
+                  //                 Icon(
+                  //                   Icons.emoji_nature,
+                  //                   color: Colors.green,
+                  //                   size: 20,
+                  //                 ),
+                  //                 SizedBox(
+                  //                   height: 10,
+                  //                 ),
+                  //                 Container(
+                  //                   width: 80,
+                  //                   child: Text(
+                  //                     'Outdoors & sports',
+                  //                     textAlign: TextAlign.center,
+                  //                     maxLines: 2,
+                  //                     style: TextStyle(
+                  //                         fontSize: 13,
+                  //                         fontWeight: FontWeight.w900),
+                  //                   ),
+                  //                 )
+                  //               ],
+                  //             ),
+                  //             Column(
+                  //               children: [
+                  //                 Icon(
+                  //                   Icons.self_improvement,
+                  //                   color: Colors.lightBlueAccent,
+                  //                   size: 20,
+                  //                 ),
+                  //                 SizedBox(
+                  //                   height: 10,
+                  //                 ),
+                  //                 Container(
+                  //                   width: 90,
+                  //                   child: Text(
+                  //                     'Relaxation & beauty',
+                  //                     textAlign: TextAlign.center,
+                  //                     style: TextStyle(
+                  //                         fontSize: 13,
+                  //                         fontWeight: FontWeight.w900),
+                  //                   ),
+                  //                 )
+                  //               ],
+                  //             ),
+                  //             Column(
+                  //               children: [
+                  //                 Icon(
+                  //                   Icons.border_color,
+                  //                   color: Colors.blueAccent,
+                  //                   size: 20,
+                  //                 ),
+                  //                 SizedBox(
+                  //                   height: 10,
+                  //                 ),
+                  //                 Container(
+                  //                   width: 90,
+                  //                   child: Text(
+                  //                     'Culture & workshops',
+                  //                     textAlign: TextAlign.center,
+                  //                     style: TextStyle(
+                  //                         fontSize: 13,
+                  //                         fontWeight: FontWeight.w900),
+                  //                   ),
+                  //                 )
+                  //               ],
+                  //             ),
+                  //           ],
+                  //         ),
+                  //         Row(
+                  //           children: [
+                  //             Column(
+                  //               children: [
+                  //                 Icon(
+                  //                   Icons.wine_bar,
+                  //                   color: Colors.pink,
+                  //                   size: 20,
+                  //                 ),
+                  //                 SizedBox(
+                  //                   height: 10,
+                  //                 ),
+                  //                 Container(
+                  //                   width: 80,
+                  //                   child: Center(
+                  //                     child: Text(
+                  //                       'Fun & nightlife',
+                  //                       textAlign: TextAlign.center,
+                  //                       style: TextStyle(
+                  //                           fontSize: 13,
+                  //                           fontWeight: FontWeight.w900),
+                  //                     ),
+                  //                   ),
+                  //                 )
+                  //               ],
+                  //             ),
+                  //             Column(
+                  //               children: [
+                  //                 Icon(
+                  //                   Icons.beach_access_outlined,
+                  //                   color: Colors.purple,
+                  //                   size: 20,
+                  //                 ),
+                  //                 SizedBox(
+                  //                   height: 10,
+                  //                 ),
+                  //                 Container(
+                  //                   width: 80,
+                  //                   child: Text(
+                  //                     'Tours',
+                  //                     maxLines: 2,
+                  //                     textAlign: TextAlign.center,
+                  //                     style: TextStyle(
+                  //                         fontSize: 13,
+                  //                         fontWeight: FontWeight.w900),
+                  //                   ),
+                  //                 )
+                  //               ],
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // )
+                ],
               ),
+
               widget.text == "Cairo"
                   ? Padding(
                       padding: const EdgeInsets.only(top: 30, left: 15),
@@ -402,7 +404,7 @@ class _DestinationDetailsState extends State<DestinationDetails> {
                         ? Padding(
                             padding: const EdgeInsets.only(left: 15),
                             child: Container(
-                              height: 270,
+                              height: 170,
                               child: ListView(
                                 scrollDirection: Axis.horizontal,
                                 children: <Widget>[
@@ -417,7 +419,7 @@ class _DestinationDetailsState extends State<DestinationDetails> {
                         : Padding(
                             padding: const EdgeInsets.only(left: 15),
                             child: Container(
-                              height: 270,
+                              height: 170,
                               child: ListView(
                                 scrollDirection: Axis.horizontal,
                                 children: <Widget>[

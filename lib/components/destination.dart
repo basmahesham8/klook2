@@ -88,7 +88,7 @@ class Destination extends StatelessWidget {
               ),
 
               Container(
-                height: 270,
+                height: 170,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: <Widget>[
