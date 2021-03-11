@@ -258,14 +258,15 @@ class Hotel extends StatelessWidget {
                                         height: 10,
                                       ),
                                       Container(
-                                          width: 230,
-                                          child: Text(
-                                            "Get great prices and find a deal that's right for you.",
-                                            style: TextStyle(
-                                                color: Colors.grey,
-                                                fontSize: 13,
-                                                fontWeight: FontWeight.bold),
-                                          )),
+                                        width: 230,
+                                        child: Text(
+                                          "Get great prices and find a deal that's right for you.",
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -310,14 +311,15 @@ class Hotel extends StatelessWidget {
                                         height: 10,
                                       ),
                                       Container(
-                                          width: 230,
-                                          child: Text(
-                                            "We're always here when you need us.",
-                                            style: TextStyle(
-                                                color: Colors.grey,
-                                                fontSize: 13,
-                                                fontWeight: FontWeight.bold),
-                                          )),
+                                        width: 230,
+                                        child: Text(
+                                          "We're always here when you need us.",
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -362,14 +364,15 @@ class Hotel extends StatelessWidget {
                                         height: 10,
                                       ),
                                       Container(
-                                          width: 230,
-                                          child: Text(
-                                            "Our Services cover range of payment methods.",
-                                            style: TextStyle(
-                                                color: Colors.grey,
-                                                fontSize: 13,
-                                                fontWeight: FontWeight.bold),
-                                          )),
+                                        width: 230,
+                                        child: Text(
+                                          "Our Services cover range of payment methods.",
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
