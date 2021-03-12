@@ -28,12 +28,10 @@ class _StaysCardState extends State<StaysCard> {
                 children: <Widget>[
                   Container(
                       height: 120,
-                      child: Image(
-                        image: AssetImage(widget.staysImages),
-                        height: 100,
-                        width: 200,
-                        fit: BoxFit.fitWidth,
-                      )),
+                      child:
+                        Image.network(widget.staysImages,height: 100,
+                          width: 200,
+                          fit: BoxFit.fitWidth, ),),
                   Padding(
                     padding: new EdgeInsets.only(top: 80, left: 15, right: 5),
                     child: Card(
