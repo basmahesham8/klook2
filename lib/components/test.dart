@@ -1,32 +1,35 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:klook2/components/BookedCard.dart';
+import 'package:klook2/components/bookeingDB.dart';
 // import 'package:carousel_pro/carousel_pro.dart';
 // import 'package:carousel_slider/carousel_slider.dart';
 // import 'package:klook2/components/Card.dart';
-// import 'package:klook2/components/tourCard.dart';
+import 'package:klook2/components/tourCard.dart';
 
-class Booking extends StatefulWidget {
+class Booking2 extends StatefulWidget {
   bool dataHas = false;
   @override
-  _BookingState createState() => _BookingState();
+  _Booking2State createState() => _Booking2State();
 }
 
-class _BookingState extends State<Booking> {
+class _Booking2State extends State<Booking2> {
   String dropdownValue = 'Bookings';
+
+  GetUserName objj;
 
   // int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    List<DocumentSnapshot> documentss = objj.getlist();
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.grey[100],
         body: FutureBuilder<QuerySnapshot>(
             future: FirebaseFirestore.instance
-                .collection('Booking')
-                .where('Name', isEqualTo: 'Hagar')
+                .collection('ToursCollection')
+                .where('Section', isEqualTo: 'BestSeller')
                 .get(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
@@ -43,7 +46,7 @@ class _BookingState extends State<Booking> {
               final List<DocumentSnapshot> documents = snapshot.data.docs;
 
               return SingleChildScrollView(
-                  child: widget.dataHas == false
+                  child: widget.dataHas == true
                       ? Column(
                           children: [
                             SingleChildScrollView(
@@ -65,7 +68,7 @@ class _BookingState extends State<Booking> {
                                                   bottom: true,
                                                   right: false,
                                                   child: Text(
-                                                    'My Bookings',
+                                                    'My',
                                                     style: TextStyle(
                                                         fontSize: 20,
                                                         color: Colors.black,
@@ -85,45 +88,6 @@ class _BookingState extends State<Booking> {
                                         Divider(
                                           thickness: 1,
                                         ),
-                                        DropdownButton<String>(
-                                          value: dropdownValue,
-                                          icon: Icon(Icons.arrow_drop_down),
-                                          iconSize: 24,
-                                          elevation: 16,
-                                          autofocus: true,
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 20),
-                                          underline: Container(
-                                            height: 0,
-                                            // color: Colors.deepPurpleAccent,
-                                          ),
-                                          onChanged: (String newValue) {
-                                            setState(() {
-                                              dropdownValue = newValue;
-                                            });
-                                          },
-                                          items: <String>[
-                                            'Bookings',
-                                            'Invaild Bookings',
-                                            'Archived Bookings'
-                                          ].map<DropdownMenuItem<String>>(
-                                              (String value) {
-                                            return DropdownMenuItem<String>(
-                                              value: value,
-                                              child: Text(value),
-                                            );
-                                          }).toList(),
-                                        ),
-                                        Center(
-                                          child: Container(
-                                              child: Image.asset(
-                                            'assets/book.jpg',
-                                            width: 300,
-                                          )
-                                              // ),
-                                              ),
-                                        ),
                                         Container(
                                           padding: const EdgeInsets.only(
                                               top: 30, bottom: 10),
@@ -142,23 +106,21 @@ class _BookingState extends State<Booking> {
                               height: 300,
                               width: 400,
                               child: ListView(
-                                  scrollDirection: Axis.vertical,
-                                  children: documents
-                                      .map((doc) => BookedCard(
-                                                // noPerson: doc['Booked'],
-                                                userName: doc['City'],
+                                  scrollDirection: Axis.horizontal,
+                                  children: documentss
+                                      .map((doc) => MCard(
                                                 title: doc['Title'],
-                                                // city: doc['City'],
-                                                // section: doc['Section'],
-                                                // image: doc['Image'],
-                                                // booked: doc['Booked'],
-                                                // categories: doc['Categories'],
-                                                // date: doc['Date'],
-                                                // price: doc['Price'],
-                                                // rate: doc['Rate'],
-                                                // review: doc['Review'],
-                                                // distance: doc['Distance'],
-                                                // imageheight: 60,
+                                                city: doc['City'],
+                                                section: doc['Section'],
+                                                image: doc['Image'],
+                                                booked: doc['Booked'],
+                                                categories: doc['Categories'],
+                                                date: doc['Date'],
+                                                price: doc['Price'],
+                                                rate: doc['Rate'],
+                                                review: doc['Review'],
+                                                distance: doc['Distance'],
+                                                imageheight: 60,
                                               )
                                           // Card(
                                           //       child: ListTile(
@@ -194,7 +156,7 @@ class _BookingState extends State<Booking> {
                                                     bottom: true,
                                                     right: false,
                                                     child: Text(
-                                                      'My Bookings',
+                                                      'My ',
                                                       style: TextStyle(
                                                           fontSize: 20,
                                                           color: Colors.black,
@@ -244,33 +206,47 @@ class _BookingState extends State<Booking> {
                                               );
                                             }).toList(),
                                           ),
+                                          Container(
+                                            padding: const EdgeInsets.only(
+                                                top: 30, bottom: 10),
+                                            child: Text(
+                                              'Popular activities',
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
                                         ])
                                     // ]),
                                     ),
                               ),
                               Container(
-                                margin: EdgeInsets.all(15),
-                                height: 480,
+                                height: 300,
                                 width: 400,
                                 child: ListView(
-                                    scrollDirection: Axis.vertical,
+                                    scrollDirection: Axis.horizontal,
                                     children: documents
-                                        .map((doc) => BookedCard(
-                                              // noPerson: doc['Adults'],
-                                              userName: doc['Name'],
-                                              title: doc['Title'],
-                                              // city: doc['City'],
-                                              // section: doc['Section'],
-                                              // image: doc['Image'],
-                                              // booked: doc['Booked'],
-                                              // categories: doc['Categories'],
-                                              // date: doc['Date'],
-                                              // price: doc['Price'],
-                                              // rate: doc['Rate'],
-                                              // review: doc['Review'],
-                                              // distance: doc['Distance'],
-                                              // imageheight: 60,
-                                            ))
+                                        .map((doc) => MCard(
+                                                  title: doc['Title'],
+                                                  city: doc['City'],
+                                                  section: doc['Section'],
+                                                  image: doc['Image'],
+                                                  booked: doc['Booked'],
+                                                  categories: doc['Categories'],
+                                                  date: doc['Date'],
+                                                  price: doc['Price'],
+                                                  rate: doc['Rate'],
+                                                  review: doc['Review'],
+                                                  distance: doc['Distance'],
+                                                  imageheight: 60,
+                                                )
+                                            // Card(
+                                            //       child: ListTile(
+                                            //         title: Text(doc['City']),
+                                            //         subtitle: Text(doc['Title']),
+                                            //       ),
+                                            //     )
+                                            )
                                         .toList()),
                               ),
                             ],
