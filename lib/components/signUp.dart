@@ -6,11 +6,12 @@ import 'package:flutter/material.dart';
 class SignUp extends StatefulWidget {
   final TextEditingController emailController = new TextEditingController();
 
-  TextEditingController passwordController = new TextEditingController();
+  final TextEditingController passwordController = new TextEditingController();
 
   SignUp();
 
-  CollectionReference users = FirebaseFirestore.instance.collection('users');
+  final CollectionReference users =
+      FirebaseFirestore.instance.collection('users');
   // String iduser = '52563';
   Future<void> addUser(emails, passwords) {
     // Call the user's CollectionReference to add a new user

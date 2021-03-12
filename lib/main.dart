@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+// import 'package:klook2/components/BookedCard.dart';
+// import 'package:klook2/components/BookedCard.dart';
+// import 'package:klook2/components/bookeingDB.dart';
 import 'package:klook2/components/bookings.dart';
 import 'package:klook2/components/categories.dart';
-import 'package:klook2/components/database.dart';
+// import 'package:klook2/components/database.dart';
 import 'package:klook2/components/destination.dart';
 // import 'package:klook2/components/destination.dart';
-import 'package:klook2/components/hotel.dart';
+// import 'package:klook2/components/hotel.dart';
 import 'package:klook2/components/login.dart';
 import 'package:klook2/components/home.dart';
-import 'package:klook2/components/tourCard.dart';
-// import 'package:klook2/components/categories.dart';
+
 import 'package:firebase_core/firebase_core.dart';
+// import 'package:klook2/components/test.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,10 +46,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   // int _counter = 0;
   int _selectedIndex = 0;
-  // var imageFile = AddUser.iduser;
-
-  // static TextStyle optionStyle =
-  // TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.red);
   static List<Widget> _widgetOptions = <Widget>[
     Home(),
     // MCard(),
@@ -55,35 +54,9 @@ class _MyHomePageState extends State<MyHomePage> {
     Categories(),
     Booking(),
     LoginPage(),
-
-    // Text(
-    //   'Index 0: Home',
-    //   style: optionStyle,
-    // ),
-
-    // Text(
-    //   'Index 1: Description',
-    //   style: optionStyle,
-    // ),
-    // Text(
-    //   'Index 2: Categories',
-    //   style: optionStyle,
-    // ),
-    // Text(
-    //   'Index 3: Bookings',
-    //   style: optionStyle,
-    // ),
-    // // Text(
-    // //   'Index 4: Account ',
-    // //   style: optionStyle,
-    // // ),
   ];
 
   void _onItemTapped(int index) {
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(builder: (context) => LoginPage('jbv')),
-    // );
     setState(() {
       _selectedIndex = index;
     });
@@ -92,6 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),

@@ -1,21 +1,22 @@
-// import 'package:flutter/material.dart';
+// // import 'package:flutter/material.dart';
 
 // // Import the firebase_core and cloud_firestore plugin
-// import 'package:firebase_core/firebase_core.dart';
+// // import 'package:firebase_core/firebase_core.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:flutter/cupertino.dart';
+// import 'package:flutter/material.dart';
 
-// class AddUser extends StatelessWidget {
-//   final String fullName;
-//   final String company;
-//   // static String iduser = '52563';
+// // class AddUser extends StatelessWidget {
+// //   final String fullName;
+// //   final String company;
+// //   // static String iduser = '52563';
 
-//   // final int age;
-//   final TextEditingController emailController = new TextEditingController();
+// //   // final int age;
+// //   final TextEditingController emailController = new TextEditingController();
 
-//   String emailtext;
-//   TextEditingController passwordController = new TextEditingController();
+//   final TextEditingController passwordController = new TextEditingController();
 
-//   AddUser(this.fullName, this.company, this.emailtext);
+//   AddUser(this.fullName, this.company);
 
 //   @override
 //   Widget build(BuildContext context) {
@@ -43,11 +44,11 @@
 //           // obscureText: true,
 //           decoration: InputDecoration(
 
-//               // focusedBorder: OutlineInputBorder(
-//               //   borderSide: const BorderSide(
-//               //       color: Colors.orange,
-//               //       width: 2.0),
-//               // ),
+//               focusedBorder: OutlineInputBorder(
+//                 borderSide: const BorderSide(
+//                     color: Colors.orange,
+//                     width: 2.0),
+//               ),
 //               hintText: 'Email Address'),
 //         ),
 //         TextField(
@@ -61,7 +62,6 @@
 //             "Add User",
 //           ),
 //         ),
-//         Text(emailtext)
 //       ],
 //     );
 //   }
