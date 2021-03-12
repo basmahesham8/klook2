@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:klook2/components/BookedCard.dart';
+// import 'package:klook2/components/BookedCard.dart';
 // import 'package:klook2/components/BookedCard.dart';
 // import 'package:klook2/components/bookeingDB.dart';
 import 'package:klook2/components/bookings.dart';
-import 'package:klook2/components/hotel.dart';
+import 'package:klook2/components/categories.dart';
+// import 'package:klook2/components/database.dart';
+import 'package:klook2/components/destination.dart';
+// import 'package:klook2/components/destination.dart';
+// import 'package:klook2/components/hotel.dart';
 import 'package:klook2/components/login.dart';
 import 'package:klook2/components/home.dart';
 
@@ -44,17 +48,10 @@ class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
   static List<Widget> _widgetOptions = <Widget>[
     Home(),
-    BookedCard(
-      title: 'dfg fghjuj dfghjasdrftyhgf sfg dfg sdfg  ',
-      // date: '2-20-2020',
-      // noPerson: '4',
-      // price: '2020',
-      userName: 'hagar elgarh',
-      // image: 'images/sharm.png',
-    ),
-    // GetUserName(),
-    // Booking2(),
-    Hotel(),
+    // MCard(),
+    Destination(),
+    //AddUser('fullName', 'company', 'djd'),
+    Categories(),
     Booking(),
     LoginPage(),
   ];
@@ -69,7 +66,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: AppBar(),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
@@ -91,12 +87,10 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.widgets_rounded),
             label: 'Categories',
-            // backgroundColor: Colors.deepOrange,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.article_outlined,
-              // color: Colors.white,
             ),
             label: 'Bookings',
           ),
@@ -106,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.deepOrange,
         onTap: _onItemTapped,
       ),
     );

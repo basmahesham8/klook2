@@ -35,7 +35,7 @@ class Destination extends StatelessWidget {
                         top: true,
                         bottom: true,
                         right: false,
-                        child: Icon(Icons.add_shopping_cart)),
+                        child: Icon(Icons.shopping_cart_outlined)),
                   ],
                 ),
               ),
@@ -86,41 +86,20 @@ class Destination extends StatelessWidget {
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
                     )),
               ),
-
-              Container(
-                height: 270,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: <Widget>[
-                    popularStays(images: "images/cairo.png", cityName: "Cairo"),
+              SizedBox(height: 20),
+              Center(
+                child: Container(
+                  height: 400,
+                  child: Column(children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: popularStays(
+                          images: "images/cairo.png", cityName: "Cairo"),
+                    ),
                     popularStays(
                         images: "images/sharm.png",
                         cityName: "Sharm El Sheikh"),
-                  ],
-                ),
-              ),
-
-              //Hotels:
-              GestureDetector(
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Column(
-                    children: [
-                      // Icon(
-                      //   Icons.home_work_outlined,
-                      //   color: Colors.deepOrange,
-                      //   size: 35,
-                      // ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        '',
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w900),
-                      )
-                    ],
-                  ),
+                  ]),
                 ),
               ),
             ],

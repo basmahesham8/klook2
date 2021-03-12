@@ -250,7 +250,7 @@ class _BookingState extends State<Booking> {
                               ),
                               Container(
                                 margin: EdgeInsets.all(15),
-                                height: 550,
+                                height: 480,
                                 width: 400,
                                 child: ListView(
                                     scrollDirection: Axis.vertical,

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:klook2/components/categories.dart';
+import 'package:klook2/components/IncridbleHomeCard.dart';
+import 'package:klook2/components/RecommendedHomeCard.dart';
+import 'package:klook2/components/RediscoverHomeCard.dart';
+//import 'package:klook2/components/categories.dart';
 import 'package:klook2/components/recentlyHome.dart';
 import 'package:klook2/components/topHomeCard.dart';
+import 'package:klook2/components/getInspiredHome.dart';
 
 import 'hotel.dart';
 
@@ -69,35 +73,38 @@ class _HomeState extends State<Home> {
               ),
 
               //////////////// drop down list ///////////////////////////////
-              ClipRRect(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(50),
-                  topRight: Radius.elliptical(10, 20),
-                ),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: DropdownButton(
-                        value: recommended,
-                        onChanged: (newCity) {
-                          setState(() {
-                            recommended = newCity;
-                          });
-                        },
-                        items: recommendedCities.map(
-                          (city) {
-                            return DropdownMenuItem(
-                              value: city,
-                              child: Text(
-                                city,
-                              ),
-                            );
+              Align(
+                alignment: Alignment.centerLeft,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(50),
+                    topRight: Radius.elliptical(10, 20),
+                  ),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: DropdownButton(
+                          value: recommended,
+                          onChanged: (newCity) {
+                            setState(() {
+                              recommended = newCity;
+                            });
                           },
-                        ).toList(),
+                          items: recommendedCities.map(
+                            (city) {
+                              return DropdownMenuItem(
+                                value: city,
+                                child: Text(
+                                  city,
+                                ),
+                              );
+                            },
+                          ).toList(),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               //////////// small cards ////////////////////
@@ -239,7 +246,7 @@ class _HomeState extends State<Home> {
                           ),
                         ),
 
-                        //************** other cards  */
+                        //****** other cards  */
                       ],
                     ),
                     ////////////// second row ///////////////////////
@@ -483,31 +490,42 @@ class _HomeState extends State<Home> {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: 25,
               ),
               ////////////////////////////// recently viewed /////////////////////////////////////////
               Column(
                 children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Recently Viewed',
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                   Container(
                     height: 250,
+                    //  width: 175,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: <Widget>[
-                        RecentlyCard(
+                        recentlyCard(
                           img: 'images/home/1.webp',
                           title: 'camel and bike tour in Giza Pyramids',
                           city: 'cairo',
                           price: ' 2,195',
                           date: 'tommorow',
                         ),
-                        RecentlyCard(
+                        recentlyCard(
                           img: 'images/home/1.webp',
                           title: 'camel and bike tour in Giza Pyramids',
                           city: 'cairo',
                           price: ' 2,195',
                           date: 'tommorow',
                         ),
-                        RecentlyCard(
+                        recentlyCard(
                           img: 'images/home/1.webp',
                           title: 'camel and bike tour in Giza Pyramids',
                           city: 'cairo',
@@ -529,32 +547,32 @@ class _HomeState extends State<Home> {
               //           child: ListView(
               //             scrollDirection: Axis.horizontal,
               //             children: <Widget>[
-              //               RecentlyCard(
+              //               recentlyCard(
               //                   img: 'images/1.webp',
               //                   title: 'camel and bike tour in Giza Pyramids',
               //                   city: 'cairo',
               //                   price: 'From EGP 2,195',
               //                   date: 'tommorow'),
 
-              //         //       // RecentlyCard(
+              //         //       // recentlyCard(
               //         //       //     staysImages: 'images/marriotHotel.jpg',
               //         //       //     rate: '5.0/5',
               //         //       //     name: 'Cairo Marriott',
               //         //       //     price: 'From EGP 1,113',
               //         //       //     stars: '5 Stars'),
-              //         //       // RecentlyCard(
+              //         //       // recentlyCard(
               //         //       //     staysImages: 'images/sofitelHotel.jpg',
               //         //       //     rate: '5.0/5',
               //         //       //     name: 'Sofitel Cairo Nile',
               //         //       //     price: 'From EGP 1,135',
               //         //       //     stars: '5 Stars'),
-              //         //       // RecentlyCard(
+              //         //       // recentlyCard(
               //         //       //     staysImages: 'images/fairmontHotel.jpg',
               //         //       //     rate: '5.0/5',
               //         //       //     name: 'Fairmont Nile City',
               //         //       //     price: 'From EGP 1,129',
               //         //       //     stars: '5 Stars'),
-              //         //       // RecentlyCard(
+              //         //       // recentlyCard(
               //         //       //     staysImages: 'images/royalHotel.jpg',
               //         //       //     rate: '5.0/5',
               //         //       //     name: 'Kempinski Nile',
@@ -568,68 +586,539 @@ class _HomeState extends State<Home> {
               //   ],
               // ),
               SizedBox(
-                height: 15,
+                height: 25,
               ),
               // top things to do ///////////////////////////////////
               Column(
                 children: [
-                  Row(
-                    children: [
-                      Container(
-                        height: 270,
-                        width: 290,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: <Widget>[
-                            TopCard(
-                              img: 'images/home/2.PNG',
-                              title:
-                                  'JR Pass for Whole Japan (7, 14,or 21 days )',
-                              type: 'Public transport . JR Pass',
-                              rate: '4.8',
-                              total: '13,755',
-                              booked: '200K+',
-                              price: ' 273.50',
-                            ),
-                            // RecentlyCard(
-                            //   img: 'images/home/1.webp',
-                            //   title: 'camel and bike tour in Giza Pyramids',
-                            //   city: 'cairo',
-                            //   price: ' 2,195',
-                            //   date: 'tommorow',
-                            // ),
-                            // RecentlyCard(
-                            //   img: 'images/home/1.webp',
-                            //   title: 'camel and bike tour in Giza Pyramids',
-                            //   city: 'cairo',
-                            //   price: ' 2,195',
-                            //   date: 'tommorow',
-                            // ),
-                          ],
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 5),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Top Things to Do',
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ],
+                    ),
                   ),
-                  Row(
-                    children: [
-                      FlatButton(
-                        onPressed: null,
-                        child: Text('View all'),
-                      )
-                    ],
+                  Container(
+                    height: 270,
+                    width: 290,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: <Widget>[
+                        topCard(
+                          img: 'images/home/2.PNG',
+                          title: 'JR Pass for Whole Japan (7, 14,or 21 days )',
+                          type: 'Public transport . JR Pass',
+                          rate: '4.8',
+                          total: '13,755',
+                          booked: '200K+',
+                          price: ' 273.50',
+                        ),
+                        // recentlyCard(
+                        //   img: 'images/home/1.webp',
+                        //   title: 'camel and bike tour in Giza Pyramids',
+                        //   city: 'cairo',
+                        //   price: ' 2,195',
+                        //   date: 'tommorow',
+                        // ),
+                        // recentlyCard(
+                        //   img: 'images/home/1.webp',
+                        //   title: 'camel and bike tour in Giza Pyramids',
+                        //   city: 'cairo',
+                        //   price: ' 2,195',
+                        //   date: 'tommorow',
+                        // ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15, top: 5),
+                    child: Row(
+                      children: [
+                        MaterialButton(
+                          elevation: 150,
+                          color: Colors.transparent,
+                          padding: EdgeInsets.symmetric(
+                            vertical: 10,
+                            horizontal: 140,
+                          ),
+                          //   highlightElevation: 50,
+                          splashColor: Colors.deepOrange,
+                          shape:
+                              // RoundedRectangleBorder(
+                              //   borderRadius: BorderRadius.circular(
+                              //     30,
+                              //   ),
+                              // ),
+                              Border.all(
+                            // BorderRadius:BorderRadius.circular(30),
+                            color: Colors.grey[400],
+                            width: 1,
+                          ),
+
+                          onPressed: () {
+                            print('button tapped.');
+                          },
+                          highlightColor: Colors.deepOrange,
+                          child: Text('View all'),
+                          textColor: Colors.grey[600],
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),
-
+              SizedBox(
+                height: 25,
+              ),
               ///////// get inspired////////////////////////////
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 5),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Get inspired',
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('images/home/3.jfif'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                left: 0, top: 10, bottom: 15),
+                            child: Text(
+                              'Treat yourself to something sweet',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                            width: 350,
+                            child: Text(
+                              'Lorem Ipsum is simply dummy text of the printing and typesetting industry . Lorem Ipsum has been the standard  dummy text ever since the 1500s,',
+                              style: TextStyle(
+                                color: Colors.white,
+                                //   fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 250,
+                          // width: 175,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: <Widget>[
+                              getInspired(
+                                img: 'images/home/1.webp',
+                                title: 'After Tea Cruise',
+                                city: 'London',
+                                price: ' 47.05',
+                                rate: '4.4',
+                                total: '24',
+                              ),
+                              recentlyCard(
+                                img: 'images/home/1.webp',
+                                title: 'camel and bike tour in Giza Pyramids',
+                                city: 'cairo',
+                                price: ' 2,195',
+                                date: 'tommorow',
+                              ),
+                              recentlyCard(
+                                img: 'images/home/1.webp',
+                                title: 'camel and bike tour in Giza Pyramids',
+                                city: 'cairo',
+                                price: ' 2,195',
+                                date: 'tommorow',
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
 
-              // ediscover /////////////////////
+              // rediscover /////////////////////
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 5),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Get inspired',
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('images/home/3.jfif'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                left: 0, top: 10, bottom: 15),
+                            child: Text(
+                              'Rediscover your hometown',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                            width: 350,
+                            child: Text(
+                              'Explore locally this Autumn and make the most of your hometown.',
+                              style: TextStyle(
+                                color: Colors.white,
+                                //   fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 250,
+                          // width: 175,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: <Widget>[
+                              rediscoverCard(
+                                img: 'images/home/1.webp',
+                                title: 'After Tea Cruise',
+                                city: 'London',
+                                price: ' 47.05',
+                                rate: '4.4',
+                                total: '24',
+                              ),
+                              recentlyCard(
+                                img: 'images/home/1.webp',
+                                title: 'camel and bike tour in Giza Pyramids',
+                                city: 'cairo',
+                                price: ' 2,195',
+                                date: 'tommorow',
+                              ),
+                              recentlyCard(
+                                img: 'images/home/1.webp',
+                                title: 'camel and bike tour in Giza Pyramids',
+                                city: 'cairo',
+                                price: ' 2,195',
+                                date: 'tommorow',
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
 
               // incrideble distination /////////////////////
-
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 5),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Incredible destinations',
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 270,
+                    width: 290,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: <Widget>[
+                        IncredibleCard(
+                          img: 'images/home/2.PNG',
+                          city: 'Singhaphore',
+                        ),
+                        IncredibleCard(
+                          img: 'images/home/2.PNG',
+                          city: 'Singhaphore',
+                        ),
+                        IncredibleCard(
+                          img: 'images/home/2.PNG',
+                          city: 'Singhaphore',
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 25,
+              ),
               // klook recommended ///////////////////////
-
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 5),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Klook recommended',
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: 300,
+                    child: Text(
+                      'Incredible experiences whenever you are-chosen by our travel curators',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 11,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 270,
+                    width: 290,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: <Widget>[
+                        recommendedCard(
+                          img: 'images/home/2.PNG',
+                          title: 'Windsor Castle Ticket',
+                          type: 'Attractions',
+                          rate: '5.0',
+                          total: '1',
+                          booked: '100K+',
+                          price: ' 273.50',
+                          city: 'London',
+                          oldPrice: '32.55',
+                        ),
+                        recommendedCard(
+                          img: 'images/home/2.PNG',
+                          title: 'Windsor Castle Ticket',
+                          type: 'Attractions',
+                          rate: '5.0',
+                          total: '1',
+                          booked: '100K+',
+                          price: ' 273.50',
+                          city: 'London',
+                          oldPrice: '32.55',
+                        ),
+                        recommendedCard(
+                          img: 'images/home/2.PNG',
+                          title: 'Windsor Castle Ticket',
+                          type: 'Attractions',
+                          rate: '5.0',
+                          total: '1',
+                          booked: '100K+',
+                          price: ' 273.50',
+                          city: 'London',
+                          oldPrice: '32.55',
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 25,
+              ),
               // promo code ///////////////////////////,
+              Column(
+                children: [
+                  Container(
+                    height: 170,
+                    width: 290,
+                    child: Card(
+                      child: Stack(
+                        children: <Widget>[
+                          Container(
+                            height: 120,
+                            child: Image(
+                              image: AssetImage('images/home/1.webp'),
+                              width: 290,
+                              height: 170,
+                              fit: BoxFit.fitWidth,
+                            ),
+                          ),
+                          Text(
+                            'Use promo code',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+                          ),
+                          Container(
+                            width: 280,
+                            child: Text(
+                              '\'Mobile 10\' to get US\$1.3 off your first booking',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ),
+                          MaterialButton(
+                            elevation: 150,
+                            color: Colors.deepOrange,
+                            padding: EdgeInsets.symmetric(
+                              vertical: 10,
+                              horizontal: 10,
+                            ),
+                            //   highlightElevation: 50,
+                            splashColor: Colors.orange,
+                            shape:
+                                // RoundedRectangleBorder(
+                                //   borderRadius: BorderRadius.circular(
+                                //     30,
+                                //   ),
+                                // ),
+                                Border.all(
+                              // BorderRadius:BorderRadius.circular(30),
+                              color: Colors.orange,
+                              width: 1,
+                            ),
+
+                            onPressed: () {
+                              print('button tapped.');
+                            },
+                            highlightColor: Colors.orange,
+                            child: Text('Redeem'),
+                            textColor: Colors.white,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              ////////////////////////////////////////
+              Column(
+                children: [
+                  Container(
+                    height: 170,
+                    width: 290,
+                    child: Card(
+                      child: Stack(
+                        children: <Widget>[
+                          Container(
+                            height: 120,
+                            child: Image(
+                              image: AssetImage('images/home/1.webp'),
+                              width: 290,
+                              height: 170,
+                              fit: BoxFit.fitWidth,
+                            ),
+                          ),
+                          Text(
+                            'Use promo code',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+                          ),
+                          Container(
+                            width: 280,
+                            child: Text(
+                              '\'Mobile 10\' to get US\$1.3 off your first booking',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ),
+                          MaterialButton(
+                            elevation: 150,
+                            color: Colors.deepOrange,
+                            padding: EdgeInsets.symmetric(
+                              vertical: 10,
+                              horizontal: 10,
+                            ),
+                            //   highlightElevation: 50,
+                            splashColor: Colors.orange,
+                            shape:
+                                // RoundedRectangleBorder(
+                                //   borderRadius: BorderRadius.circular(
+                                //     30,
+                                //   ),
+                                // ),
+                                Border.all(
+                              // BorderRadius:BorderRadius.circular(30),
+                              color: Colors.orange,
+                              width: 1,
+                            ),
+
+                            onPressed: () {
+                              print('button tapped.');
+                            },
+                            highlightColor: Colors.orange,
+                            child: Text('Redeem'),
+                            textColor: Colors.white,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -638,7 +1127,7 @@ class _HomeState extends State<Home> {
   }
 }
 
-Widget RecentlyCard({img, title, city, price, date}) {
+Widget recentlyCard({img, title, city, price, date}) {
   return RecentlyHomeCard(
     img: img,
     title: title,
@@ -648,7 +1137,7 @@ Widget RecentlyCard({img, title, city, price, date}) {
   );
 }
 
-Widget TopCard({img, title, type, price, rate, total, booked}) {
+Widget topCard({img, title, type, price, rate, total, booked}) {
   return TopThingsCard(
     img: img,
     title: title,
@@ -657,5 +1146,49 @@ Widget TopCard({img, title, type, price, rate, total, booked}) {
     rate: rate,
     total: total,
     booked: booked,
+  );
+}
+
+Widget getInspired({img, title, type, price, rate, total, city}) {
+  return GetInspiredCard(
+    img: img,
+    title: title,
+    city: city,
+    price: price,
+    rate: rate,
+    total: total,
+  );
+}
+
+Widget rediscoverCard({img, title, type, price, rate, total, city}) {
+  return RediscoverCard(
+    img: img,
+    title: title,
+    city: city,
+    price: price,
+    rate: rate,
+    total: total,
+  );
+}
+
+Widget incredibleCard({img, city}) {
+  return IncredibleCard(
+    img: img,
+    city: city,
+  );
+}
+
+Widget recommendedCard(
+    {img, title, type, price, rate, total, booked, city, oldPrice}) {
+  return RecommendedCard(
+    img: img,
+    title: title,
+    type: type,
+    price: price,
+    rate: rate,
+    total: total,
+    booked: booked,
+    city: city,
+    oldPrice: oldPrice,
   );
 }
