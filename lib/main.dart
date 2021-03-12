@@ -10,7 +10,7 @@ import 'package:klook2/components/home.dart';
 import 'package:firebase_core/firebase_core.dart';
 // import 'package:klook2/components/test.dart';
 
- void main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
@@ -46,11 +46,11 @@ class _MyHomePageState extends State<MyHomePage> {
     Home(),
     BookedCard(
       title: 'dfg fghjuj dfghjasdrftyhgf sfg dfg sdfg  ',
-      date: '2-20-2020',
-      noPerson: '4',
-      price: '2020',
+      // date: '2-20-2020',
+      // noPerson: '4',
+      // price: '2020',
       userName: 'hagar elgarh',
-      image: 'images/sharm.png',
+      // image: 'images/sharm.png',
     ),
     // GetUserName(),
     // Booking2(),

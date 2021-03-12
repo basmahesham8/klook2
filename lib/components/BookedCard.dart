@@ -4,19 +4,20 @@ import 'package:flutter/material.dart';
 class BookedCard extends StatefulWidget {
   @required
   final String title;
-  final String date;
-  final String noPerson;
+  // final String date;
+  // final String noPerson;
   final String userName;
-  final String price;
-  final String image;
+  // final int price;
+  // final String image;
 
-  BookedCard(
-      {this.title,
-      this.date,
-      this.noPerson,
-      this.userName,
-      this.price,
-      this.image});
+  BookedCard({
+    this.title,
+    // this.date,
+    // this.noPerson,
+    this.userName,
+    // this.price,
+    // this.image
+  });
 
   @override
   _BookedCardState createState() => _BookedCardState();
@@ -64,11 +65,11 @@ class _BookedCardState extends State<BookedCard> {
                     child: Column(
                       children: [
                         Text(
-                          widget.date,
+                          'widget.date',
                           style: TextStyle(color: Colors.grey[400]),
                         ),
                         Text(
-                          'person X ' + widget.noPerson,
+                          'person X ' + 'widget.noPerson',
                           style: TextStyle(color: Colors.grey[400]),
                         ),
                         Text(
@@ -76,7 +77,7 @@ class _BookedCardState extends State<BookedCard> {
                           style: TextStyle(color: Colors.grey[400]),
                         ),
                         Text(
-                          widget.price,
+                          'widget.price',
                           style: TextStyle(color: Colors.grey[400]),
                         ),
                       ],
@@ -86,9 +87,8 @@ class _BookedCardState extends State<BookedCard> {
                     child: FadeInImage.assetNetwork(
                       width: 100,
                       height: 60,
-                      placeholder:
-                          'https://firebasestorage.googleapis.com/v0/b/friendlychat-e399d.appspot.com/o/images%2Factivities%2Fundefined?alt=media&token=86d1de75-4b8f-43ae-b4fe-81c235d7e099',
-                      image: widget.image,
+                      placeholder: '',
+                      image: '',
                       fit: BoxFit.cover,
                     ),
                   )

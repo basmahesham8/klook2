@@ -5,7 +5,7 @@ import 'package:klook2/components/BookedCard.dart';
 // import 'package:carousel_pro/carousel_pro.dart';
 // import 'package:carousel_slider/carousel_slider.dart';
 // import 'package:klook2/components/Card.dart';
-import 'package:klook2/components/tourCard.dart';
+// import 'package:klook2/components/tourCard.dart';
 
 class Booking extends StatefulWidget {
   bool dataHas = false;
@@ -25,8 +25,8 @@ class _BookingState extends State<Booking> {
         backgroundColor: Colors.grey[100],
         body: FutureBuilder<QuerySnapshot>(
             future: FirebaseFirestore.instance
-                .collection('ToursCollection')
-                .where('Section', isEqualTo: 'BestSeller')
+                .collection('Booking')
+                .where('Name', isEqualTo: 'Hagar')
                 .get(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
@@ -43,7 +43,7 @@ class _BookingState extends State<Booking> {
               final List<DocumentSnapshot> documents = snapshot.data.docs;
 
               return SingleChildScrollView(
-                  child: widget.dataHas == true
+                  child: widget.dataHas == false
                       ? Column(
                           children: [
                             SingleChildScrollView(
@@ -142,21 +142,23 @@ class _BookingState extends State<Booking> {
                               height: 300,
                               width: 400,
                               child: ListView(
-                                  scrollDirection: Axis.horizontal,
+                                  scrollDirection: Axis.vertical,
                                   children: documents
-                                      .map((doc) => MCard(
+                                      .map((doc) => BookedCard(
+                                                // noPerson: doc['Booked'],
+                                                userName: doc['City'],
                                                 title: doc['Title'],
-                                                city: doc['City'],
-                                                section: doc['Section'],
-                                                image: doc['Image'],
-                                                booked: doc['Booked'],
-                                                categories: doc['Categories'],
-                                                date: doc['Date'],
-                                                price: doc['Price'],
-                                                rate: doc['Rate'],
-                                                review: doc['Review'],
-                                                distance: doc['Distance'],
-                                                imageheight: 60,
+                                                // city: doc['City'],
+                                                // section: doc['Section'],
+                                                // image: doc['Image'],
+                                                // booked: doc['Booked'],
+                                                // categories: doc['Categories'],
+                                                // date: doc['Date'],
+                                                // price: doc['Price'],
+                                                // rate: doc['Rate'],
+                                                // review: doc['Review'],
+                                                // distance: doc['Distance'],
+                                                // imageheight: 60,
                                               )
                                           // Card(
                                           //       child: ListTile(
@@ -254,16 +256,16 @@ class _BookingState extends State<Booking> {
                                     scrollDirection: Axis.vertical,
                                     children: documents
                                         .map((doc) => BookedCard(
-                                              noPerson: doc['Booked'],
-                                              userName: doc['City'],
+                                              // noPerson: doc['Adults'],
+                                              userName: doc['Name'],
                                               title: doc['Title'],
                                               // city: doc['City'],
                                               // section: doc['Section'],
-                                              image: doc['Image'],
+                                              // image: doc['Image'],
                                               // booked: doc['Booked'],
                                               // categories: doc['Categories'],
-                                              date: doc['Date'],
-                                              price: doc['Price'],
+                                              // date: doc['Date'],
+                                              // price: doc['Price'],
                                               // rate: doc['Rate'],
                                               // review: doc['Review'],
                                               // distance: doc['Distance'],
