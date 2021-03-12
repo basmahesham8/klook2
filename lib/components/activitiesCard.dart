@@ -6,14 +6,8 @@ class ActivityCard extends StatefulWidget {
   final String booked;
   final String date;
   final String price;
-  final String number;
-  ActivityCard(
-      {this.image,
-      this.title,
-      this.booked,
-      this.date,
-      this.price,
-      this.number});
+  // final String number;
+  ActivityCard({this.image, this.title, this.booked, this.date, this.price});
   @override
   _ActivityCardState createState() => _ActivityCardState();
 }
@@ -40,22 +34,22 @@ class _ActivityCardState extends State<ActivityCard> {
                         width: 300,
                         fit: BoxFit.fitWidth,
                       )),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Card(
-                        color: Colors.deepOrange,
-                        child: Padding(
-                          padding: const EdgeInsets.all(5),
-                          child: Text(
-                            widget.number,
-                            style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                backgroundColor: Colors.deepOrange),
-                          ),
-                        )),
-                  ),
+                  // Align(
+                  //   alignment: Alignment.topLeft,
+                  //   child: Card(
+                  //       color: Colors.deepOrange,
+                  //       child: Padding(
+                  //         padding: const EdgeInsets.all(5),
+                  //         child: Text(
+                  //           widget.number,
+                  //           style: TextStyle(
+                  //               fontSize: 15,
+                  //               color: Colors.white,
+                  //               fontWeight: FontWeight.bold,
+                  //               backgroundColor: Colors.deepOrange),
+                  //         ),
+                  //       )),
+                  // ),
                 ],
               ),
               // SizedBox(
