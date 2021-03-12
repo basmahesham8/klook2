@@ -86,17 +86,20 @@ class Destination extends StatelessWidget {
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
                     )),
               ),
-
-              Container(
-                height: 170,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: <Widget>[
-                    popularStays(images: "images/cairo.png", cityName: "Cairo"),
+              SizedBox(height: 20),
+              Center(
+                child: Container(
+                  height: 400,
+                  child: Column(children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: popularStays(
+                          images: "images/cairo.png", cityName: "Cairo"),
+                    ),
                     popularStays(
                         images: "images/sharm.png",
                         cityName: "Sharm El Sheikh"),
-                  ],
+                  ]),
                 ),
               ),
             ],

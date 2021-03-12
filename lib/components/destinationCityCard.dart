@@ -5,8 +5,15 @@ class DestinationCityCard extends StatefulWidget {
   final String images;
   final String cityName;
   final String distance;
+  final String distanceKm;
+  final String distance1;
 
-  DestinationCityCard({this.images, this.cityName, this.distance});
+  DestinationCityCard(
+      {this.images,
+      this.cityName,
+      this.distance,
+      this.distanceKm,
+      this.distance1});
   @override
   _DestinationCityCardState createState() => _DestinationCityCardState();
 }
@@ -23,25 +30,38 @@ class _DestinationCityCardState extends State<DestinationCityCard> {
               Stack(
                 children: <Widget>[
                   Container(
-                      height: 120,
-                      child: Image(
-                        image: AssetImage(widget.images),
-                        height: 100,
-                        width: 200,
+                    width: 200,
+                    height: 400,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
                         fit: BoxFit.fitWidth,
-                      )),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 5, left: 3),
-                    child: Text(
-                      widget.distance,
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
+                        image: AssetImage(widget.images),
                       ),
+                      borderRadius: BorderRadius.all(Radius.circular(17.0)),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 80, left: 20),
+                      padding: const EdgeInsets.only(top: 20, left: 10),
+                      child: Text.rich(
+                        TextSpan(
+                          text: widget.distance + '\n',
+                          style: TextStyle(fontSize: 18, color: Colors.white),
+                          // default text style
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: widget.distanceKm,
+                                style: TextStyle(
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FontStyle.italic)),
+                            TextSpan(
+                                text: widget.distance1,
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                          ],
+                        ),
+                      )),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 200, left: 10),
                     child: Text(
                       widget.cityName,
                       style: TextStyle(

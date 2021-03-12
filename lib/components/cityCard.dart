@@ -16,20 +16,22 @@ class _CityCardsState extends State<CityCards> {
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         child: Container(
-          child: Row(
+          child: Column(
             children: [
               Stack(
                 children: <Widget>[
                   Container(
-                      height: 120,
-                      child: Image(
-                        image: AssetImage(widget.images),
-                        height: 100,
-                        width: 200,
-                        fit: BoxFit.fitWidth,
-                      )),
+                    height: 150,
+                    width: 200,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          fit: BoxFit.fitWidth,
+                          image: AssetImage(widget.images)),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    ),
+                  ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 80, left: 20),
+                    padding: const EdgeInsets.only(top: 100, left: 15),
                     child: Text(
                       widget.cityName,
                       style: TextStyle(

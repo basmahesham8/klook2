@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:klook2/components/bookings.dart';
+import 'package:klook2/components/categories.dart';
 import 'package:klook2/components/database.dart';
 import 'package:klook2/components/destination.dart';
 // import 'package:klook2/components/destination.dart';
@@ -51,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // MCard(),
     Destination(),
     //AddUser('fullName', 'company', 'djd'),
-    Hotel(),
+    Categories(),
     Booking(),
     LoginPage(),
 
@@ -112,12 +113,10 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.widgets_rounded),
             label: 'Categories',
-            // backgroundColor: Colors.deepOrange,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.article_outlined,
-              // color: Colors.white,
             ),
             label: 'Bookings',
           ),
@@ -127,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.deepOrange,
         onTap: _onItemTapped,
       ),
     );
