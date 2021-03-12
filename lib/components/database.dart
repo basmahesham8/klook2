@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // Import the firebase_core and cloud_firestore plugin
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AddUser extends StatelessWidget {
@@ -12,10 +12,9 @@ class AddUser extends StatelessWidget {
   // final int age;
   final TextEditingController emailController = new TextEditingController();
 
-  String emailtext;
-  TextEditingController passwordController = new TextEditingController();
+  final TextEditingController passwordController = new TextEditingController();
 
-  AddUser(this.fullName, this.company, this.emailtext);
+  AddUser(this.fullName, this.company);
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +60,6 @@ class AddUser extends StatelessWidget {
             "Add User",
           ),
         ),
-        Text(emailtext)
       ],
     );
   }
