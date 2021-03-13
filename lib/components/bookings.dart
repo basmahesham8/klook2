@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:klook2/components/BookedCard.dart';
+import 'package:klook2/components/signUp.dart';
+import 'package:klook2/components/userInfoEmaill.dart';
 // import 'package:carousel_pro/carousel_pro.dart';
 // import 'package:carousel_slider/carousel_slider.dart';
 // import 'package:klook2/components/Card.dart';
@@ -9,6 +11,23 @@ import 'package:klook2/components/BookedCard.dart';
 
 class Booking extends StatefulWidget {
   bool dataHas = false;
+  final String userName;
+
+  // SignUp sign;
+  // var usernamee = SignUp.userEmail;
+
+  String userIS;
+  Booking({Key key, this.userName = ''}) : super(key: key);
+
+  check() {
+    if (userName.length < 1) {
+      userIS = 'usernamee';
+      // usernamee = '';
+    } else {
+      userIS = userName;
+    }
+  }
+
   @override
   _BookingState createState() => _BookingState();
 }
@@ -18,6 +37,7 @@ class _BookingState extends State<Booking> {
 
   // int _currentIndex = 0;
 
+// if(widget.)
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,14 +46,14 @@ class _BookingState extends State<Booking> {
         body: FutureBuilder<QuerySnapshot>(
             future: FirebaseFirestore.instance
                 .collection('Booking')
-                .where('Name', isEqualTo: 'Hagar')
+                .where('Email', isEqualTo: UserInfoEmaill.userEmaill)
                 .get(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
                 // widget.dataHas = true;
                 return Text("Loading");
               }
-
+              widget.check();
               if (snapshot.data.docs.isNotEmpty) {
                 widget.dataHas = true;
               } else {
@@ -138,37 +158,6 @@ class _BookingState extends State<Booking> {
                                   // ]),
                                   ),
                             ),
-                            Container(
-                              height: 300,
-                              width: 400,
-                              child: ListView(
-                                  scrollDirection: Axis.vertical,
-                                  children: documents
-                                      .map((doc) => BookedCard(
-                                                // noPerson: doc['Booked'],
-                                                userName: doc['City'],
-                                                title: doc['Title'],
-                                                // city: doc['City'],
-                                                // section: doc['Section'],
-                                                // image: doc['Image'],
-                                                // booked: doc['Booked'],
-                                                // categories: doc['Categories'],
-                                                // date: doc['Date'],
-                                                // price: doc['Price'],
-                                                // rate: doc['Rate'],
-                                                // review: doc['Review'],
-                                                // distance: doc['Distance'],
-                                                // imageheight: 60,
-                                              )
-                                          // Card(
-                                          //       child: ListTile(
-                                          //         title: Text(doc['City']),
-                                          //         subtitle: Text(doc['Title']),
-                                          //       ),
-                                          //     )
-                                          )
-                                      .toList()),
-                            ),
                           ],
                         )
                       : Container(
@@ -256,16 +245,17 @@ class _BookingState extends State<Booking> {
                                     scrollDirection: Axis.vertical,
                                     children: documents
                                         .map((doc) => BookedCard(
-                                              // noPerson: doc['Adults'],
-                                              userName: doc['Name'],
+                                              noPerson: doc['noPerson'],
+                                              userName:
+                                                  UserInfoEmaill.userEmaill,
                                               title: doc['Title'],
                                               // city: doc['City'],
                                               // section: doc['Section'],
-                                              // image: doc['Image'],
+                                              image: doc['Image'],
                                               // booked: doc['Booked'],
                                               // categories: doc['Categories'],
-                                              // date: doc['Date'],
-                                              // price: doc['Price'],
+                                              date: doc['Date'],
+                                              price: doc['Price'],
                                               // rate: doc['Rate'],
                                               // review: doc['Review'],
                                               // distance: doc['Distance'],

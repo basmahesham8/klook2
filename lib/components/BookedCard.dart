@@ -4,20 +4,19 @@ import 'package:flutter/material.dart';
 class BookedCard extends StatefulWidget {
   @required
   final String title;
-  // final String date;
-  // final String noPerson;
+  final String date;
+  final String noPerson;
   final String userName;
-  // final int price;
-  // final String image;
+  final String price;
+  final String image;
 
-  BookedCard({
-    this.title,
-    // this.date,
-    // this.noPerson,
-    this.userName,
-    // this.price,
-    // this.image
-  });
+  BookedCard(
+      {this.title,
+      this.date,
+      this.noPerson,
+      this.userName,
+      this.price,
+      this.image});
 
   @override
   _BookedCardState createState() => _BookedCardState();
@@ -65,11 +64,11 @@ class _BookedCardState extends State<BookedCard> {
                     child: Column(
                       children: [
                         Text(
-                          'widget.date',
+                          widget.date,
                           style: TextStyle(color: Colors.grey[400]),
                         ),
                         Text(
-                          'person X ' + 'widget.noPerson',
+                          'person X ' + widget.noPerson,
                           style: TextStyle(color: Colors.grey[400]),
                         ),
                         Text(
@@ -77,7 +76,7 @@ class _BookedCardState extends State<BookedCard> {
                           style: TextStyle(color: Colors.grey[400]),
                         ),
                         Text(
-                          'widget.price',
+                          widget.price,
                           style: TextStyle(color: Colors.grey[400]),
                         ),
                       ],
@@ -88,7 +87,7 @@ class _BookedCardState extends State<BookedCard> {
                       width: 100,
                       height: 60,
                       placeholder: '',
-                      image: '',
+                      image: widget.image,
                       fit: BoxFit.cover,
                     ),
                   )
