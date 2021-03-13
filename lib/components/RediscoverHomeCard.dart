@@ -32,8 +32,8 @@ class _RediscoverCardState extends State<RediscoverCard> {
                       child: Image(
                         image: AssetImage(widget.img),
                         width: 175,
-                        height: 60,
-                        fit: BoxFit.fitWidth,
+                        height: 70,
+                        fit: BoxFit.cover,
                       ),
                     ),
                     // Padding(

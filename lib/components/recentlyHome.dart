@@ -31,7 +31,7 @@ class _RecentlyHomeCardState extends State<RecentlyHomeCard> {
                         image: AssetImage(widget.img),
                         width: 175,
                         height: 60,
-                        fit: BoxFit.fitWidth,
+                        fit: BoxFit.cover,
                       ),
                     ),
                     Padding(

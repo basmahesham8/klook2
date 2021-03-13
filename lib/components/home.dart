@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:klook2/components/IncridbleHomeCard.dart';
 import 'package:klook2/components/RecommendedHomeCard.dart';
@@ -19,8 +21,8 @@ class _HomeState extends State<Home> {
   String recommended = 'KLOOK in cairo';
   List recommendedCities = [
     'KLOOK in cairo',
-    'KLOOK in london',
-    'KLOOK in Indonisia'
+    // 'KLOOK in london',
+    // 'KLOOK in Indonisia'
   ];
 
   @override
@@ -71,7 +73,9 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               ),
-
+              // SizedBox(
+              //   height: 25,
+              // ),
               //////////////// drop down list ///////////////////////////////
               Align(
                 alignment: Alignment.centerLeft,
@@ -83,7 +87,8 @@ class _HomeState extends State<Home> {
                   child: Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.only(
+                            left: 20, top: 10, bottom: 10),
                         child: DropdownButton(
                           value: recommended,
                           onChanged: (newCity) {
@@ -97,6 +102,10 @@ class _HomeState extends State<Home> {
                                 value: city,
                                 child: Text(
                                   city,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                  ),
                                 ),
                               );
                             },
@@ -108,385 +117,835 @@ class _HomeState extends State<Home> {
                 ),
               ),
               //////////// small cards ////////////////////
-              Container(
-                decoration: const BoxDecoration(
-                  border: Border(
-                    top: BorderSide(
-                        width: 1.0, color: Color.fromRGBO(155, 155, 155, 0.5)),
-                    left: BorderSide(
-                        width: 1.0, color: Color.fromRGBO(94, 94, 94, 0.5)),
-                    right: BorderSide(
-                        width: 1.0, color: Color.fromRGBO(94, 94, 94, 0.5)),
-                    bottom: BorderSide(
-                        width: 1.0, color: Color.fromRGBO(94, 94, 94, 0.5)),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(7),
+                    bottomRight: Radius.circular(7),
+                    topLeft: Radius.circular(7),
+                    topRight: Radius.circular(7),
                   ),
-                ),
-                child: Column(
-                  children: [
-                    ///////////// first row //////////////////////
-                    Row(
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        top: BorderSide(
+                            width: 1.0,
+                            color: Color.fromRGBO(155, 155, 155, 0.5)),
+                        left: BorderSide(
+                            width: 1.0, color: Color.fromRGBO(94, 94, 94, 0.5)),
+                        right: BorderSide(
+                            width: 1.0, color: Color.fromRGBO(94, 94, 94, 0.5)),
+                        bottom: BorderSide(
+                            width: 1.0, color: Color.fromRGBO(94, 94, 94, 0.5)),
+                      ),
+                    ),
+                    child: Column(
                       children: [
-                        //card experience /////////////////////////////////
-                        Card(
-                          color: Color.fromRGBO(254, 243, 237, 1),
-                          child: InkWell(
-                            // navigation of small cards
-                            splashColor: Colors.blue.withAlpha(30),
-                            onTap: () {
-                              print('Card tapped.');
-                            },
-                            child: Container(
-                              width: 106,
-                              height: 90,
-                              child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: (Column(
-                                  children: [
-                                    Icon(
-                                      Icons.card_travel_rounded,
-                                      color: Colors.deepOrange,
+                        ///////////// first row //////////////////////
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            //card experience /////////////////////////////////
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 10, right: 5, top: 5, bottom: 5),
+                              child: Card(
+                                color: Color.fromRGBO(254, 243, 237, 1),
+                                child: InkWell(
+                                  // navigation of small cards
+                                  splashColor: Colors.blue.withAlpha(30),
+                                  onTap: () {
+                                    print('Card tapped.');
+                                  },
+                                  child: Container(
+                                    width: 100,
+                                    height: 100,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 20, bottom: 20),
+                                      child: Align(
+                                        alignment: Alignment.center,
+                                        child: (Column(
+                                          children: [
+                                            Icon(
+                                              Icons.card_travel_rounded,
+                                              color: Colors.deepOrange,
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(3.0),
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 2.0, bottom: 2),
+                                                child: Container(
+                                                  width: 110,
+                                                  child: Center(
+                                                    child: Text(
+                                                      'Experiences',
+                                                      style: TextStyle(
+                                                          fontSize: 12.5,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        )),
+                                      ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(3.0),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(2.0),
-                                        child: Text(
-                                          'Experiences',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                )),
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        /////////////////// card transport ////////////////////////
-                        Card(
-                          color: Color.fromRGBO(230, 239, 255, 1),
-                          child: InkWell(
-                            // navigation of small cards
-                            splashColor: Colors.blue.withAlpha(30),
-                            onTap: () {
-                              print('Card tapped.');
-                            },
-                            child: Container(
-                              width: 106,
-                              height: 90,
-                              child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: (Column(
-                                  children: [
-                                    Icon(
-                                      Icons.electric_moped_rounded,
-                                      color: Colors.blue,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(2.0),
-                                      child: Text(
-                                        'Transport',
-                                        style: TextStyle(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    )
-                                  ],
-                                )),
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        /////////////////////// accomidation cad ///////////////////////
-                        Card(
-                          color: Color.fromRGBO(233, 248, 241, 1),
-                          child: InkWell(
-                            // navigation of small cards
-                            splashColor: Colors.blue.withAlpha(30),
-                            onTap: () {
-                              print('Card tapped.');
-                            },
-                            child: GestureDetector(
-                              child: Container(
-                                width: 106,
-                                height: 90,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(20.0),
-                                  child: (Column(
-                                    children: [
-                                      Icon(
-                                        Icons.location_city_rounded,
-                                        color: Color.fromRGBO(74, 206, 134, 1),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(2.0),
-                                        child: Text(
-                                          'Accomodation',
-                                          style: TextStyle(
-                                              fontSize: 9,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      )
-                                    ],
-                                  )),
+                                  ),
                                 ),
                               ),
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Hotel()),
-                                );
-                              },
                             ),
-                          ),
+
+                            /////////////////// card transport ////////////////////////
+                            // Card(
+                            //   color: Color.fromRGBO(230, 239, 255, 1),
+                            //   child: InkWell(
+                            //     // navigation of small cards
+                            //     splashColor: Colors.blue.withAlpha(30),
+                            //     onTap: () {
+                            //       print('Card tapped.');
+                            //     },
+                            //     child: Container(
+                            //       width: 106,
+                            //       height: 90,
+                            //       child: Padding(
+                            //         padding: const EdgeInsets.all(20.0),
+                            //         child: (Column(
+                            //           children: [
+                            //             Icon(
+                            //               Icons.electric_moped_rounded,
+                            //               color: Colors.blue,
+                            //             ),
+                            //             Padding(
+                            //               padding: const EdgeInsets.all(2.0),
+                            //               child: Text(
+                            //                 'Transport',
+                            //                 style: TextStyle(
+                            //                     fontSize: 10,
+                            //                     fontWeight: FontWeight.bold),
+                            //               ),
+                            //             )
+                            //           ],
+                            //         )),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+
+                            /////////////////////// accomidation cad ///////////////////////
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 2.5, right: 2.5, top: 2.5, bottom: 5),
+                              child: Card(
+                                color: Color.fromRGBO(233, 248, 241, 1),
+                                child: InkWell(
+                                  // navigation of small cards
+                                  splashColor: Colors.blue.withAlpha(30),
+                                  onTap: () {
+                                    print('Card tapped.');
+                                  },
+                                  child: Container(
+                                    width: 100,
+                                    height: 100,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 20, bottom: 20),
+                                      child: Align(
+                                        alignment: Alignment.center,
+                                        child: (Column(
+                                          children: [
+                                            Icon(
+                                              Icons.location_city_rounded,
+                                              color: Color.fromRGBO(
+                                                  74, 206, 134, 1),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(3.0),
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 2.0, bottom: 2),
+                                                child: Container(
+                                                  width: 110,
+                                                  child: Center(
+                                                    child: Text(
+                                                      'Accomoditions',
+                                                      style: TextStyle(
+                                                          fontSize: 12.5,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        )),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                            // Padding(
+                            //   padding: const EdgeInsets.only(
+                            //       top: 5, bottom: 5, left: 5, right: 5),
+                            //   child: Card(
+                            //     color: Color.fromRGBO(233, 248, 241, 1),
+                            //     child: InkWell(
+                            //       // navigation of small cards
+                            //       splashColor: Colors.blue.withAlpha(30),
+                            //       onTap: () {
+                            //         print('Card tapped.');
+                            //       },
+                            //       child: GestureDetector(
+                            //         child: Container(
+                            //           width: 110,
+                            //           height: 100,
+                            //           child: Padding(
+                            //             padding: const EdgeInsets.all(20.0),
+                            //             child: (Column(
+                            //               children: [
+                            //                 Icon(
+                            //                   Icons.location_city_rounded,
+                            //                   color: Color.fromRGBO(
+                            //                       74, 206, 134, 1),
+                            //                 ),
+                            //                 Padding(
+                            //                   padding:
+                            //                       const EdgeInsets.all(2.0),
+                            //                   child: Text(
+                            //                     'Accomodation',
+                            //                     style: TextStyle(
+                            //                         fontSize: 9,
+                            //                         fontWeight:
+                            //                             FontWeight.bold),
+                            //                   ),
+                            //                 )
+                            //               ],
+                            //             )),
+                            //           ),
+                            //         ),
+                            //         onTap: () {
+                            //           Navigator.push(
+                            //             context,
+                            //             MaterialPageRoute(
+                            //                 builder: (context) => Hotel()),
+                            //           );
+                            //         },
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+//////////////////// wifi /////////////////////////////////////////
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 2.5, right: 10, top: 5, bottom: 5),
+                              child: Card(
+                                color: Color.fromRGBO(233, 248, 241, 1),
+                                child: InkWell(
+                                  // navigation of small cards
+                                  splashColor: Colors.blue.withAlpha(30),
+                                  onTap: () {
+                                    print('Card tapped.');
+                                  },
+                                  child: Container(
+                                    width: 100,
+                                    height: 100,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 20, bottom: 20),
+                                      child: Align(
+                                        alignment: Alignment.center,
+                                        child: (Column(
+                                          children: [
+                                            Icon(
+                                              Icons.rss_feed_rounded,
+                                              color: Color.fromRGBO(
+                                                  74, 206, 134, 1),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(3.0),
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 2.0, bottom: 2),
+                                                child: Container(
+                                                  width: 110,
+                                                  child: Center(
+                                                    child: Text(
+                                                      'WiFi & SIM',
+                                                      style: TextStyle(
+                                                          fontSize: 11.5,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        )),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                            // Card(
+                            //   child: InkWell(
+                            //     // navigation of small cards
+                            //     splashColor: Colors.blue.withAlpha(30),
+                            //     onTap: () {
+                            //       print('Card tapped.');
+                            //     },
+                            //     child: Container(
+                            //       width: 110,
+                            //       height: 100,
+                            //       child: Padding(
+                            //         padding: const EdgeInsets.all(20.0),
+                            //         child: (Column(
+                            //           children: [
+                            //             Icon(
+                            //               Icons.rss_feed_rounded,
+                            //               color:
+                            //                   Color.fromRGBO(74, 206, 134, 1),
+                            //             ),
+                            //             Padding(
+                            //               padding: const EdgeInsets.all(3.0),
+                            //               child: Padding(
+                            //                 padding: const EdgeInsets.all(2.0),
+                            //                 child: Text(
+                            //                   'Wifi & SIM ',
+                            //                   style: TextStyle(
+                            //                       fontSize: 8,
+                            //                       fontWeight: FontWeight.bold),
+                            //                 ),
+                            //               ),
+                            //             )
+                            //           ],
+                            //         )),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+
+                            //************** other cards  */
+                          ],
                         ),
 
-                        //************** other cards  */
+                        ////////////// second row ///////////////////////
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            //card experience /////////////////////////////////
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 10, right: 5, top: 5, bottom: 5),
+                              child: Card(
+                                //  color: Color.fromRGBO(254, 243, 237, 1),
+                                child: InkWell(
+                                  // navigation of small cards
+                                  splashColor: Colors.blue.withAlpha(30),
+                                  onTap: () {
+                                    print('Card tapped.');
+                                  },
+                                  child: Container(
+                                    width: 100,
+                                    height: 100,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 20, bottom: 20),
+                                      child: Align(
+                                        alignment: Alignment.center,
+                                        child: (Column(
+                                          children: [
+                                            Icon(
+                                              Icons.loyalty_outlined,
+                                              color: Colors.deepOrangeAccent,
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(3.0),
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 2.0, bottom: 2),
+                                                child: Container(
+                                                  width: 110,
+                                                  child: Center(
+                                                    child: Text(
+                                                      'Attractions',
+                                                      style: TextStyle(
+                                                          fontSize: 12.5,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        )),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                            /////////////////// card transport ////////////////////////
+                            // Card(
+                            //   color: Color.fromRGBO(230, 239, 255, 1),
+                            //   child: InkWell(
+                            //     // navigation of small cards
+                            //     splashColor: Colors.blue.withAlpha(30),
+                            //     onTap: () {
+                            //       print('Card tapped.');
+                            //     },
+                            //     child: Container(
+                            //       width: 106,
+                            //       height: 90,
+                            //       child: Padding(
+                            //         padding: const EdgeInsets.all(20.0),
+                            //         child: (Column(
+                            //           children: [
+                            //             Icon(
+                            //               Icons.electric_moped_rounded,
+                            //               color: Colors.blue,
+                            //             ),
+                            //             Padding(
+                            //               padding: const EdgeInsets.all(2.0),
+                            //               child: Text(
+                            //                 'Transport',
+                            //                 style: TextStyle(
+                            //                     fontSize: 10,
+                            //                     fontWeight: FontWeight.bold),
+                            //               ),
+                            //             )
+                            //           ],
+                            //         )),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+
+                            /////////////////////// accomidation cad ///////////////////////
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 2.5, right: 2.5, top: 2.5, bottom: 5),
+                              child: Card(
+                                // color: Color.fromRGBO(233, 248, 241, 1),
+                                child: InkWell(
+                                  // navigation of small cards
+                                  splashColor: Colors.blue.withAlpha(30),
+                                  onTap: () {
+                                    print('Card tapped.');
+                                  },
+                                  child: Container(
+                                    width: 100,
+                                    height: 100,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 20, bottom: 20),
+                                      child: Align(
+                                        alignment: Alignment.center,
+                                        child: (Column(
+                                          children: [
+                                            Icon(
+                                              Icons.beach_access_rounded,
+                                              color: Color.fromRGBO(
+                                                  203, 110, 209, 1),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(3.0),
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 2.0, bottom: 2),
+                                                child: Container(
+                                                  width: 110,
+                                                  child: Center(
+                                                    child: Text(
+                                                      'Tours',
+                                                      style: TextStyle(
+                                                          fontSize: 12.5,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        )),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                            // Padding(
+                            //   padding: const EdgeInsets.only(
+                            //       top: 5, bottom: 5, left: 5, right: 5),
+                            //   child: Card(
+                            //     color: Color.fromRGBO(233, 248, 241, 1),
+                            //     child: InkWell(
+                            //       // navigation of small cards
+                            //       splashColor: Colors.blue.withAlpha(30),
+                            //       onTap: () {
+                            //         print('Card tapped.');
+                            //       },
+                            //       child: GestureDetector(
+                            //         child: Container(
+                            //           width: 110,
+                            //           height: 100,
+                            //           child: Padding(
+                            //             padding: const EdgeInsets.all(20.0),
+                            //             child: (Column(
+                            //               children: [
+                            //                 Icon(
+                            //                   Icons.location_city_rounded,
+                            //                   color: Color.fromRGBO(
+                            //                       74, 206, 134, 1),
+                            //                 ),
+                            //                 Padding(
+                            //                   padding:
+                            //                       const EdgeInsets.all(2.0),
+                            //                   child: Text(
+                            //                     'Accomodation',
+                            //                     style: TextStyle(
+                            //                         fontSize: 9,
+                            //                         fontWeight:
+                            //                             FontWeight.bold),
+                            //                   ),
+                            //                 )
+                            //               ],
+                            //             )),
+                            //           ),
+                            //         ),
+                            //         onTap: () {
+                            //           Navigator.push(
+                            //             context,
+                            //             MaterialPageRoute(
+                            //                 builder: (context) => Hotel()),
+                            //           );
+                            //         },
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+//////////////////// wifi /////////////////////////////////////////
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 2.5, right: 10, top: 5, bottom: 5),
+                              child: Card(
+                                //color: Color.fromRGBO(233, 248, 241, 1),
+                                child: InkWell(
+                                  // navigation of small cards
+                                  splashColor: Colors.blue.withAlpha(30),
+                                  onTap: () {
+                                    print('Card tapped.');
+                                  },
+                                  child: Container(
+                                    width: 100,
+                                    height: 100,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 20, bottom: 20),
+                                      child: Align(
+                                        alignment: Alignment.center,
+                                        child: (Column(
+                                          children: [
+                                            Icon(
+                                              Icons.fastfood_rounded,
+                                              color: Colors.deepOrangeAccent,
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(3.0),
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 2.0, bottom: 2),
+                                                child: Container(
+                                                  width: 110,
+                                                  child: Center(
+                                                    child: Text(
+                                                      'Food & Dining',
+                                                      style: TextStyle(
+                                                          fontSize: 11.5,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        )),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                            // Card(
+                            //   child: InkWell(
+                            //     // navigation of small cards
+                            //     splashColor: Colors.blue.withAlpha(30),
+                            //     onTap: () {
+                            //       print('Card tapped.');
+                            //     },
+                            //     child: Container(
+                            //       width: 110,
+                            //       height: 100,
+                            //       child: Padding(
+                            //         padding: const EdgeInsets.all(20.0),
+                            //         child: (Column(
+                            //           children: [
+                            //             Icon(
+                            //               Icons.rss_feed_rounded,
+                            //               color:
+                            //                   Color.fromRGBO(74, 206, 134, 1),
+                            //             ),
+                            //             Padding(
+                            //               padding: const EdgeInsets.all(3.0),
+                            //               child: Padding(
+                            //                 padding: const EdgeInsets.all(2.0),
+                            //                 child: Text(
+                            //                   'Wifi & SIM ',
+                            //                   style: TextStyle(
+                            //                       fontSize: 8,
+                            //                       fontWeight: FontWeight.bold),
+                            //                 ),
+                            //               ),
+                            //             )
+                            //           ],
+                            //         )),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+
+                            //************** other cards  */
+                          ],
+                        ),
+
+                        // Row(
+                        //   children: [
+                        //     // attraction card
+                        //     Card(
+                        //       child: InkWell(
+                        //         // navigation of small cards
+                        //         splashColor: Colors.blue.withAlpha(30),
+                        //         onTap: () {
+                        //           print('Card tapped.');
+                        //         },
+                        //         child: Container(
+                        //           width: 122,
+                        //           height: 90,
+                        //           child: Padding(
+                        //             padding: const EdgeInsets.all(20.0),
+                        //             child: (Column(
+                        //               children: [
+                        //                 Icon(
+                        //                   Icons.loyalty_outlined,
+                        //                   color: Colors.deepOrangeAccent,
+                        //                 ),
+                        //                 Padding(
+                        //                   padding: const EdgeInsets.all(3.0),
+                        //                   child: Padding(
+                        //                     padding: const EdgeInsets.all(2.0),
+                        //                     child: Text(
+                        //                       'Attractions',
+                        //                       style: TextStyle(
+                        //                           fontSize: 10,
+                        //                           fontWeight: FontWeight.bold),
+                        //                     ),
+                        //                   ),
+                        //                 )
+                        //               ],
+                        //             )),
+                        //           ),
+                        //         ),
+                        //       ),
+                        //     ),
+
+                        //     // tours card
+                        //     Card(
+                        //       child: InkWell(
+                        //         // navigation of small cards
+                        //         splashColor: Colors.blue.withAlpha(30),
+                        //         onTap: () {
+                        //           print('Card tapped.');
+                        //         },
+                        //         child: Container(
+                        //           width: 122,
+                        //           height: 90,
+                        //           child: Padding(
+                        //             padding: const EdgeInsets.all(20.0),
+                        //             child: (Column(
+                        //               children: [
+                        //                 Icon(
+                        //                   Icons.beach_access_rounded,
+                        //                   color:
+                        //                       Color.fromRGBO(203, 110, 209, 1),
+                        //                 ),
+                        //                 Padding(
+                        //                   padding: const EdgeInsets.all(3.0),
+                        //                   child: Padding(
+                        //                     padding: const EdgeInsets.all(2.0),
+                        //                     child: Text(
+                        //                       'Tours',
+                        //                       style: TextStyle(
+                        //                           fontSize: 10,
+                        //                           fontWeight: FontWeight.bold),
+                        //                     ),
+                        //                   ),
+                        //                 )
+                        //               ],
+                        //             )),
+                        //           ),
+                        //         ),
+                        //       ),
+                        //     ),
+
+                        //     /// food card /////////////////////////
+                        //     Card(
+                        //       child: InkWell(
+                        //         // navigation of small cards
+                        //         splashColor: Colors.blue.withAlpha(30),
+                        //         onTap: () {
+                        //           print('Card tapped.');
+                        //         },
+                        //         child: Container(
+                        //           width: 122,
+                        //           height: 90,
+                        //           child: Padding(
+                        //             padding: const EdgeInsets.all(20.0),
+                        //             child: (Column(
+                        //               children: [
+                        //                 Icon(
+                        //                   Icons.fastfood_rounded,
+                        //                   color: Colors.deepOrangeAccent,
+                        //                 ),
+                        //                 Padding(
+                        //                   padding: const EdgeInsets.all(3.0),
+                        //                   child: Padding(
+                        //                     padding: const EdgeInsets.all(2.0),
+                        //                     child: Text(
+                        //                       'Food & Dining',
+                        //                       style: TextStyle(
+                        //                           fontSize: 8,
+                        //                           fontWeight: FontWeight.bold),
+                        //                     ),
+                        //                   ),
+                        //                 )
+                        //               ],
+                        //             )),
+                        //           ),
+                        //         ),
+                        //       ),
+                        //     ),
+                        //   ],
+                        // ),
+
+                        //////////////////// third row ////////////////////////////
+                        Row(
+                          children: [
+                            // car rentals card
+                            // Card(
+                            //   child: InkWell(
+                            //     // navigation of small cards
+                            //     splashColor: Colors.blue.withAlpha(30),
+                            //     onTap: () {
+                            //       print('Card tapped.');
+                            //     },
+                            //     child: Container(
+                            //       width: 106,
+                            //       height: 90,
+                            //       child: Padding(
+                            //         padding: const EdgeInsets.all(20.0),
+                            //         child: (Column(
+                            //           children: [
+                            //             Icon(
+                            //               Icons.directions_car_rounded,
+                            //               color: Color.fromRGBO(74, 206, 134, 1),
+                            //             ),
+                            //             Padding(
+                            //               padding: const EdgeInsets.all(3.0),
+                            //               child: Padding(
+                            //                 padding: const EdgeInsets.all(2.0),
+                            //                 child: Text(
+                            //                   'Car Rentals',
+                            //                   style: TextStyle(
+                            //                       fontSize: 10,
+                            //                       fontWeight: FontWeight.bold),
+                            //                 ),
+                            //               ),
+                            //             )
+                            //           ],
+                            //         )),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+
+                            // airport card
+                            // Card(
+                            //   child: InkWell(
+                            //     // navigation of small cards
+                            //     splashColor: Colors.blue.withAlpha(30),
+                            //     onTap: () {
+                            //       print('Card tapped.');
+                            //     },
+                            //     child: Container(
+                            //       width: 106,
+                            //       height: 90,
+                            //       child: Padding(
+                            //         padding: const EdgeInsets.all(20.0),
+                            //         child: (Column(
+                            //           children: [
+                            //             Icon(
+                            //               Icons.airplanemode_active_rounded,
+                            //               color: Color.fromRGBO(74, 206, 134, 1),
+                            //             ),
+                            //             Padding(
+                            //               padding: const EdgeInsets.all(3.0),
+                            //               child: Padding(
+                            //                 padding: const EdgeInsets.all(2.0),
+                            //                 child: Text(
+                            //                   'Private Airport',
+                            //                   style: TextStyle(
+                            //                       fontSize: 8,
+                            //                       fontWeight: FontWeight.bold),
+                            //                 ),
+                            //               ),
+                            //             )
+                            //           ],
+                            //         )),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+
+                            /// wifi card /////////////////////////
+                          ],
+                        ),
                       ],
                     ),
-                    ////////////// second row ///////////////////////
-                    Row(
-                      children: [
-                        // attraction card
-                        Card(
-                          child: InkWell(
-                            // navigation of small cards
-                            splashColor: Colors.blue.withAlpha(30),
-                            onTap: () {
-                              print('Card tapped.');
-                            },
-                            child: Container(
-                              width: 106,
-                              height: 90,
-                              child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: (Column(
-                                  children: [
-                                    Icon(
-                                      Icons.loyalty_outlined,
-                                      color: Colors.deepOrangeAccent,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(3.0),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(2.0),
-                                        child: Text(
-                                          'Attractions',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                )),
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        // tours card
-                        Card(
-                          child: InkWell(
-                            // navigation of small cards
-                            splashColor: Colors.blue.withAlpha(30),
-                            onTap: () {
-                              print('Card tapped.');
-                            },
-                            child: Container(
-                              width: 106,
-                              height: 90,
-                              child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: (Column(
-                                  children: [
-                                    Icon(
-                                      Icons.beach_access_rounded,
-                                      color: Color.fromRGBO(203, 110, 209, 1),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(3.0),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(2.0),
-                                        child: Text(
-                                          'Tours',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                )),
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        /// food card /////////////////////////
-                        Card(
-                          child: InkWell(
-                            // navigation of small cards
-                            splashColor: Colors.blue.withAlpha(30),
-                            onTap: () {
-                              print('Card tapped.');
-                            },
-                            child: Container(
-                              width: 106,
-                              height: 90,
-                              child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: (Column(
-                                  children: [
-                                    Icon(
-                                      Icons.fastfood_rounded,
-                                      color: Colors.deepOrangeAccent,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(3.0),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(2.0),
-                                        child: Text(
-                                          'Food & Dining',
-                                          style: TextStyle(
-                                              fontSize: 8,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                )),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    //////////////////// third row ////////////////////////////
-                    Row(
-                      children: [
-                        // car rentals card
-                        Card(
-                          child: InkWell(
-                            // navigation of small cards
-                            splashColor: Colors.blue.withAlpha(30),
-                            onTap: () {
-                              print('Card tapped.');
-                            },
-                            child: Container(
-                              width: 106,
-                              height: 90,
-                              child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: (Column(
-                                  children: [
-                                    Icon(
-                                      Icons.directions_car_rounded,
-                                      color: Color.fromRGBO(74, 206, 134, 1),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(3.0),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(2.0),
-                                        child: Text(
-                                          'Car Rentals',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                )),
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        // airport card
-                        Card(
-                          child: InkWell(
-                            // navigation of small cards
-                            splashColor: Colors.blue.withAlpha(30),
-                            onTap: () {
-                              print('Card tapped.');
-                            },
-                            child: Container(
-                              width: 106,
-                              height: 90,
-                              child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: (Column(
-                                  children: [
-                                    Icon(
-                                      Icons.airplanemode_active_rounded,
-                                      color: Color.fromRGBO(74, 206, 134, 1),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(3.0),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(2.0),
-                                        child: Text(
-                                          'Private Airport',
-                                          style: TextStyle(
-                                              fontSize: 8,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                )),
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        /// wifi card /////////////////////////
-                        Card(
-                          child: InkWell(
-                            // navigation of small cards
-                            splashColor: Colors.blue.withAlpha(30),
-                            onTap: () {
-                              print('Card tapped.');
-                            },
-                            child: Container(
-                              width: 106,
-                              height: 90,
-                              child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: (Column(
-                                  children: [
-                                    Icon(
-                                      Icons.rss_feed_rounded,
-                                      color: Color.fromRGBO(74, 206, 134, 1),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(3.0),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(2.0),
-                                        child: Text(
-                                          'Wifi & SIM ',
-                                          style: TextStyle(
-                                              fontSize: 8,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                )),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                  ),
                 ),
               ),
               SizedBox(
@@ -497,42 +956,50 @@ class _HomeState extends State<Home> {
                 children: [
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Recently Viewed',
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
+                    child: Padding(
+                      padding:
+                          const EdgeInsets.only(left: 10, top: 20, bottom: 7),
+                      child: Text(
+                        'Recently Viewed',
+                        style: TextStyle(
+                          fontSize: 27,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
-                  Container(
-                    height: 250,
-                    //  width: 175,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: <Widget>[
-                        recentlyCard(
-                          img: 'images/home/1.webp',
-                          title: 'camel and bike tour in Giza Pyramids',
-                          city: 'cairo',
-                          price: ' 2,195',
-                          date: 'tommorow',
-                        ),
-                        recentlyCard(
-                          img: 'images/home/1.webp',
-                          title: 'camel and bike tour in Giza Pyramids',
-                          city: 'cairo',
-                          price: ' 2,195',
-                          date: 'tommorow',
-                        ),
-                        recentlyCard(
-                          img: 'images/home/1.webp',
-                          title: 'camel and bike tour in Giza Pyramids',
-                          city: 'cairo',
-                          price: ' 2,195',
-                          date: 'tommorow',
-                        ),
-                      ],
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(top: 020, left: 5, bottom: 30),
+                    child: Container(
+                      height: 250,
+                      //  width: 175,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: <Widget>[
+                          recentlyCard(
+                            img: 'images/home/1.webp',
+                            title: 'camel and bike tour in Giza Pyramids',
+                            city: 'cairo',
+                            price: ' 2,195',
+                            date: 'tommorow',
+                          ),
+                          recentlyCard(
+                            img: 'images/home/1.webp',
+                            title: 'camel and bike tour in Giza Pyramids',
+                            city: 'cairo',
+                            price: ' 2,195',
+                            date: 'tommorow',
+                          ),
+                          recentlyCard(
+                            img: 'images/home/1.webp',
+                            title: 'camel and bike tour in Giza Pyramids',
+                            city: 'cairo',
+                            price: ' 2,195',
+                            date: 'tommorow',
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -595,82 +1062,151 @@ class _HomeState extends State<Home> {
                     padding: const EdgeInsets.only(bottom: 5),
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Top Things to Do',
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.only(left: 10, top: 20, bottom: 7),
+                        child: Text(
+                          'Top Things to do',
+                          style: TextStyle(
+                            fontSize: 27,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                  Container(
-                    height: 270,
-                    width: 290,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: <Widget>[
-                        topCard(
-                          img: 'images/home/2.PNG',
-                          title: 'JR Pass for Whole Japan (7, 14,or 21 days )',
-                          type: 'Public transport . JR Pass',
-                          rate: '4.8',
-                          total: '13,755',
-                          booked: '200K+',
-                          price: ' 273.50',
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Container(
+                        height: 320,
+                        width: 390,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: <Widget>[
+                            topCard(
+                              img: 'images/home/topThings/1.webp',
+                              title: 'TreeTop Challenge at Tamborine Mountain',
+                              type: 'Outdoors & sports • Gold Coast',
+                              rate: '4.8',
+                              total: '43',
+                              booked: '900+',
+                              price: '610',
+                            ),
+                            topCard(
+                              img: 'images/home/topThings/2.webp',
+                              title:
+                                  'Dreamworld, WhiteWater World and Skypoint Observation Deck 3-Day Pass ',
+                              type: 'Attractions • Gold Coast',
+                              rate: '4.2',
+                              total: '65',
+                              booked: '1k+',
+                              price: '1,451',
+                            ),
+                            topCard(
+                              img: 'images/home/topThings/3.webp',
+                              title:
+                                  'Sunrise Hot Air Balloon Ride in Hunter Valley',
+                              type: 'Tours • Hunter Valley',
+                              rate: '4.6',
+                              total: '55',
+                              booked: '1k+',
+                              price: '3,401',
+                            ),
+                            topCard(
+                              img: 'images/home/topThings/4.webp',
+                              title:
+                                  'Tiny House Discount Voucher in the Hunter Valley',
+                              type: 'Shopping • Hunter Valley',
+                              rate: '5.0',
+                              total: '1',
+                              booked: '100+',
+                              price: '2,316',
+                            ),
+                            topCard(
+                              img: 'images/home/topThings/5.webp',
+                              title:
+                                  'Kuranda Scenic Railway Heritage Class Admission',
+                              type: 'Attractions • Cairns',
+                              rate: '4.6',
+                              total: '49',
+                              booked: '1k+',
+                              price: ' 610',
+                            ),
+                            topCard(
+                              img: 'images/home/topThings/6.webp',
+                              title: 'SEA LIFE Sydney Aquarium Ticket',
+                              type: 'Attractions • Sydney',
+                              rate: '4.5',
+                              total: '769',
+                              booked: '10k+',
+                              price: '468',
+                            ),
+                            topCard(
+                              img: 'images/home/topThings/7.webp',
+                              title:
+                                  'Great Barrier Reef Cruise and Scenic Helicopter Flight Tour',
+                              type: 'Tours • Cairns',
+                              rate: '4.2',
+                              total: '33',
+                              booked: '400+',
+                              price: '4,331',
+                            ),
+                            // recentlyCard(
+                            //   img: 'images/home/1.webp',
+                            //   title: 'camel and bike tour in Giza Pyramids',
+                            //   city: 'cairo',
+                            //   price: ' 2,195',
+                            //   date: 'tommorow',
+                            // ),
+                            // recentlyCard(
+                            //   img: 'images/home/1.webp',
+                            //   title: 'camel and bike tour in Giza Pyramids',
+                            //   city: 'cairo',
+                            //   price: ' 2,195',
+                            //   date: 'tommorow',
+                            // ),
+                          ],
                         ),
-                        // recentlyCard(
-                        //   img: 'images/home/1.webp',
-                        //   title: 'camel and bike tour in Giza Pyramids',
-                        //   city: 'cairo',
-                        //   price: ' 2,195',
-                        //   date: 'tommorow',
-                        // ),
-                        // recentlyCard(
-                        //   img: 'images/home/1.webp',
-                        //   title: 'camel and bike tour in Giza Pyramids',
-                        //   city: 'cairo',
-                        //   price: ' 2,195',
-                        //   date: 'tommorow',
-                        // ),
-                      ],
+                      ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15, top: 5),
-                    child: Row(
-                      children: [
-                        MaterialButton(
-                          elevation: 150,
-                          color: Colors.transparent,
-                          padding: EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 140,
-                          ),
-                          //   highlightElevation: 50,
-                          splashColor: Colors.deepOrange,
-                          shape:
-                              // RoundedRectangleBorder(
-                              //   borderRadius: BorderRadius.circular(
-                              //     30,
-                              //   ),
-                              // ),
-                              Border.all(
-                            // BorderRadius:BorderRadius.circular(30),
-                            color: Colors.grey[400],
-                            width: 1,
-                          ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(left: 15, top: 5),
+                  //   child: Row(
+                  //     children: [
+                  //       MaterialButton(
+                  //         elevation: 150,
+                  //         color: Colors.transparent,
+                  //         padding: EdgeInsets.symmetric(
+                  //           vertical: 10,
+                  //           horizontal: 140,
+                  //         ),
+                  //         //   highlightElevation: 50,
+                  //         splashColor: Colors.deepOrange,
+                  //         shape:
+                  //             // RoundedRectangleBorder(
+                  //             //   borderRadius: BorderRadius.circular(
+                  //             //     30,
+                  //             //   ),
+                  //             // ),
+                  //             Border.all(
+                  //           // BorderRadius:BorderRadius.circular(30),
+                  //           color: Colors.grey[400],
+                  //           width: 1,
+                  //         ),
 
-                          onPressed: () {
-                            print('button tapped.');
-                          },
-                          highlightColor: Colors.deepOrange,
-                          child: Text('View all'),
-                          textColor: Colors.grey[600],
-                        )
-                      ],
-                    ),
-                  )
+                  //         onPressed: () {
+                  //           print('button tapped.');
+                  //         },
+                  //         highlightColor: Colors.deepOrange,
+                  //         child: Text('View all'),
+                  //         textColor: Colors.grey[600],
+                  //       )
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               ),
               SizedBox(
@@ -683,11 +1219,15 @@ class _HomeState extends State<Home> {
                     padding: const EdgeInsets.only(bottom: 5),
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Get inspired',
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.only(left: 10, top: 20, bottom: 7),
+                        child: Text(
+                          'Get inspired',
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
@@ -695,171 +1235,187 @@ class _HomeState extends State<Home> {
                   Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('images/home/3.jfif'),
+                        image: AssetImage('images/home/5.jpg'),
                         fit: BoxFit.cover,
                       ),
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 0, top: 10, bottom: 15),
-                            child: Text(
-                              'Treat yourself to something sweet',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
+                    child: Padding(
+                      padding:
+                          const EdgeInsets.only(top: 020, left: 5, bottom: 30),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 5, top: 10, bottom: 10),
+                              child: Text(
+                                'Treat yourself to something sweet',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 23,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Container(
-                            width: 350,
-                            child: Text(
-                              'Lorem Ipsum is simply dummy text of the printing and typesetting industry . Lorem Ipsum has been the standard  dummy text ever since the 1500s,',
-                              style: TextStyle(
-                                color: Colors.white,
-                                //   fontWeight: FontWeight.bold,
-                                fontSize: 15,
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Container(
+                              width: 360,
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 5, bottom: 10, top: 10),
+                                child: Text(
+                                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry . Lorem Ipsum has been the standard  dummy text ever since the 1500s,',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    //   fontWeight: FontWeight.bold,
+                                    fontSize: 15,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        Container(
-                          height: 250,
-                          // width: 175,
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            children: <Widget>[
-                              getInspired(
-                                img: 'images/home/1.webp',
-                                title: 'After Tea Cruise',
-                                city: 'London',
-                                price: ' 47.05',
-                                rate: '4.4',
-                                total: '24',
-                              ),
-                              recentlyCard(
-                                img: 'images/home/1.webp',
-                                title: 'camel and bike tour in Giza Pyramids',
-                                city: 'cairo',
-                                price: ' 2,195',
-                                date: 'tommorow',
-                              ),
-                              recentlyCard(
-                                img: 'images/home/1.webp',
-                                title: 'camel and bike tour in Giza Pyramids',
-                                city: 'cairo',
-                                price: ' 2,195',
-                                date: 'tommorow',
-                              ),
-                            ],
+                          Container(
+                            height: 250,
+                            // width: 175,
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: <Widget>[
+                                getInspired(
+                                  img: 'images/home/1.webp',
+                                  title: 'After Tea Cruise',
+                                  city: 'London',
+                                  price: ' 47.05',
+                                  rate: '4.4',
+                                  total: '24',
+                                ),
+                                recentlyCard(
+                                  img: 'images/home/1.webp',
+                                  title: 'camel and bike tour in Giza Pyramids',
+                                  city: 'cairo',
+                                  price: ' 2,195',
+                                  date: 'tommorow',
+                                ),
+                                recentlyCard(
+                                  img: 'images/home/1.webp',
+                                  title: 'camel and bike tour in Giza Pyramids',
+                                  city: 'cairo',
+                                  price: ' 2,195',
+                                  date: 'tommorow',
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],
               ),
-
+              SizedBox(
+                height: 25,
+              ),
               // rediscover /////////////////////
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 5),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Get inspired',
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
+              Padding(
+                padding: const EdgeInsets.only(top: 10, bottom: 10),
+                child: Column(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('images/home/5.jpg'),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      child:
+                          // new BackdropFilter(
+                          //   filter: new ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                          //   child:  new Container(),
+                          // ),
+                          Padding(
+                        padding: const EdgeInsets.only(
+                            top: 020, left: 5, bottom: 30),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 5, top: 10, bottom: 10),
+                                child: Text(
+                                  'Rediscover your hometown',
+                                  style: TextStyle(
+                                    //color: Color.fromRGBO(31, 37, 47, 1),
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 23,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Container(
+                                width: 350,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 5, top: 10, bottom: 10),
+                                  child: Text(
+                                    'Explore locally this Autumn and make the most of your hometown.',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      //   fontWeight: FontWeight.bold,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              height: 250,
+                              // width: 175,
+                              child: ListView(
+                                scrollDirection: Axis.horizontal,
+                                children: <Widget>[
+                                  rediscoverCard(
+                                    img: 'images/home/1.webp',
+                                    title: 'After Tea Cruise',
+                                    city: 'London',
+                                    price: ' 47.05',
+                                    rate: '4.4',
+                                    total: '24',
+                                  ),
+                                  recentlyCard(
+                                    img: 'images/home/1.webp',
+                                    title:
+                                        'camel and bike tour in Giza Pyramids',
+                                    city: 'cairo',
+                                    price: ' 2,195',
+                                    date: 'tommorow',
+                                  ),
+                                  recentlyCard(
+                                    img: 'images/home/1.webp',
+                                    title:
+                                        'camel and bike tour in Giza Pyramids',
+                                    city: 'cairo',
+                                    price: ' 2,195',
+                                    date: 'tommorow',
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('images/home/3.jfif'),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 0, top: 10, bottom: 15),
-                            child: Text(
-                              'Rediscover your hometown',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Container(
-                            width: 350,
-                            child: Text(
-                              'Explore locally this Autumn and make the most of your hometown.',
-                              style: TextStyle(
-                                color: Colors.white,
-                                //   fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          height: 250,
-                          // width: 175,
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            children: <Widget>[
-                              rediscoverCard(
-                                img: 'images/home/1.webp',
-                                title: 'After Tea Cruise',
-                                city: 'London',
-                                price: ' 47.05',
-                                rate: '4.4',
-                                total: '24',
-                              ),
-                              recentlyCard(
-                                img: 'images/home/1.webp',
-                                title: 'camel and bike tour in Giza Pyramids',
-                                city: 'cairo',
-                                price: ' 2,195',
-                                date: 'tommorow',
-                              ),
-                              recentlyCard(
-                                img: 'images/home/1.webp',
-                                title: 'camel and bike tour in Giza Pyramids',
-                                city: 'cairo',
-                                price: ' 2,195',
-                                date: 'tommorow',
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
 
               // incrideble distination /////////////////////
@@ -869,32 +1425,52 @@ class _HomeState extends State<Home> {
                     padding: const EdgeInsets.only(bottom: 5),
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Incredible destinations',
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.only(left: 10, top: 20, bottom: 7),
+                        child: Text(
+                          'Incredible destinations',
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
                   ),
                   Container(
                     height: 270,
-                    width: 290,
+                    width: 390,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: <Widget>[
                         IncredibleCard(
-                          img: 'images/home/2.PNG',
-                          city: 'Singhaphore',
+                          img: 'images/home/Incridible/1.webp',
+                          city: 'Mauritius',
                         ),
                         IncredibleCard(
-                          img: 'images/home/2.PNG',
-                          city: 'Singhaphore',
+                          img: 'images/home/Incridible/2.webp',
+                          city: 'Cape Town',
                         ),
                         IncredibleCard(
-                          img: 'images/home/2.PNG',
-                          city: 'Singhaphore',
+                          img: 'images/home/Incridible/3.webp',
+                          city: 'Singapore',
+                        ),
+                        IncredibleCard(
+                          img: 'images/home/Incridible/4.webp',
+                          city: 'Hong Kong',
+                        ),
+                        IncredibleCard(
+                          img: 'images/home/Incridible/5.webp',
+                          city: 'Taipei',
+                        ),
+                        IncredibleCard(
+                          img: 'images/home/Incridible/6.webp',
+                          city: 'Bangkok',
+                        ),
+                        IncredibleCard(
+                          img: 'images/home/Incridible/7.webp',
+                          city: 'Taichung',
                         ),
                       ],
                     ),
@@ -911,11 +1487,15 @@ class _HomeState extends State<Home> {
                     padding: const EdgeInsets.only(bottom: 5),
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Klook recommended',
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.only(left: 10, top: 20, bottom: 7),
+                        child: Text(
+                          'Klook recommended',
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),

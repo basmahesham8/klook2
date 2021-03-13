@@ -21,29 +21,37 @@ class _IncredibleCardState extends State<IncredibleCard> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Stack(
-                  children: <Widget>[
-                    Container(
-                      height: 120,
-                      child: Image(
-                        image: AssetImage(widget.img),
-                        width: 175,
-                        height: 120,
-                        fit: BoxFit.fitWidth,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 110, left: 5),
-                      child: Text(
-                        widget.city,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                          color: Colors.white,
+                ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(7),
+                    topRight: Radius.circular(7),
+                    bottomLeft: Radius.circular(7),
+                    bottomRight: Radius.circular(7),
+                  ),
+                  child: Stack(
+                    children: <Widget>[
+                      Container(
+                        height: 262,
+                        child: Image(
+                          image: AssetImage(widget.img),
+                          width: 290,
+                          height: 260,
+                          fit: BoxFit.cover,
                         ),
                       ),
-                    )
-                  ],
+                      Padding(
+                        padding: const EdgeInsets.only(top: 210, left: 10),
+                        child: Text(
+                          widget.city,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 23,
+                            color: Colors.white,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
 
                 /////////////////////////////// price //////////////////////////////

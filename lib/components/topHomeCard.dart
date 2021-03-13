@@ -25,7 +25,7 @@ class _TopThingsCardState extends State<TopThingsCard> {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-        aspectRatio: 3 / 2,
+        aspectRatio: 2 / 2,
         child: InkWell(
           child: Card(
             child: Column(
@@ -39,7 +39,7 @@ class _TopThingsCardState extends State<TopThingsCard> {
                       height: 140,
                       child: Image(
                         image: AssetImage(widget.img),
-                        width: 290,
+                        width: 320,
                         height: 60,
                         fit: BoxFit.cover,
                       ),
@@ -77,7 +77,7 @@ class _TopThingsCardState extends State<TopThingsCard> {
                     widget.type,
                     style: TextStyle(
                       color: Color.fromRGBO(143, 143, 143, 1),
-                      fontSize: 10,
+                      fontSize: 13,
                     ),
                   ),
                 ),
@@ -88,7 +88,7 @@ class _TopThingsCardState extends State<TopThingsCard> {
                     widget.title,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 14,
+                      fontSize: 16,
                     ),
                   ),
                 ),
@@ -102,20 +102,23 @@ class _TopThingsCardState extends State<TopThingsCard> {
                       Icon(
                         Icons.grade_rounded,
                         color: Color.fromRGBO(254, 157, 26, 1),
-                        size: 13,
+                        size: 15,
                       ),
                       Text(
                         widget.rate,
                         style: TextStyle(
                           color: Color.fromRGBO(254, 157, 26, 1),
-                          fontSize: 13,
+                          fontSize: 15,
                         ),
                       ),
-                      Text(
-                        '(' + widget.total + ').' + widget.booked + 'Booked',
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: Color.fromRGBO(213, 213, 213, 1),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Text(
+                          '(' + widget.total + ').' + widget.booked + 'Booked',
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Color.fromRGBO(213, 213, 213, 1),
+                          ),
                         ),
                       )
                     ],
@@ -134,16 +137,19 @@ class _TopThingsCardState extends State<TopThingsCard> {
                           backgroundColor: Color.fromRGBO(209, 255, 238, 1),
                           color: Color.fromRGBO(109, 193, 163, 1),
                           fontWeight: FontWeight.bold,
-                          fontSize: 14,
+                          fontSize: 15,
                         ),
                       ),
-                      Text(
-                        'Instant Confirmation',
-                        style: TextStyle(
-                          backgroundColor: Color.fromRGBO(239, 239, 239, 1),
-                          color: Color.fromRGBO(172, 172, 172, 1),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Text(
+                          'Instant Confirmation',
+                          style: TextStyle(
+                            backgroundColor: Color.fromRGBO(239, 239, 239, 1),
+                            color: Color.fromRGBO(172, 172, 172, 1),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
                         ),
                       )
                     ],
@@ -152,18 +158,18 @@ class _TopThingsCardState extends State<TopThingsCard> {
 /////////////////////////////// price ////////////////////////////////
 
                 Padding(
-                  padding: const EdgeInsets.only(top: 20, left: 5),
+                  padding: const EdgeInsets.only(top: 30, left: 5, bottom: 10),
                   child: Row(
                     children: [
                       Text(
-                        'From',
-                        style: TextStyle(fontSize: 12),
+                        'From  ',
+                        style: TextStyle(fontSize: 14),
                       ),
                       Text(
                         'US\$ ' + widget.price,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 15,
+                          fontSize: 18,
                         ),
                       )
                     ],

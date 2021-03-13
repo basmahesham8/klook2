@@ -33,7 +33,7 @@ class _GetInspiredCardState extends State<GetInspiredCard> {
                         image: AssetImage(widget.img),
                         width: 175,
                         height: 60,
-                        fit: BoxFit.fitWidth,
+                        fit: BoxFit.cover,
                       ),
                     ),
                     // Padding(
