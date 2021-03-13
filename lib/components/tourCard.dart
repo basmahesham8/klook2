@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/subCategoryActivity.dart';
 import './activityDetails.dart';
 
+// import '../models/subCategoryActivity.dart';
 
 class MCard extends StatefulWidget {
   final String city;
@@ -18,6 +19,7 @@ class MCard extends StatefulWidget {
   final String price;
   final String rate;
   final String review;
+  final double imageheight;
   // final String   tourDiscount;
   // final String   tourSectionInner;
 
@@ -34,7 +36,8 @@ class MCard extends StatefulWidget {
       this.price,
       this.rate,
       this.review,
-      this.distance});
+      this.distance,
+      this.imageheight});
   @override
   _MCardState createState() => _MCardState();
 }
