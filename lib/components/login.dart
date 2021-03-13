@@ -51,63 +51,6 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: SizedBox(
-                        width: 300,
-                        height: 45,
-                        child: ElevatedButton.icon(
-                          style: ElevatedButton.styleFrom(
-                              // Colors.black,
-                              primary: Colors.white,
-                              side: BorderSide(color: Colors.grey))
-                          // (color: Colors.orangeAccent, width: 2)),
-                          ,
-                          onPressed: () {
-                            // Respond to button press
-                          },
-                          icon: Image.asset('assets/gmail.png', width: 20),
-                          label: Text(
-                            "Log In With Google",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        )),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: SizedBox(
-                        width: 300,
-                        height: 45,
-                        child: ElevatedButton.icon(
-                          style: ElevatedButton.styleFrom(
-                              // Colors.black,
-                              primary: Colors.blue[900],
-                              side: BorderSide(color: Colors.grey))
-                          // (color: Colors.orangeAccent, width: 2)),
-                          ,
-                          onPressed: () {
-                            // Respond to button press
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //       builder: (context) => GetUserName()),
-                            // );
-                          },
-                          icon: Image.asset('assets/face.jpg', width: 25),
-                          label: Text(
-                            "Log In With Facbook",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                              color: Colors.white,
-                            ),
-                          ),
-                        )),
-                  ),
                   SizedBox(
                     width: 300,
                     child: MaterialButton(
