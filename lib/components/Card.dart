@@ -45,9 +45,6 @@ class _MCard2State extends State<MCard2> {
     return Padding(
         padding: const EdgeInsets.all(16.0),
         child: Card(
-          //   child:
-          // Padding(
-          // padding: const EdgeInsets.all(16.0),
           child: Column(children: <Widget>[
             Stack(
               children: <Widget>[

@@ -60,7 +60,8 @@ class _MCardState extends State<MCard> {
                     child: FadeInImage.assetNetwork(
                       width: 240,
                       height: 60,
-                      placeholder: 'images/1.png',
+                      placeholder:
+                          'https://firebasestorage.googleapis.com/v0/b/friendlychat-e399d.appspot.com/o/images%2Factivities%2Fundefined?alt=media&token=86d1de75-4b8f-43ae-b4fe-81c235d7e099',
                       image: widget.image,
                       fit: BoxFit.cover,
                     ),
@@ -185,7 +186,7 @@ class _MCardState extends State<MCard> {
                     width: 20,
                   ),
                   TextButton(
-                    // onPressed(): {},
+                    onPressed: () {},
                     child: SizedBox(
                       width: 80,
                       child: Text(

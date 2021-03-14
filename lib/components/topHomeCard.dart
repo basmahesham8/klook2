@@ -37,8 +37,9 @@ class _TopThingsCardState extends State<TopThingsCard> {
                   children: <Widget>[
                     Container(
                       height: 140,
-                      child: Image(
-                        image: AssetImage(widget.img),
+                      child: Image.network(
+                        widget.img,
+                        //  image: AssetImage(widget.img),
                         width: 320,
                         height: 60,
                         fit: BoxFit.cover,

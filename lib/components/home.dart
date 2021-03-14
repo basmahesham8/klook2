@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:klook2/components/IncridbleHomeCard.dart';
 import 'package:klook2/components/RecommendedHomeCard.dart';
@@ -9,6 +10,7 @@ import 'package:klook2/components/recentlyHome.dart';
 import 'package:klook2/components/topHomeCard.dart';
 import 'package:klook2/components/getInspiredHome.dart';
 
+import 'activitiesCard.dart';
 import 'hotel.dart';
 
 class Home extends StatefulWidget {
@@ -67,7 +69,10 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                         ),
-                        Icon(Icons.shopping_cart_outlined),
+                        Icon(
+                          Icons.shopping_cart_outlined,
+                          color: Colors.white,
+                        ),
                       ],
                     ),
                   ),
@@ -128,16 +133,20 @@ class _HomeState extends State<Home> {
                   ),
                   child: Container(
                     decoration: const BoxDecoration(
+                      color: Colors.white,
                       border: Border(
                         top: BorderSide(
                             width: 1.0,
-                            color: Color.fromRGBO(155, 155, 155, 0.5)),
+                            color: Color.fromRGBO(255, 255, 255, 1)),
                         left: BorderSide(
-                            width: 1.0, color: Color.fromRGBO(94, 94, 94, 0.5)),
+                            width: 1.0,
+                            color: Color.fromRGBO(255, 255, 255, 1)),
                         right: BorderSide(
-                            width: 1.0, color: Color.fromRGBO(94, 94, 94, 0.5)),
+                            width: 1.0,
+                            color: Color.fromRGBO(255, 255, 255, 1)),
                         bottom: BorderSide(
-                            width: 1.0, color: Color.fromRGBO(94, 94, 94, 0.5)),
+                            width: 1.0,
+                            color: Color.fromRGBO(255, 255, 255, 1)),
                       ),
                     ),
                     child: Column(
@@ -258,7 +267,7 @@ class _HomeState extends State<Home> {
                                           top: 20, bottom: 20),
                                       child: Align(
                                         alignment: Alignment.center,
-                                        child: (Column(
+                                        child: Column(
                                           children: [
                                             Icon(
                                               Icons.location_city_rounded,
@@ -286,7 +295,7 @@ class _HomeState extends State<Home> {
                                               ),
                                             )
                                           ],
-                                        )),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -344,14 +353,14 @@ class _HomeState extends State<Home> {
                             //     ),
                             //   ),
                             // ),
-//////////////////// wifi /////////////////////////////////////////
+                            //////////////////// wifi /////////////////////////////////////////
                             Padding(
                               padding: const EdgeInsets.only(
                                   left: 2.5, right: 10, top: 5, bottom: 5),
                               child: Card(
                                 color: Color.fromRGBO(233, 248, 241, 1),
                                 child: InkWell(
-                                  // navigation of small cards
+                                  //       // navigation of small cards
                                   splashColor: Colors.blue.withAlpha(30),
                                   onTap: () {
                                     print('Card tapped.');
@@ -364,7 +373,7 @@ class _HomeState extends State<Home> {
                                           top: 20, bottom: 20),
                                       child: Align(
                                         alignment: Alignment.center,
-                                        child: (Column(
+                                        child: Column(
                                           children: [
                                             Icon(
                                               Icons.rss_feed_rounded,
@@ -390,57 +399,98 @@ class _HomeState extends State<Home> {
                                                   ),
                                                 ),
                                               ),
-                                            )
+                                            ),
                                           ],
-                                        )),
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
                             ),
-
-                            // Card(
-                            //   child: InkWell(
-                            //     // navigation of small cards
-                            //     splashColor: Colors.blue.withAlpha(30),
-                            //     onTap: () {
-                            //       print('Card tapped.');
-                            //     },
-                            //     child: Container(
-                            //       width: 110,
-                            //       height: 100,
-                            //       child: Padding(
-                            //         padding: const EdgeInsets.all(20.0),
-                            //         child: (Column(
-                            //           children: [
-                            //             Icon(
-                            //               Icons.rss_feed_rounded,
-                            //               color:
-                            //                   Color.fromRGBO(74, 206, 134, 1),
-                            //             ),
-                            //             Padding(
-                            //               padding: const EdgeInsets.all(3.0),
-                            //               child: Padding(
-                            //                 padding: const EdgeInsets.all(2.0),
-                            //                 child: Text(
-                            //                   'Wifi & SIM ',
-                            //                   style: TextStyle(
-                            //                       fontSize: 8,
-                            //                       fontWeight: FontWeight.bold),
-                            //                 ),
-                            //               ),
-                            //             )
-                            //           ],
-                            //         )),
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
-
-                            //************** other cards  */
+                            //****** other cards  */
                           ],
                         ),
+                        ////////////// second row ///////////////////////
+                        // Row(
+                        //   children: [
+                        //     // attraction card
+                        //     Card(
+                        //       child: InkWell(
+                        //         // navigation of small cards
+                        //         splashColor: Colors.blue.withAlpha(30),
+                        //         onTap: () {
+                        //           print('Card tapped.');
+                        //         },
+                        //         child: Container(
+                        //           width: 106,
+                        //           height: 90,
+                        //           child: Padding(
+                        //             padding: const EdgeInsets.all(20.0),
+                        //             child: (Column(
+                        //               children: [
+                        //                 Icon(
+                        //                   Icons.loyalty_outlined,
+                        //                   color: Colors.deepOrangeAccent,
+                        //                 ),
+                        //                 Padding(
+                        //                   padding: const EdgeInsets.all(3.0),
+                        //                   child: Padding(
+                        //                     padding: const EdgeInsets.all(2.0),
+                        //                     child: Text(
+                        //                       'Attractions',
+                        //                       style: TextStyle(
+                        //                           fontSize: 10,
+                        //                           fontWeight: FontWeight.bold),
+                        //                     ),
+                        //                   ),
+                        //                 ),
+                        //               ),
+                        //             ),
+                        //           ),
+                        //         ),
+
+                        //         // Card(
+                        //         //   child: InkWell(
+                        //         //     // navigation of small cards
+                        //         //     splashColor: Colors.blue.withAlpha(30),
+                        //         //     onTap: () {
+                        //         //       print('Card tapped.');
+                        //         //     },
+                        //         //     child: Container(
+                        //         //       width: 110,
+                        //         //       height: 100,
+                        //         //       child: Padding(
+                        //         //         padding: const EdgeInsets.all(20.0),
+                        //         //         child: (Column(
+                        //         //           children: [
+                        //         //             Icon(
+                        //         //               Icons.rss_feed_rounded,
+                        //         //               color:
+                        //         //                   Color.fromRGBO(74, 206, 134, 1),
+                        //         //             ),
+                        //         //             Padding(
+                        //         //               padding: const EdgeInsets.all(3.0),
+                        //         //               child: Padding(
+                        //         //                 padding: const EdgeInsets.all(2.0),
+                        //         //                 child: Text(
+                        //         //                   'Wifi & SIM ',
+                        //         //                   style: TextStyle(
+                        //         //                       fontSize: 8,
+                        //         //                       fontWeight: FontWeight.bold),
+                        //         //                 ),
+                        //         //               ),
+                        //         //             )
+                        //         //           ],
+                        //         //         )),
+                        //         //       ),
+                        //         //     ),
+                        //         //   ),
+                        //         // ),
+
+                        //         //************** other cards  */
+                        //       ],
+                        //     ),
 
                         ////////////// second row ///////////////////////
 
@@ -645,7 +695,7 @@ class _HomeState extends State<Home> {
                             //     ),
                             //   ),
                             // ),
-//////////////////// wifi /////////////////////////////////////////
+                            //////////////////// wifi /////////////////////////////////////////
                             Padding(
                               padding: const EdgeInsets.only(
                                   left: 2.5, right: 10, top: 5, bottom: 5),
@@ -968,42 +1018,105 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(top: 020, left: 5, bottom: 30),
-                    child: Container(
-                      height: 250,
-                      //  width: 175,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: <Widget>[
-                          recentlyCard(
-                            img: 'images/home/1.webp',
-                            title: 'camel and bike tour in Giza Pyramids',
-                            city: 'cairo',
-                            price: ' 2,195',
-                            date: 'tommorow',
-                          ),
-                          recentlyCard(
-                            img: 'images/home/1.webp',
-                            title: 'camel and bike tour in Giza Pyramids',
-                            city: 'cairo',
-                            price: ' 2,195',
-                            date: 'tommorow',
-                          ),
-                          recentlyCard(
-                            img: 'images/home/1.webp',
-                            title: 'camel and bike tour in Giza Pyramids',
-                            city: 'cairo',
-                            price: ' 2,195',
-                            date: 'tommorow',
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+
+                  //////  future builder //////////////////////////////
+                  FutureBuilder<QuerySnapshot>(
+                    future: FirebaseFirestore.instance
+                        .collection('ToursCollection')
+                        .where('Section', isEqualTo: 'Top thing to do')
+                        // .where('City', isEqualTo: 'Cairo')
+                        .get(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+                        return new CircularProgressIndicator();
+                      }
+
+                      final List<DocumentSnapshot> documents =
+                          snapshot.data.docs;
+                      return Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: Container(
+                          height: 270,
+                          child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: documents
+                                  .map(
+                                    (doc) => RecentlyHomeCard(
+                                      img: doc['Image'],
+                                      title: doc['Title'],
+                                      city: doc['City'],
+                                      price: doc['Price'],
+                                      date: doc['Date'],
+                                    ),
+                                  )
+                                  .toList()),
+                        ),
+                      );
+                    },
+                  )
+
+                  // FutureBuilder<QuerySnapshot>(
+                  //   future: FirebaseFirestore.instance
+                  //       .collection('ToursCollection')
+                  //       .where('Section', isEqualTo: 'Top thing to do‏‏‏')
+                  //       .where('City', isEqualTo: 'Cairo')
+                  //       .get(),
+                  //   builder: (context, snapshot) {
+                  //     if (!snapshot.hasData) {
+                  //       return new CircularProgressIndicator();
+                  //     }
+
+                  //     final List<DocumentSnapshot> documents =
+                  //         snapshot.data.docs;
+                  //     return Padding(
+                  //       padding: const EdgeInsets.only(
+                  //           top: 020, left: 5, bottom: 30),
+                  //       child: Container(
+                  //         height: 250,
+                  //         //  width: 175,
+                  //         child: ListView(
+                  //             scrollDirection: Axis.horizontal,
+                  //             children: documents
+                  //                 .map(
+                  //                   (card) => RecentlyHomeCard(
+                  //                     img: card['Image'],
+                  //                     title: card['Title'],
+                  //                     city: card['City'],
+                  //                     price: card['Price'],
+                  //                     date: card['Date'],
+                  //                   ),
+                  //                 )
+                  //                 .toList()),
+                  //       ),
+                  //     );
+                  //   },
+                  // ),
                 ],
               ),
+              //   children: <Widget>[
+
+              //     recentlyCard(
+              //       img: 'images/home/1.webp',
+              //       title: 'camel and bike tour in Giza Pyramids',
+              //       city: 'cairo',
+              //       price: ' 2,195',
+              //       date: 'tommorow',
+              //     ),
+              //     recentlyCard(
+              //       img: 'images/home/1.webp',
+              //       title: 'camel and bike tour in Giza Pyramids',
+              //       city: 'cairo',
+              //       price: ' 2,195',
+              //       date: 'tommorow',
+              //     ),
+              //     recentlyCard(
+              //       img: 'images/home/1.webp',
+              //       title: 'camel and bike tour in Giza Pyramids',
+              //       city: 'cairo',
+              //       price: ' 2,195',
+              //       date: 'tommorow',
+              //     ),
+              //   ],
 
               // Column(
               //   children: [
@@ -1075,103 +1188,165 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                   ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 10, right: 10),
-                      child: Container(
-                        height: 320,
-                        width: 390,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: <Widget>[
-                            topCard(
-                              img: 'images/home/topThings/1.webp',
-                              title: 'TreeTop Challenge at Tamborine Mountain',
-                              type: 'Outdoors & sports • Gold Coast',
-                              rate: '4.8',
-                              total: '43',
-                              booked: '900+',
-                              price: '610',
+                  FutureBuilder<QuerySnapshot>(
+                    future: FirebaseFirestore.instance
+                        .collection('ToursCollection')
+                        .where('Section', isEqualTo: 'Top thing to do')
+                        .where('City', isEqualTo: 'Cairo')
+                        .get(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+                        return new CircularProgressIndicator();
+                      }
+
+                      final List<DocumentSnapshot> documents =
+                          snapshot.data.docs;
+                      return Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 10, right: 10),
+                          child: Container(
+                            height: 320,
+                            width: 390,
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: documents
+                                  .map(
+                                    (doc) => TopThingsCard(
+                                      img: doc['Image'],
+                                      title: doc['Title'],
+                                      type: doc['City'],
+                                      rate: doc['Rate'],
+                                      total: doc['Review'],
+                                      booked: doc['Booked'],
+                                      price: doc['Price'],
+                                    ),
+                                  )
+                                  .toList(),
                             ),
-                            topCard(
-                              img: 'images/home/topThings/2.webp',
-                              title:
-                                  'Dreamworld, WhiteWater World and Skypoint Observation Deck 3-Day Pass ',
-                              type: 'Attractions • Gold Coast',
-                              rate: '4.2',
-                              total: '65',
-                              booked: '1k+',
-                              price: '1,451',
-                            ),
-                            topCard(
-                              img: 'images/home/topThings/3.webp',
-                              title:
-                                  'Sunrise Hot Air Balloon Ride in Hunter Valley',
-                              type: 'Tours • Hunter Valley',
-                              rate: '4.6',
-                              total: '55',
-                              booked: '1k+',
-                              price: '3,401',
-                            ),
-                            topCard(
-                              img: 'images/home/topThings/4.webp',
-                              title:
-                                  'Tiny House Discount Voucher in the Hunter Valley',
-                              type: 'Shopping • Hunter Valley',
-                              rate: '5.0',
-                              total: '1',
-                              booked: '100+',
-                              price: '2,316',
-                            ),
-                            topCard(
-                              img: 'images/home/topThings/5.webp',
-                              title:
-                                  'Kuranda Scenic Railway Heritage Class Admission',
-                              type: 'Attractions • Cairns',
-                              rate: '4.6',
-                              total: '49',
-                              booked: '1k+',
-                              price: ' 610',
-                            ),
-                            topCard(
-                              img: 'images/home/topThings/6.webp',
-                              title: 'SEA LIFE Sydney Aquarium Ticket',
-                              type: 'Attractions • Sydney',
-                              rate: '4.5',
-                              total: '769',
-                              booked: '10k+',
-                              price: '468',
-                            ),
-                            topCard(
-                              img: 'images/home/topThings/7.webp',
-                              title:
-                                  'Great Barrier Reef Cruise and Scenic Helicopter Flight Tour',
-                              type: 'Tours • Cairns',
-                              rate: '4.2',
-                              total: '33',
-                              booked: '400+',
-                              price: '4,331',
-                            ),
-                            // recentlyCard(
-                            //   img: 'images/home/1.webp',
-                            //   title: 'camel and bike tour in Giza Pyramids',
-                            //   city: 'cairo',
-                            //   price: ' 2,195',
-                            //   date: 'tommorow',
-                            // ),
-                            // recentlyCard(
-                            //   img: 'images/home/1.webp',
-                            //   title: 'camel and bike tour in Giza Pyramids',
-                            //   city: 'cairo',
-                            //   price: ' 2,195',
-                            //   date: 'tommorow',
-                            // ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
+                      );
+
+                      // Padding(
+                      //   padding: const EdgeInsets.all(15),
+                      //   child: Container(
+                      //     height: 270,
+                      //     child: ListView(
+                      //         scrollDirection: Axis.horizontal,
+                      //         children: documents
+                      //             .map(
+                      //               (doc) => RecentlyHomeCard(
+                      //                 img: doc['Image'],
+                      //                 title: doc['Title'],
+                      //                 city: doc['City'],
+                      //                 price: doc['Price'],
+                      //                 date: doc['Date'],
+                      //               ),
+                      //             )
+                      //             .toList()),
+                      //   ),
+                      // );
+                    },
+                  )
+
+                  // Align(
+                  //   alignment: Alignment.centerLeft,
+                  //   child: Padding(
+                  //     padding: const EdgeInsets.only(left: 10, right: 10),
+                  //     child: Container(
+                  //       height: 320,
+                  //       width: 390,
+                  //       child: ListView(
+                  //         scrollDirection: Axis.horizontal,
+                  //         children: <Widget>[
+                  //           topCard(
+                  //             img: 'images/home/topThings/1.webp',
+                  //             title: 'TreeTop Challenge at Tamborine Mountain',
+                  //             type: 'Outdoors & sports • Gold Coast',
+                  //             rate: '4.8',
+                  //             total: '43',
+                  //             booked: '900+',
+                  //             price: '610',
+                  //           ),
+                  //           topCard(
+                  //             img: 'images/home/topThings/2.webp',
+                  //             title:
+                  //                 'Dreamworld, WhiteWater World and Skypoint Observation Deck 3-Day Pass ',
+                  //             type: 'Attractions • Gold Coast',
+                  //             rate: '4.2',
+                  //             total: '65',
+                  //             booked: '1k+',
+                  //             price: '1,451',
+                  //           ),
+                  //           topCard(
+                  //             img: 'images/home/topThings/3.webp',
+                  //             title:
+                  //                 'Sunrise Hot Air Balloon Ride in Hunter Valley',
+                  //             type: 'Tours • Hunter Valley',
+                  //             rate: '4.6',
+                  //             total: '55',
+                  //             booked: '1k+',
+                  //             price: '3,401',
+                  //           ),
+                  //           topCard(
+                  //             img: 'images/home/topThings/4.webp',
+                  //             title:
+                  //                 'Tiny House Discount Voucher in the Hunter Valley',
+                  //             type: 'Shopping • Hunter Valley',
+                  //             rate: '5.0',
+                  //             total: '1',
+                  //             booked: '100+',
+                  //             price: '2,316',
+                  //           ),
+                  //           topCard(
+                  //             img: 'images/home/topThings/5.webp',
+                  //             title:
+                  //                 'Kuranda Scenic Railway Heritage Class Admission',
+                  //             type: 'Attractions • Cairns',
+                  //             rate: '4.6',
+                  //             total: '49',
+                  //             booked: '1k+',
+                  //             price: ' 610',
+                  //           ),
+                  //           topCard(
+                  //             img: 'images/home/topThings/6.webp',
+                  //             title: 'SEA LIFE Sydney Aquarium Ticket',
+                  //             type: 'Attractions • Sydney',
+                  //             rate: '4.5',
+                  //             total: '769',
+                  //             booked: '10k+',
+                  //             price: '468',
+                  //           ),
+                  //           topCard(
+                  //             img: 'images/home/topThings/7.webp',
+                  //             title:
+                  //                 'Great Barrier Reef Cruise and Scenic Helicopter Flight Tour',
+                  //             type: 'Tours • Cairns',
+                  //             rate: '4.2',
+                  //             total: '33',
+                  //             booked: '400+',
+                  //             price: '4,331',
+                  //           ),
+                  //           // recentlyCard(
+                  //           //   img: 'images/home/1.webp',
+                  //           //   title: 'camel and bike tour in Giza Pyramids',
+                  //           //   city: 'cairo',
+                  //           //   price: ' 2,195',
+                  //           //   date: 'tommorow',
+                  //           // ),
+                  //           // recentlyCard(
+                  //           //   img: 'images/home/1.webp',
+                  //           //   title: 'camel and bike tour in Giza Pyramids',
+                  //           //   city: 'cairo',
+                  //           //   price: ' 2,195',
+                  //           //   date: 'tommorow',
+                  //           // ),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   // Padding(
                   //   padding: const EdgeInsets.only(left: 15, top: 5),
                   //   child: Row(
@@ -1293,20 +1468,20 @@ class _HomeState extends State<Home> {
                                   rate: '4.4',
                                   total: '24',
                                 ),
-                                recentlyCard(
-                                  img: 'images/home/1.webp',
-                                  title: 'camel and bike tour in Giza Pyramids',
-                                  city: 'cairo',
-                                  price: ' 2,195',
-                                  date: 'tommorow',
-                                ),
-                                recentlyCard(
-                                  img: 'images/home/1.webp',
-                                  title: 'camel and bike tour in Giza Pyramids',
-                                  city: 'cairo',
-                                  price: ' 2,195',
-                                  date: 'tommorow',
-                                ),
+                                // recentlyCard(
+                                //   img: 'images/home/1.webp',
+                                //   title: 'camel and bike tour in Giza Pyramids',
+                                //   city: 'cairo',
+                                //   price: ' 2,195',
+                                //   date: 'tommorow',
+                                // ),
+                                // recentlyCard(
+                                //   img: 'images/home/1.webp',
+                                //   title: 'camel and bike tour in Giza Pyramids',
+                                //   city: 'cairo',
+                                //   price: ' 2,195',
+                                //   date: 'tommorow',
+                                // ),
                               ],
                             ),
                           ),
@@ -1391,22 +1566,22 @@ class _HomeState extends State<Home> {
                                     rate: '4.4',
                                     total: '24',
                                   ),
-                                  recentlyCard(
-                                    img: 'images/home/1.webp',
-                                    title:
-                                        'camel and bike tour in Giza Pyramids',
-                                    city: 'cairo',
-                                    price: ' 2,195',
-                                    date: 'tommorow',
-                                  ),
-                                  recentlyCard(
-                                    img: 'images/home/1.webp',
-                                    title:
-                                        'camel and bike tour in Giza Pyramids',
-                                    city: 'cairo',
-                                    price: ' 2,195',
-                                    date: 'tommorow',
-                                  ),
+                                  // recentlyCard(
+                                  //   img: 'images/home/1.webp',
+                                  //   title:
+                                  //       'camel and bike tour in Giza Pyramids',
+                                  //   city: 'cairo',
+                                  //   price: ' 2,195',
+                                  //   date: 'tommorow',
+                                  // ),
+                                  // recentlyCard(
+                                  //   img: 'images/home/1.webp',
+                                  //   title:
+                                  //       'camel and bike tour in Giza Pyramids',
+                                  //   city: 'cairo',
+                                  //   price: ' 2,195',
+                                  //   date: 'tommorow',
+                                  // ),
                                 ],
                               ),
                             ),
@@ -1500,19 +1675,38 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                   ),
-                  Container(
-                    width: 300,
-                    child: Text(
-                      'Incredible experiences whenever you are-chosen by our travel curators',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 11,
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      width: 360,
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10, bottom: 10, top: 10),
+                        child: Text(
+                          'Incredible experiences whenever you are-chosen by our travel curators',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            //   fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
+                        ),
                       ),
                     ),
                   ),
+
+                  // Container(
+                  //   width: 300,
+                  //   child: Text(
+                  //     'Incredible experiences whenever you are-chosen by our travel curators',
+                  //     style: TextStyle(
+                  //       color: Colors.grey,
+                  //       fontSize: 11,
+                  //     ),
+                  //   ),
+                  // ),
                   Container(
-                    height: 270,
-                    width: 290,
+                    height: 320,
+                    width: 390,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: <Widget>[
@@ -1558,147 +1752,147 @@ class _HomeState extends State<Home> {
                 height: 25,
               ),
               // promo code ///////////////////////////,
-              Column(
-                children: [
-                  Container(
-                    height: 170,
-                    width: 290,
-                    child: Card(
-                      child: Stack(
-                        children: <Widget>[
-                          Container(
-                            height: 120,
-                            child: Image(
-                              image: AssetImage('images/home/1.webp'),
-                              width: 290,
-                              height: 170,
-                              fit: BoxFit.fitWidth,
-                            ),
-                          ),
-                          Text(
-                            'Use promo code',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                            ),
-                          ),
-                          Container(
-                            width: 280,
-                            child: Text(
-                              '\'Mobile 10\' to get US\$1.3 off your first booking',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                              ),
-                            ),
-                          ),
-                          MaterialButton(
-                            elevation: 150,
-                            color: Colors.deepOrange,
-                            padding: EdgeInsets.symmetric(
-                              vertical: 10,
-                              horizontal: 10,
-                            ),
-                            //   highlightElevation: 50,
-                            splashColor: Colors.orange,
-                            shape:
-                                // RoundedRectangleBorder(
-                                //   borderRadius: BorderRadius.circular(
-                                //     30,
-                                //   ),
-                                // ),
-                                Border.all(
-                              // BorderRadius:BorderRadius.circular(30),
-                              color: Colors.orange,
-                              width: 1,
-                            ),
+              // Column(
+              //   children: [
+              //     Container(
+              //       height: 170,
+              //       width: 290,
+              //       child: Card(
+              //         child: Stack(
+              //           children: <Widget>[
+              //             Container(
+              //               height: 120,
+              //               child: Image(
+              //                 image: AssetImage('images/home/1.webp'),
+              //                 width: 290,
+              //                 height: 170,
+              //                 fit: BoxFit.fitWidth,
+              //               ),
+              //             ),
+              //             Text(
+              //               'Use promo code',
+              //               style: TextStyle(
+              //                 color: Colors.white,
+              //                 fontWeight: FontWeight.bold,
+              //                 fontSize: 15,
+              //               ),
+              //             ),
+              //             Container(
+              //               width: 280,
+              //               child: Text(
+              //                 '\'Mobile 10\' to get US\$1.3 off your first booking',
+              //                 style: TextStyle(
+              //                   color: Colors.white,
+              //                   fontWeight: FontWeight.bold,
+              //                   fontSize: 15,
+              //                 ),
+              //               ),
+              //             ),
+              //             MaterialButton(
+              //               elevation: 150,
+              //               color: Colors.deepOrange,
+              //               padding: EdgeInsets.symmetric(
+              //                 vertical: 10,
+              //                 horizontal: 10,
+              //               ),
+              //               //   highlightElevation: 50,
+              //               splashColor: Colors.orange,
+              //               shape:
+              //                   // RoundedRectangleBorder(
+              //                   //   borderRadius: BorderRadius.circular(
+              //                   //     30,
+              //                   //   ),
+              //                   // ),
+              //                   Border.all(
+              //                 // BorderRadius:BorderRadius.circular(30),
+              //                 color: Colors.orange,
+              //                 width: 1,
+              //               ),
 
-                            onPressed: () {
-                              print('button tapped.');
-                            },
-                            highlightColor: Colors.orange,
-                            child: Text('Redeem'),
-                            textColor: Colors.white,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              ////////////////////////////////////////
-              Column(
-                children: [
-                  Container(
-                    height: 170,
-                    width: 290,
-                    child: Card(
-                      child: Stack(
-                        children: <Widget>[
-                          Container(
-                            height: 120,
-                            child: Image(
-                              image: AssetImage('images/home/1.webp'),
-                              width: 290,
-                              height: 170,
-                              fit: BoxFit.fitWidth,
-                            ),
-                          ),
-                          Text(
-                            'Use promo code',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                            ),
-                          ),
-                          Container(
-                            width: 280,
-                            child: Text(
-                              '\'Mobile 10\' to get US\$1.3 off your first booking',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                              ),
-                            ),
-                          ),
-                          MaterialButton(
-                            elevation: 150,
-                            color: Colors.deepOrange,
-                            padding: EdgeInsets.symmetric(
-                              vertical: 10,
-                              horizontal: 10,
-                            ),
-                            //   highlightElevation: 50,
-                            splashColor: Colors.orange,
-                            shape:
-                                // RoundedRectangleBorder(
-                                //   borderRadius: BorderRadius.circular(
-                                //     30,
-                                //   ),
-                                // ),
-                                Border.all(
-                              // BorderRadius:BorderRadius.circular(30),
-                              color: Colors.orange,
-                              width: 1,
-                            ),
+              //               onPressed: () {
+              //                 print('button tapped.');
+              //               },
+              //               highlightColor: Colors.orange,
+              //               child: Text('Redeem'),
+              //               textColor: Colors.white,
+              //             ),
+              //           ],
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
+              // ////////////////////////////////////////
+              // Column(
+              //   children: [
+              //     Container(
+              //       height: 170,
+              //       width: 290,
+              //       child: Card(
+              //         child: Stack(
+              //           children: <Widget>[
+              //             Container(
+              //               height: 120,
+              //               child: Image(
+              //                 image: AssetImage('images/home/1.webp'),
+              //                 width: 290,
+              //                 height: 170,
+              //                 fit: BoxFit.fitWidth,
+              //               ),
+              //             ),
+              //             Text(
+              //               'Use promo code',
+              //               style: TextStyle(
+              //                 color: Colors.white,
+              //                 fontWeight: FontWeight.bold,
+              //                 fontSize: 15,
+              //               ),
+              //             ),
+              //             Container(
+              //               width: 280,
+              //               child: Text(
+              //                 '\'Mobile 10\' to get US\$1.3 off your first booking',
+              //                 style: TextStyle(
+              //                   color: Colors.white,
+              //                   fontWeight: FontWeight.bold,
+              //                   fontSize: 15,
+              //                 ),
+              //               ),
+              //             ),
+              //             MaterialButton(
+              //               elevation: 150,
+              //               color: Colors.deepOrange,
+              //               padding: EdgeInsets.symmetric(
+              //                 vertical: 10,
+              //                 horizontal: 10,
+              //               ),
+              //               //   highlightElevation: 50,
+              //               splashColor: Colors.orange,
+              //               shape:
+              //                   // RoundedRectangleBorder(
+              //                   //   borderRadius: BorderRadius.circular(
+              //                   //     30,
+              //                   //   ),
+              //                   // ),
+              //                   Border.all(
+              //                 // BorderRadius:BorderRadius.circular(30),
+              //                 color: Colors.orange,
+              //                 width: 1,
+              //               ),
 
-                            onPressed: () {
-                              print('button tapped.');
-                            },
-                            highlightColor: Colors.orange,
-                            child: Text('Redeem'),
-                            textColor: Colors.white,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              //               onPressed: () {
+              //                 print('button tapped.');
+              //               },
+              //               highlightColor: Colors.orange,
+              //               child: Text('Redeem'),
+              //               textColor: Colors.white,
+              //             ),
+              //           ],
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
             ],
           ),
         ),
