@@ -6,30 +6,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_app/json.dart';
 import 'package:intl/intl.dart';
-import 'package:klook2/components/bookings.dart';
 import 'package:klook2/components/home.dart';
 import 'package:klook2/components/userInfoEmaill.dart';
-// import 'package:klook2/components/user.dart';
 
 // import 'package:cloud_firestore/cloud_firestore.dart';
 
-class SignUp extends StatefulWidget {
+class SignIn extends StatefulWidget {
   final TextEditingController emailController = new TextEditingController();
   final TextEditingController nameController = new TextEditingController();
 
   final TextEditingController passwordController = new TextEditingController();
 
   DateTime now = DateTime.now();
-  SignUp();
+  SignIn();
 
   final auth = FirebaseAuth.instance;
-
-  String userEmail = 'dd';
-
-  // static String userEmaill;
-  getemail(String em) {
-    userEmail = em;
-  }
 
   final CollectionReference users =
       FirebaseFirestore.instance.collection('users');
@@ -48,20 +39,20 @@ class SignUp extends StatefulWidget {
         .catchError((error) => print("Failed to add user: $error"));
   }
 
-  Future<void> getUser(emails, passwords) {
-    // Call the user's CollectionReference to add a new user
-    return users
-        .where('Email', isEqualTo: emails)
-        .get()
-        .then((value) => {print("get user"), print(value)})
-        .catchError((error) => print("Failed to add user: $error"));
-  }
+  // Future<void> getUser(emails, passwords) {
+  //   // Call the user's CollectionReference to add a new user
+  //   return users
+  //       .where('Email', isEqualTo: emails)
+  //       .get()
+  //       .then((value) => {print("get user"), print(value)})
+  //       .catchError((error) => print("Failed to add user: $error"));
+  // }
 
   @override
-  _SignUpState createState() => _SignUpState();
+  _SignInState createState() => _SignInState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,13 +94,6 @@ class _SignUpState extends State<SignUp> {
                               ),
                               Padding(padding: EdgeInsets.only(bottom: 20)),
                               TextField(
-                                controller: widget.nameController,
-                                cursorColor: Colors.orange[900],
-                                decoration:
-                                    InputDecoration(hintText: 'User Name'),
-                              ),
-                              Padding(padding: EdgeInsets.only(bottom: 20)),
-                              TextField(
                                 controller: widget.passwordController,
 
                                 cursorColor: Colors.orange[900],
@@ -130,60 +114,21 @@ class _SignUpState extends State<SignUp> {
                                   side: BorderSide(color: Colors.orange[900]),
                                 ),
                                 onPressed: () {
-                                  // widget.auth
-                                  //     .signInWithEmailAndPassword(
-                                  //         email: widget.emailController.text,
-                                  //         password:
-                                  //             widget.passwordController.text)
-                                  //     .then((_) {
-                                  //   widget.getUser(widget.emailController.text,
-                                  //       widget.passwordController.text);
-                                  // Navigator.of(context).pushReplacement(
-                                  //     MaterialPageRoute(
-                                  //         builder: (context) =>
-                                  //             HomeScreen()));
-                                  // FutureBuilder<QuerySnapshot>(
-                                  //     future: FirebaseFirestore.instance
-                                  //         .collection('users')
-                                  //         .where('Email',
-                                  //             isEqualTo:
-                                  //                 widget.emailController.text)
-                                  //         .get(),
-                                  //     builder: (context, snapshot) {
-                                  //       if (!snapshot.hasData) {
-                                  //         return new CircularProgressIndicator();
-                                  //       }
-
-                                  //       final List<DocumentSnapshot>
-                                  //           documents = snapshot.data.docs;
-                                  //       documents
-                                  //           .map((doc) => Text(doc['Name']),
-                                  //               print('object'))
-                                  //           .toList();
-                                  //     });
-                                  ////////////////////////////////////
                                   widget.auth
-                                      .createUserWithEmailAndPassword(
+                                      .signInWithEmailAndPassword(
                                           email: widget.emailController.text,
                                           password:
                                               widget.passwordController.text)
-                                      .then((_) {
-                                    widget.addUser(
-                                        widget.emailController.text,
-                                        widget.nameController.text,
-                                        widget.passwordController.text);
-                                    UserInfoEmaill.userEmaill =
-                                        widget.emailController.text;
-                                    widget.emailController.text;
-                                    widget.getemail(
-                                        'widget.emailController.text');
-                                    Navigator.of(context)
-                                        .pushReplacement(MaterialPageRoute(
-                                            builder: (context) => Booking(
-                                                  userName:
-                                                      'widget.emailController.text',
-                                                )));
-                                  });
+                                      .then((value) => {
+                                            UserInfoEmaill.userEmaill =
+                                                widget.emailController.text,
+                                            Navigator.of(context).pushReplacement(
+                                                MaterialPageRoute(
+                                                    builder: (context) => Home(
+                                                        // userName: widget
+                                                        //     .emailController.text,
+                                                        )))
+                                          });
                                 },
                                 padding: EdgeInsets.all(10.0),
                                 color: Colors.orange[900],

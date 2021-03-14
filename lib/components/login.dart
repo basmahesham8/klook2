@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:klook2/components/signIn.dart';
 import 'package:klook2/components/signUp.dart';
+import 'package:klook2/components/userInfoEmaill.dart';
 // import 'package:flutter_app/signup.dart';
 // import 'package:flutter_app/json.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
@@ -7,6 +10,11 @@ import 'package:klook2/components/signUp.dart';
 
 class LoginPage extends StatefulWidget {
   // String text;
+  // if(UserInfoEmaill.userEmaill)
+  bool dataHas = true;
+
+  final auth = FirebaseAuth.instance;
+
   LoginPage();
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -35,123 +43,105 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              margin: EdgeInsets.only(bottom: 20.0),
-              child: Text(
-                'Login',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-              ),
-            ),
-            Container(
-              width: 5000,
-              margin: EdgeInsets.only(top: 20.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        child: UserInfoEmaill.userEmaill.length < 2
+            // child: UserInfoEmaill.userEmaillbBool == false
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: SizedBox(
-                        width: 300,
-                        height: 45,
-                        child: ElevatedButton.icon(
-                          style: ElevatedButton.styleFrom(
-                              // Colors.black,
-                              primary: Colors.white,
-                              side: BorderSide(color: Colors.grey))
-                          // (color: Colors.orangeAccent, width: 2)),
-                          ,
-                          onPressed: () {
-                            // Respond to button press
-                          },
-                          icon: Image.asset('assets/gmail.png', width: 20),
-                          label: Text(
-                            "Log In With Google",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        )),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: SizedBox(
-                        width: 300,
-                        height: 45,
-                        child: ElevatedButton.icon(
-                          style: ElevatedButton.styleFrom(
-                              // Colors.black,
-                              primary: Colors.blue[900],
-                              side: BorderSide(color: Colors.grey))
-                          // (color: Colors.orangeAccent, width: 2)),
-                          ,
-                          onPressed: () {
-                            // Respond to button press
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //       builder: (context) => GetUserName()),
-                            // );
-                          },
-                          icon: Image.asset('assets/face.jpg', width: 25),
-                          label: Text(
-                            "Log In With Facbook",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                              color: Colors.white,
-                            ),
-                          ),
-                        )),
-                  ),
-                  SizedBox(
-                    width: 300,
-                    child: MaterialButton(
-                      // shape: RoundedRectangleBorder(
-                      // side:
-                      // BorderSide(color: Colors.orangeAccent, width: 2)),
-                      onPressed: () {},
-                      padding: EdgeInsets.all(10.0),
-                      color: Colors.deepOrange,
-                      textColor: Colors.white,
-                      child: Text("Email / Password",
-                          style: TextStyle(fontSize: 20)),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 20.0),
+                    child: Text(
+                      'Login',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.all(20),
+                    width: 5000,
+                    margin: EdgeInsets.only(top: 20.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        SizedBox(
+                          width: 300,
+                          child: MaterialButton(
+                            // shape: RoundedRectangleBorder(
+                            // side:
+                            // BorderSide(color: Colors.orangeAccent, width: 2)),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignIn()),
+                              );
+                            },
+                            padding: EdgeInsets.all(10.0),
+                            color: Colors.deepOrange,
+                            textColor: Colors.white,
+                            child: Text("Email / Password",
+                                style: TextStyle(fontSize: 20)),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.all(20),
+                          child: Text(
+                            'OR',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 300,
+                          child: MaterialButton(
+                            shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                    color: Colors.deepOrange, width: 2)),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignUp()),
+                              );
+                            },
+                            padding: EdgeInsets.all(10.0),
+                            color: Colors.white,
+                            textColor: Colors.deepOrange,
+                            child:
+                                Text("Sign UP", style: TextStyle(fontSize: 20)),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              )
+            : Column(
+                // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Padding(padding: EdgeInsets.only(bottom: 50)),
+                  Container(
                     child: Text(
-                      'OR',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      UserInfoEmaill.userEmaill,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 26,
+                      ),
                     ),
                   ),
-                  SizedBox(
-                    width: 300,
-                    child: MaterialButton(
-                      shape: RoundedRectangleBorder(
-                          side: BorderSide(color: Colors.deepOrange, width: 2)),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SignUp()),
-                        );
-                      },
-                      padding: EdgeInsets.all(10.0),
-                      color: Colors.white,
-                      textColor: Colors.deepOrange,
-                      child: Text("Sign UP", style: TextStyle(fontSize: 20)),
-                    ),
+                  Padding(padding: EdgeInsets.only(bottom: 160)),
+                  MaterialButton(
+                    // child: Text('Logout'),
+                    onPressed: () {
+                      UserInfoEmaill.userEmaill = '1';
+                      widget.auth.signOut();
+                    },
+                    padding: EdgeInsets.all(10.0),
+                    color: Colors.deepOrange,
+                    textColor: Colors.white,
+                    child: Text("Logout", style: TextStyle(fontSize: 20)),
                   ),
                 ],
               ),
-            )
-          ],
-        ),
       ),
     );
   }
