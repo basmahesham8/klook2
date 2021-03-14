@@ -3,6 +3,7 @@ import 'tourCard.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/subCategoryActivity.dart';
+import 'package:klook2/components/loading.dart';
 
 class SubCategoryActivities extends StatefulWidget {
   final String subCategoryName;
@@ -18,12 +19,13 @@ class SubCategoryActivities extends StatefulWidget {
 class _SubCategoryActivitiesState extends State<SubCategoryActivities> {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<QuerySnapshot>(
+    return Scaffold(
+      body:FutureBuilder<QuerySnapshot>(
         
         future: FirebaseFirestore.instance.collection('ToursCollection').where('Categories', isEqualTo :widget.subCategoryName).get(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return Text("Loading");
+            return Loading();
           }
 
           final List<DocumentSnapshot> documents = snapshot.data.docs;
@@ -60,6 +62,6 @@ class _SubCategoryActivitiesState extends State<SubCategoryActivities> {
                       .toList());
             
         
-        });
+        }));
   }
 }
