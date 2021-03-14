@@ -40,13 +40,13 @@ class _SubCategoryActivitiesState extends State<SubCategoryActivities> {
                                 city: doc['City'],
                                 section: doc['Section'],
                                 image: doc['Image'],
-                                //  booked : doc['Booked'],
+                                 booked : doc['Booked'],
                                 categories: doc['Categories'],
                                 date: doc['Date'],
-                                //  price : doc['Price'],
-                                //  rate : doc['Rate'],
-                                //  review : doc['Review'],
-                                //  distance : doc['Distance'],
+                                 price : doc['Price'],
+                                 rate : doc['Rate'],
+                                 review : doc['Review'],
+                                 distance : doc['Distance'],
 
 
                                 
