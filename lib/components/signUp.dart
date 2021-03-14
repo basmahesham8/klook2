@@ -177,12 +177,13 @@ class _SignUpState extends State<SignUp> {
                                     widget.emailController.text;
                                     widget.getemail(
                                         'widget.emailController.text');
-                                    Navigator.of(context)
-                                        .pushReplacement(MaterialPageRoute(
-                                            builder: (context) => Booking(
-                                                  userName:
-                                                      'widget.emailController.text',
-                                                )));
+                                    // Navigator.of(context)
+                                    //     .pushReplacement(MaterialPageRoute(
+                                    //         builder: (context) => Booking(
+                                    //               userName:
+                                    //                   'widget.emailController.text',
+                                    //             ))
+                                    //             );
                                   });
                                 },
                                 padding: EdgeInsets.all(10.0),
