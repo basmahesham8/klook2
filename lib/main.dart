@@ -4,14 +4,29 @@ import 'package:flutter/material.dart';
 // import 'package:klook2/components/bookeingDB.dart';
 import 'package:klook2/components/bookings.dart';
 import 'package:klook2/components/categories.dart';
+import 'package:klook2/components/subCategoryActivities.dart';
+
+// import 'package:klook2/components/home.dart';
+import './components/subCategoryActivities.dart';
+import 'package:firebase_core/firebase_core.dart';
+import './components/test.dart';
+import 'dart:math';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import './components/carousel.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+
 // import 'package:klook2/components/database.dart';
 import 'package:klook2/components/destination.dart';
 // import 'package:klook2/components/destination.dart';
 // import 'package:klook2/components/hotel.dart';
 import 'package:klook2/components/login.dart';
 import 'package:klook2/components/home.dart';
+import 'package:klook2/components/loading.dart';
+import 'package:klook2/components/circularLoading.dart';
 
-import 'package:firebase_core/firebase_core.dart';
+
+
+
 // import 'package:klook2/components/test.dart';
 
 void main() async {
@@ -30,6 +45,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(title: 'klook'),
+      
     );
   }
 }
@@ -54,6 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Categories(),
     Booking(),
     LoginPage(),
+    SubCategoryActivities()
   ];
 
   void _onItemTapped(int index) {
@@ -106,3 +123,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
