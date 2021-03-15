@@ -8,6 +8,8 @@ import 'package:klook2/components/recentlyHome.dart';
 import 'package:klook2/components/topHomeCard.dart';
 import 'package:klook2/components/getInspiredHome.dart';
 import './subCategoryActivities.dart';
+import './search.dart';
+
 
 import 'hotel.dart';
 
@@ -52,20 +54,7 @@ class _HomeState extends State<Home> {
                         Container(
                           width: 310,
                           height: 45,
-                          child: TextField(
-                            cursorColor: Colors.orange[900],
-                            // obscureText: true,
-                            decoration: InputDecoration(
-                              fillColor: Colors.grey,
-                              icon: Icon(Icons.search_rounded),
-                              border: new OutlineInputBorder(
-                                borderRadius: const BorderRadius.all(
-                                  const Radius.circular(30.0),
-                                ),
-                              ),
-                              hintText: 'Search by destination or Activity ',
-                            ),
-                          ),
+                          child: Search() 
                         ),
                         Icon(Icons.shopping_cart_outlined),
                       ],

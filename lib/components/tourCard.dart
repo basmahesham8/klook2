@@ -60,7 +60,7 @@ class _MCardState extends State<MCard> {
                 child: Column(children: <Widget>[
                   GestureDetector(
                     onTap: () => Navigator.push(
-                      context,
+                      context, 
                       MaterialPageRoute(builder: (context) => ActivityDetails(id : widget.id)),
                     ),
 

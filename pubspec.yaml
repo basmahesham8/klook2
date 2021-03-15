@@ -25,13 +25,18 @@ dependencies:
     sdk: flutter
   carousel_pro: ^1.0.0
   cupertino_icons: ^1.0.0
-
   firebase_core: ^1.0.0
   firebase_analytics: ^7.1.0
+  plugin_platform_interface: ^2.0.0
+  firebase_core_platform_interface: ^4.0.0
   cloud_firestore: ^1.0.0
   carousel_slider: ^3.0.0
   scrollable_positioned_list: ^0.1.10
   firebase_auth: ^1.0.0
+  # flutter_keyboard_visibility: ^5.0.0
+  # flutter_typeahead: ^2.0.0
+  # flutter_typeahead: ^1.9.1
+  autocomplete_textfield: ^1.7.3
 
 dev_dependencies:
   flutter_test:
