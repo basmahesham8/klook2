@@ -84,7 +84,6 @@ class _SignInState extends State<SignIn> {
                             // mainAxisAlignment:
                             //     MainAxisAlignment.spaceEvenly,
                             children: [
-                              Text('sdfg'),
                               Padding(padding: EdgeInsets.only(bottom: 20)),
                               TextField(
                                 controller: widget.emailController,
@@ -95,17 +94,10 @@ class _SignInState extends State<SignIn> {
                               Padding(padding: EdgeInsets.only(bottom: 20)),
                               TextField(
                                 controller: widget.passwordController,
-
+                                obscureText: true,
                                 cursorColor: Colors.orange[900],
-                                // obscureText: true,
-                                decoration: InputDecoration(
-
-                                    // focusedBorder: OutlineInputBorder(
-                                    //   borderSide: const BorderSide(
-                                    //       color: Colors.orange,
-                                    //       width: 2.0),
-                                    // ),
-                                    hintText: 'Password'),
+                                decoration:
+                                    InputDecoration(hintText: 'Password'),
                               ),
                               Padding(padding: EdgeInsets.only(bottom: 20)),
                               MaterialButton(

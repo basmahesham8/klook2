@@ -1,6 +1,6 @@
 import 'dart:ffi';
 
 class UserInfoEmaill {
-  static String userEmaill = '';
+  static String userEmaill = '2';
   static bool userEmaillbBool = false;
 }

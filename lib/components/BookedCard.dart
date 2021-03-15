@@ -65,6 +65,7 @@ class _BookedCardState extends State<BookedCard> {
                       children: [
                         Text(
                           widget.date,
+                          maxLines: 2,
                           style: TextStyle(color: Colors.grey[400]),
                         ),
                         Text(
@@ -83,13 +84,12 @@ class _BookedCardState extends State<BookedCard> {
                     ),
                   ),
                   Container(
-                    child: FadeInImage.assetNetwork(
-                      width: 100,
-                      height: 60,
-                      placeholder: '',
-                      image: widget.image,
+                    child: Image.network(
+                      widget.image,
                       fit: BoxFit.cover,
                     ),
+                    width: 100,
+                    height: 60,
                   )
                 ],
               ),

@@ -63,7 +63,7 @@ class _BookingState extends State<Booking> {
               final List<DocumentSnapshot> documents = snapshot.data.docs;
 
               return SingleChildScrollView(
-                  child: widget.dataHas == false
+                  child: UserInfoEmaill.userEmaill.length < 2
                       ? Column(
                           children: [
                             SingleChildScrollView(
@@ -134,6 +134,9 @@ class _BookingState extends State<Booking> {
                                               child: Text(value),
                                             );
                                           }).toList(),
+                                        ),
+                                        SizedBox(
+                                          height: 130,
                                         ),
                                         Center(
                                           child: Container(
@@ -239,7 +242,7 @@ class _BookingState extends State<Booking> {
                               ),
                               Container(
                                 margin: EdgeInsets.all(15),
-                                height: 480,
+                                height: 680,
                                 width: 400,
                                 child: ListView(
                                     scrollDirection: Axis.vertical,
@@ -254,7 +257,7 @@ class _BookingState extends State<Booking> {
                                               image: doc['Image'],
                                               // booked: doc['Booked'],
                                               // categories: doc['Categories'],
-                                              date: doc['Date'],
+                                              date: doc['Date'].toString(),
                                               price: doc['Price'],
                                               // rate: doc['Rate'],
                                               // review: doc['Review'],
