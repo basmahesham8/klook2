@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:klook2/components/activityDetailsHotel.dart';
 
 class VoucherCard extends StatefulWidget {
   final String staysImages;
@@ -7,6 +8,7 @@ class VoucherCard extends StatefulWidget {
   final String price;
   final String validity;
   final String priceBefore;
+  final String id;
 
   VoucherCard(
       {this.staysImages,
@@ -14,7 +16,8 @@ class VoucherCard extends StatefulWidget {
       this.title,
       this.price,
       this.validity,
-      this.priceBefore});
+      this.priceBefore,
+      this.id});
   @override
   _StaysCardState createState() => _StaysCardState();
 }
@@ -30,18 +33,26 @@ class _StaysCardState extends State<VoucherCard> {
           clipBehavior: Clip.antiAlias,
           child: Column(
             children: [
-              Stack(
-                // alignment: Alignment.centerLeft,
-                children: <Widget>[
-                  Container(
-                      height: 190,
-                      child: Image.network(
-                        widget.staysImages,
-                        height: 100,
-                        width: 390,
-                        fit: BoxFit.fitWidth,
-                      ))
-                ],
+              GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          ActivityDetailsHotel(id: widget.id)),
+                ),
+                child: Stack(
+                  // alignment: Alignment.centerLeft,
+                  children: <Widget>[
+                    Container(
+                        height: 190,
+                        child: Image.network(
+                          widget.staysImages,
+                          height: 100,
+                          width: 390,
+                          fit: BoxFit.fitWidth,
+                        ))
+                  ],
+                ),
               ),
               SizedBox(
                 height: 10,

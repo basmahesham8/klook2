@@ -18,7 +18,6 @@ class _DestinationDetailsState extends State<DestinationDetails> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.transparent,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           leading: new IconButton(
@@ -51,6 +50,7 @@ class _DestinationDetailsState extends State<DestinationDetails> {
                   children: <Widget>[
                     Container(
                       height: 605,
+                      //child: Image.network(widget.img),
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage(widget.img),
@@ -261,7 +261,13 @@ class _DestinationDetailsState extends State<DestinationDetails> {
                             .get(),
                         builder: (context, snapshot) {
                           if (!snapshot.hasData) {
-                            return new CircularProgressIndicator();
+                            return Center(
+                              child: Theme(
+                                data: Theme.of(context)
+                                    .copyWith(accentColor: Colors.deepOrange),
+                                child: new CircularProgressIndicator(),
+                              ),
+                            );
                           }
 
                           final List<DocumentSnapshot> documents =
@@ -274,6 +280,7 @@ class _DestinationDetailsState extends State<DestinationDetails> {
                                   scrollDirection: Axis.horizontal,
                                   children: documents
                                       .map((doc) => ActivityCard(
+                                            id: doc.id,
                                             title: doc['Title'],
                                             image: doc['Image'],
                                             booked: doc['Booked'],
@@ -317,7 +324,13 @@ class _DestinationDetailsState extends State<DestinationDetails> {
                                   .get(),
                               builder: (context, snapshot) {
                                 if (!snapshot.hasData) {
-                                  return new CircularProgressIndicator();
+                                  return Center(
+                                    child: Theme(
+                                      data: Theme.of(context).copyWith(
+                                          accentColor: Colors.deepOrange),
+                                      child: new CircularProgressIndicator(),
+                                    ),
+                                  );
                                 }
 
                                 final List<DocumentSnapshot> documents =
@@ -330,6 +343,7 @@ class _DestinationDetailsState extends State<DestinationDetails> {
                                         scrollDirection: Axis.horizontal,
                                         children: documents
                                             .map((doc) => ActivityCard(
+                                                  id: doc.id,
                                                   title: doc['Title'],
                                                   image: doc['Image'],
                                                   booked: doc['Booked'],

@@ -31,7 +31,13 @@ class Hotel extends StatelessWidget {
                 .get(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
-                return Text("Loading");
+                return Center(
+                  child: Theme(
+                    data: Theme.of(context)
+                        .copyWith(accentColor: Colors.deepOrange),
+                    child: new CircularProgressIndicator(),
+                  ),
+                );
               }
 
               final List<DocumentSnapshot> documents = snapshot.data.docs;
@@ -150,7 +156,13 @@ class Hotel extends StatelessWidget {
                                   .get(),
                               builder: (context, snapshot) {
                                 if (!snapshot.hasData) {
-                                  return Text("Loading");
+                                  return Center(
+                                    child: Theme(
+                                      data: Theme.of(context).copyWith(
+                                          accentColor: Colors.deepOrange),
+                                      child: new CircularProgressIndicator(),
+                                    ),
+                                  );
                                 }
 
                                 final List<DocumentSnapshot> documents =
@@ -160,26 +172,29 @@ class Hotel extends StatelessWidget {
                                   child: Container(
                                     height: 400,
                                     child: ListView(
-                                      scrollDirection: Axis.horizontal,
+                                        scrollDirection: Axis.horizontal,
                                         children: documents
                                             .map((doc) => VoucherCard(
-                                          staysImages: doc['staysImages'],
-                                          city: doc['city'],
-                                          title: doc['title'],
-                                          price: doc['price'],
-                                          validity: doc['validity'],
-                                          priceBefore: doc['priceBefore'],
-                                        )
-                                          // Card(
-                                          //       child: ListTile(
-                                          //         title: Text(doc['City']),
-                                          //         subtitle: Text(doc['Title']),
-                                          //       ),
-                                          //     )
-                                        )
+                                                      id: doc.id,
+                                                      staysImages:
+                                                          doc['staysImages'],
+                                                      city: doc['city'],
+                                                      title: doc['title'],
+                                                      price: doc['price'],
+                                                      validity: doc['validity'],
+                                                      priceBefore:
+                                                          doc['priceBefore'],
+                                                    )
+                                                // Card(
+                                                //       child: ListTile(
+                                                //         title: Text(doc['City']),
+                                                //         subtitle: Text(doc['Title']),
+                                                //       ),
+                                                //     )
+                                                )
                                             .toList()),
-                                    ),
-                                  );
+                                  ),
+                                );
                                 // );
                               }),
                         ],
