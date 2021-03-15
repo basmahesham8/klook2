@@ -274,6 +274,7 @@ class _DestinationDetailsState extends State<DestinationDetails> {
                                   scrollDirection: Axis.horizontal,
                                   children: documents
                                       .map((doc) => ActivityCard(
+                                            id: doc.id,
                                             title: doc['Title'],
                                             image: doc['Image'],
                                             booked: doc['Booked'],
@@ -330,6 +331,7 @@ class _DestinationDetailsState extends State<DestinationDetails> {
                                         scrollDirection: Axis.horizontal,
                                         children: documents
                                             .map((doc) => ActivityCard(
+                                                  id: doc.id,
                                                   title: doc['Title'],
                                                   image: doc['Image'],
                                                   booked: doc['Booked'],

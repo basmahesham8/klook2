@@ -10,6 +10,7 @@ import 'package:klook2/components/recentlyHome.dart';
 import 'package:klook2/components/topHomeCard.dart';
 import 'package:klook2/components/getInspiredHome.dart';
 import './subCategoryActivities.dart';
+import './search.dart';
 
 import 'activitiesCard.dart';
 import 'hotel.dart';
@@ -59,24 +60,7 @@ class _HomeState extends State<Home> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          width: 310,
-                          height: 45,
-                          child: TextField(
-                            cursorColor: Colors.orange[900],
-                            // obscureText: true,
-                            decoration: InputDecoration(
-                              fillColor: Colors.grey,
-                              icon: Icon(Icons.search_rounded),
-                              border: new OutlineInputBorder(
-                                borderRadius: const BorderRadius.all(
-                                  const Radius.circular(30.0),
-                                ),
-                              ),
-                              hintText: 'Search by destination or Activity ',
-                            ),
-                          ),
-                        ),
+                        Container(width: 310, height: 45, child: Search()),
                         Icon(
                           Icons.shopping_cart_outlined,
                           color: Colors.white,
@@ -1050,6 +1034,7 @@ class _HomeState extends State<Home> {
                               children: documents
                                   .map(
                                     (doc) => RecentlyHomeCard(
+                                      id: doc.id,
                                       img: doc['Image'],
                                       title: doc['Title'],
                                       city: doc['City'],
@@ -1221,6 +1206,7 @@ class _HomeState extends State<Home> {
                               children: documents
                                   .map(
                                     (doc) => TopThingsCard(
+                                      id: doc.id,
                                       img: doc['Image'],
                                       title: doc['Title'],
                                       type: doc['City'],
@@ -1484,6 +1470,7 @@ class _HomeState extends State<Home> {
                                   children: documents
                                       .map(
                                         (doc) => GetInspiredCard(
+                                          id: doc.id,
                                           img: doc['Image'],
                                           title: doc['Title'],
                                           city: doc['City'],
@@ -1619,6 +1606,8 @@ class _HomeState extends State<Home> {
                                     children: documents
                                         .map(
                                           (doc) => RediscoverCard(
+                                            id: doc.id,
+
                                             img: doc['Image'],
                                             title: doc['Title'],
                                             city: doc['City'],
@@ -1834,6 +1823,7 @@ class _HomeState extends State<Home> {
                           children: documents
                               .map(
                                 (doc) => RecommendedCard(
+                                  id: doc.id,
                                   img: doc['Image'],
                                   city: doc['City'],
                                   title: doc['Title'],

@@ -58,9 +58,9 @@ class _MCardState extends State<MCard> {
                 child: Column(children: <Widget>[
                   GestureDetector(
                     onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ActivityDetails(id: widget.id)),
+                      context, 
+                      MaterialPageRoute(builder: (context) => ActivityDetails(id : widget.id)),
+                   
                     ),
                     child: Container(
                       // alignment: Alignment.center,

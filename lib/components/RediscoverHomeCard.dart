@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
 
+import 'activityDetails.dart';
+
 class RediscoverCard extends StatefulWidget {
   final String img;
   final String price;
   final String city;
   final String title;
   final String rate;
+  final String id;
   final String total;
 
   RediscoverCard(
-      {this.img, this.city, this.rate, this.total, this.title, this.price});
+      {this.img,
+      this.city,
+      this.rate,
+      this.total,
+      this.title,
+      this.price,
+      this.id});
   @override
   _RediscoverCardState createState() => _RediscoverCardState();
 }
@@ -25,47 +34,54 @@ class _RediscoverCardState extends State<RediscoverCard> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Stack(
-                  children: <Widget>[
-                    Container(
-                      height: 120,
-                      child: Image.network(
-                        widget.img,
-                        width: 175,
-                        height: 70,
-                        fit: BoxFit.cover,
+                GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ActivityDetails(id: widget.id)),
+                  ),
+                  child: Stack(
+                    children: <Widget>[
+                      Container(
+                        height: 120,
+                        child: Image.network(
+                          widget.img,
+                          width: 175,
+                          height: 70,
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                    ),
-                    // Padding(
-                    //   padding: const EdgeInsets.only(top: 8, left: 5),
-                    //   child: Row(
-                    //     mainAxisAlignment: MainAxisAlignment.start,
-                    //     children: [
-                    //       Icon(
-                    //         Icons.room,
-                    //         color: Colors.white,
-                    //       ),
-                    //       Text(
-                    //         widget.city,
-                    //         style: TextStyle(
-                    //           // backgroundColor: Colors.deepOrange,
-                    //           color: Colors.white,
-                    //         ),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
-                    // Padding(
-                    //   padding: const EdgeInsets.only(top: 95, left: 5),
-                    //   child: Text(
-                    //     'Bestseller',
-                    //     style: TextStyle(
-                    //       backgroundColor: Colors.deepOrange,
-                    //       color: Colors.white,
-                    //     ),
-                    //   ),
-                    // )
-                  ],
+                      // Padding(
+                      //   padding: const EdgeInsets.only(top: 8, left: 5),
+                      //   child: Row(
+                      //     mainAxisAlignment: MainAxisAlignment.start,
+                      //     children: [
+                      //       Icon(
+                      //         Icons.room,
+                      //         color: Colors.white,
+                      //       ),
+                      //       Text(
+                      //         widget.city,
+                      //         style: TextStyle(
+                      //           // backgroundColor: Colors.deepOrange,
+                      //           color: Colors.white,
+                      //         ),
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
+                      // Padding(
+                      //   padding: const EdgeInsets.only(top: 95, left: 5),
+                      //   child: Text(
+                      //     'Bestseller',
+                      //     style: TextStyle(
+                      //       backgroundColor: Colors.deepOrange,
+                      //       color: Colors.white,
+                      //     ),
+                      //   ),
+                      // )
+                    ],
+                  ),
                 ),
                 ////////////////////// city /////////////////////////
                 Padding(

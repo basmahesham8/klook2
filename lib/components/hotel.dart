@@ -160,26 +160,29 @@ class Hotel extends StatelessWidget {
                                   child: Container(
                                     height: 400,
                                     child: ListView(
-                                      scrollDirection: Axis.horizontal,
+                                        scrollDirection: Axis.horizontal,
                                         children: documents
                                             .map((doc) => VoucherCard(
-                                          staysImages: doc['staysImages'],
-                                          city: doc['city'],
-                                          title: doc['title'],
-                                          price: doc['price'],
-                                          validity: doc['validity'],
-                                          priceBefore: doc['priceBefore'],
-                                        )
-                                          // Card(
-                                          //       child: ListTile(
-                                          //         title: Text(doc['City']),
-                                          //         subtitle: Text(doc['Title']),
-                                          //       ),
-                                          //     )
-                                        )
+                                                      id: doc.id,
+                                                      staysImages:
+                                                          doc['staysImages'],
+                                                      city: doc['city'],
+                                                      title: doc['title'],
+                                                      price: doc['price'],
+                                                      validity: doc['validity'],
+                                                      priceBefore:
+                                                          doc['priceBefore'],
+                                                    )
+                                                // Card(
+                                                //       child: ListTile(
+                                                //         title: Text(doc['City']),
+                                                //         subtitle: Text(doc['Title']),
+                                                //       ),
+                                                //     )
+                                                )
                                             .toList()),
-                                    ),
-                                  );
+                                  ),
+                                );
                                 // );
                               }),
                         ],

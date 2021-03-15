@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 
+import 'activityDetails.dart';
+
 class ActivityCard extends StatefulWidget {
   final String image;
   final String title;
   final String booked;
   final String date;
   final String price;
+  final String id;
+
   // final String number;
-  ActivityCard({this.image, this.title, this.booked, this.date, this.price});
+  ActivityCard(
+      {this.image, this.title, this.booked, this.date, this.price, this.id});
   @override
   _ActivityCardState createState() => _ActivityCardState();
 }
@@ -23,34 +28,41 @@ class _ActivityCardState extends State<ActivityCard> {
           clipBehavior: Clip.antiAlias,
           child: Column(
             children: [
-              Stack(
-                // alignment: Alignment.centerLeft,
-                children: <Widget>[
-                  Container(
-                      height: 120,
-                      child: Image.network(
-                        widget.image,
-                        height: 100,
-                        width: 330,
-                        fit: BoxFit.fitWidth,
-                      )),
-                  // Align(
-                  //   alignment: Alignment.topLeft,
-                  //   child: Card(
-                  //       color: Colors.deepOrange,
-                  //       child: Padding(
-                  //         padding: const EdgeInsets.all(5),
-                  //         child: Text(
-                  //           widget.number,
-                  //           style: TextStyle(
-                  //               fontSize: 15,
-                  //               color: Colors.white,
-                  //               fontWeight: FontWeight.bold,
-                  //               backgroundColor: Colors.deepOrange),
-                  //         ),
-                  //       )),
-                  // ),
-                ],
+              GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ActivityDetails(id: widget.id)),
+                ),
+                child: Stack(
+                  // alignment: Alignment.centerLeft,
+                  children: <Widget>[
+                    Container(
+                        height: 120,
+                        child: Image.network(
+                          widget.image,
+                          height: 100,
+                          width: 330,
+                          fit: BoxFit.fitWidth,
+                        )),
+                    // Align(
+                    //   alignment: Alignment.topLeft,
+                    //   child: Card(
+                    //       color: Colors.deepOrange,
+                    //       child: Padding(
+                    //         padding: const EdgeInsets.all(5),
+                    //         child: Text(
+                    //           widget.number,
+                    //           style: TextStyle(
+                    //               fontSize: 15,
+                    //               color: Colors.white,
+                    //               fontWeight: FontWeight.bold,
+                    //               backgroundColor: Colors.deepOrange),
+                    //         ),
+                    //       )),
+                    // ),
+                  ],
+                ),
               ),
               // SizedBox(
               //   height: 10,
