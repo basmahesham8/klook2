@@ -167,7 +167,7 @@ class _HomeState extends State<Home> {
                                   // navigation of small cards
                                   splashColor: Colors.blue.withAlpha(30),
                                   onTap: () {
-                                    print('Card tapped.');
+                                    showSubCategory();
                                   },
                                   child: Container(
                                     width: 100,
