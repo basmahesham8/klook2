@@ -120,9 +120,13 @@ class _ActivityDetailsState extends State<ActivityDetails> {
                         Icon(Icons.favorite_border, color: Colors.deepOrange),
                     flex: 2)
               ]),
-              leading: Icon(
-                Icons.arrow_back,
-                color: Colors.deepOrange,
+              leading: new IconButton(
+                icon: new Icon(
+                  Icons.arrow_back,
+                  color: Colors.deepOrange,
+                  size: 30,
+                ),
+                onPressed: () => Navigator.of(context).pop(),
               ),
               backgroundColor: Colors.white,
               pinned: this._pinned,
