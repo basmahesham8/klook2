@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:klook2/components/IncridbleHomeCard.dart';
 import 'package:klook2/components/RecommendedHomeCard.dart';
 import 'package:klook2/components/RediscoverHomeCard.dart';
+import 'package:klook2/components/destinationDetails.dart';
 //import 'package:klook2/components/categories.dart';
 import 'package:klook2/components/recentlyHome.dart';
 import 'package:klook2/components/topHomeCard.dart';
 import 'package:klook2/components/getInspiredHome.dart';
 import './subCategoryActivities.dart';
 import './search.dart';
-
 
 import 'activitiesCard.dart';
 import 'hotel.dart';
@@ -23,6 +23,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   String search;
+  String images;
+  String cityName;
   String recommended = 'KLOOK in cairo';
   List recommendedCities = [
     'KLOOK in cairo',
@@ -40,30 +42,28 @@ class _HomeState extends State<Home> {
             children: [
               ///////////////////// app bar ///////////////////////////////////
 
-              ClipRRect(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(15),
-                  bottomRight: Radius.circular(15),
-                ),
-                child: Container(
-                  color: Colors.deepOrange,
-                  width: 390,
-                  height: 60,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          width: 310,
-                          height: 45,
-                          child: Search() 
-                        ),
-                        Icon(
-                          Icons.shopping_cart_outlined,
-                          color: Colors.white,
-                        ),
-                      ],
+              SafeArea(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(15)
+                      // bottomLeft: Radius.circular(15),
+                      // bottomRight: Radius.circular(15),
+                      ),
+                  child: Container(
+                    color: Colors.deepOrange,
+                    width: 500,
+                    height: 60,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(width: 310, height: 45, child: Search()),
+                          // Icon(
+                          //   Icons.shopping_cart_outlined,
+                          //   color: Colors.white,
+                          // ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -1018,7 +1018,13 @@ class _HomeState extends State<Home> {
                         .get(),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
-                        return new CircularProgressIndicator();
+                        return Center(
+                          child: Theme(
+                            data: Theme.of(context)
+                                .copyWith(accentColor: Colors.deepOrange),
+                            child: new CircularProgressIndicator(),
+                          ),
+                        );
                       }
 
                       final List<DocumentSnapshot> documents =
@@ -1186,7 +1192,13 @@ class _HomeState extends State<Home> {
                         .get(),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
-                        return new CircularProgressIndicator();
+                        return Center(
+                          child: Theme(
+                            data: Theme.of(context)
+                                .copyWith(accentColor: Colors.deepOrange),
+                            child: new CircularProgressIndicator(),
+                          ),
+                        );
                       }
 
                       final List<DocumentSnapshot> documents =
@@ -1453,7 +1465,13 @@ class _HomeState extends State<Home> {
                                 .get(),
                             builder: (context, snapshot) {
                               if (!snapshot.hasData) {
-                                return new CircularProgressIndicator();
+                                return Center(
+                                  child: Theme(
+                                    data: Theme.of(context).copyWith(
+                                        accentColor: Colors.deepOrange),
+                                    child: new CircularProgressIndicator(),
+                                  ),
+                                );
                               }
 
                               final List<DocumentSnapshot> documents =
@@ -1588,7 +1606,13 @@ class _HomeState extends State<Home> {
                                   .get(),
                               builder: (context, snapshot) {
                                 if (!snapshot.hasData) {
-                                  return new CircularProgressIndicator();
+                                  return Center(
+                                    child: Theme(
+                                      data: Theme.of(context).copyWith(
+                                          accentColor: Colors.deepOrange),
+                                      child: new CircularProgressIndicator(),
+                                    ),
+                                  );
                                 }
 
                                 final List<DocumentSnapshot> documents =
@@ -1683,74 +1707,88 @@ class _HomeState extends State<Home> {
                     ),
                   ),
 
-                  FutureBuilder<QuerySnapshot>(
-                    future: FirebaseFirestore.instance
-                        .collection('Cities')
-                        // .where('Section', isEqualTo: 'Near in cairo')
-                        // .where('City', isEqualTo: 'Cairo')
-                        .get(),
-                    builder: (context, snapshot) {
-                      if (!snapshot.hasData) {
-                        return new CircularProgressIndicator();
-                      }
+                  // FutureBuilder<QuerySnapshot>(
+                  //   future: FirebaseFirestore.instance
+                  //       .collection('Cities')
+                  //       // .where('Section', isEqualTo: 'Near in cairo')
+                  //       // .where('City', isEqualTo: 'Cairo')
+                  //       .get(),
+                  //   builder: (context, snapshot) {
+                  //     if (!snapshot.hasData) {
+                  //       return new CircularProgressIndicator();
+                  //     }
 
-                      final List<DocumentSnapshot> documents =
-                          snapshot.data.docs;
-                      return Container(
-                        height: 275,
-                        width: 390,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: documents
-                              .map(
-                                (doc) => IncredibleCard(
-                                  img: doc['Image'],
-                                  city: doc['City1'],
-                                ),
-                              )
-                              .toList(),
-                        ),
-                      );
-                    },
-                  ),
-
-                  // Container(
-                  //   height: 270,
-                  //   width: 390,
-                  //   child: ListView(
-                  //     scrollDirection: Axis.horizontal,
-                  //     children: <Widget>[
-                  //       IncredibleCard(
-                  //         img: 'images/home/Incridible/1.webp',
-                  //         city: 'Mauritius',
+                  //     final List<DocumentSnapshot> documents =
+                  //         snapshot.data.docs;
+                  //     return GestureDetector(
+                  //       child: Container(
+                  //         height: 275,
+                  //         width: 390,
+                  //         child: ListView(
+                  //           scrollDirection: Axis.horizontal,
+                  //           children: documents
+                  //               .map(
+                  //                 (doc) => IncredibleCard(
+                  //                   img: doc['Image'],
+                  //                   city: doc['City1'],
+                  //                 ),
+                  //               )
+                  //               .toList(),
+                  //         ),
                   //       ),
-                  //       IncredibleCard(
-                  //         img: 'images/home/Incridible/2.webp',
-                  //         city: 'Cape Town',
-                  //       ),
-                  //       IncredibleCard(
-                  //         img: 'images/home/Incridible/3.webp',
-                  //         city: 'Singapore',
-                  //       ),
-                  //       IncredibleCard(
-                  //         img: 'images/home/Incridible/4.webp',
-                  //         city: 'Hong Kong',
-                  //       ),
-                  //       IncredibleCard(
-                  //         img: 'images/home/Incridible/5.webp',
-                  //         city: 'Taipei',
-                  //       ),
-                  //       IncredibleCard(
-                  //         img: 'images/home/Incridible/6.webp',
-                  //         city: 'Bangkok',
-                  //       ),
-                  //       IncredibleCard(
-                  //         img: 'images/home/Incridible/7.webp',
-                  //         city: 'Taichung',
-                  //       ),
-                  //     ],
-                  //   ),
+                  //       onTap: () {
+                  //         Navigator.push(
+                  //           context,
+                  //           MaterialPageRoute(
+                  //               builder: (context) => DestinationDetails(
+                  //                   img: images, text: cityName)),
+                  //         );
+                  //       },
+                  //     );
+                  //   },
                   // ),
+
+                  Container(
+                    height: 290,
+                    width: 390,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: <Widget>[
+                        IncredibleCard(
+                          img: 'images/cairo.png',
+                          city: 'Cairo',
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10.0),
+                          child: IncredibleCard(
+                            img: 'images/sharm.png',
+                            city: 'Sharm El Sheikh',
+                          ),
+                        ),
+                        // IncredibleCard(
+                        //   img: 'images/home/Incridible/3.webp',
+                        //   city: 'Singapore',
+                        // ),
+                        // IncredibleCard(
+                        //   img: 'images/home/Incridible/4.webp',
+                        //   city: 'Hong Kong',
+                        // ),
+                        // IncredibleCard(
+                        //   img: 'images/home/Incridible/5.webp',
+                        //   city: 'Taipei',
+                        // ),
+                        // IncredibleCard(
+                        //   img: 'images/home/Incridible/6.webp',
+                        //   city: 'Bangkok',
+                        // ),
+                        // IncredibleCard(
+                        //   img: 'images/home/Incridible/7.webp',
+                        //   city: 'Taichung',
+                        // ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
               SizedBox(
@@ -1803,7 +1841,13 @@ class _HomeState extends State<Home> {
                         .get(),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
-                        return new CircularProgressIndicator();
+                        return Center(
+                          child: Theme(
+                            data: Theme.of(context)
+                                .copyWith(accentColor: Colors.deepOrange),
+                            child: new CircularProgressIndicator(),
+                          ),
+                        );
                       }
 
                       final List<DocumentSnapshot> documents =

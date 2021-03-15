@@ -261,7 +261,13 @@ class _BookingCardState extends State<BookingCard> {
                             .get(),
                         builder: (context, snapshot) {
                           if (!snapshot.hasData) {
-                            return new CircularProgressIndicator();
+                            return Center(
+                              child: Theme(
+                                data: Theme.of(context)
+                                    .copyWith(accentColor: Colors.deepOrange),
+                                child: new CircularProgressIndicator(),
+                              ),
+                            );
                           }
 
                           final List<DocumentSnapshot> documents =
@@ -317,7 +323,13 @@ class _BookingCardState extends State<BookingCard> {
                                   .get(),
                               builder: (context, snapshot) {
                                 if (!snapshot.hasData) {
-                                  return new CircularProgressIndicator();
+                                  return Center(
+                                    child: Theme(
+                                      data: Theme.of(context).copyWith(
+                                          accentColor: Colors.deepOrange),
+                                      child: new CircularProgressIndicator(),
+                                    ),
+                                  );
                                 }
 
                                 final List<DocumentSnapshot> documents =
