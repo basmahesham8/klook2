@@ -41,8 +41,8 @@ class _RecommendedCardState extends State<RecommendedCard> {
                   children: <Widget>[
                     Container(
                       height: 140,
-                      child: Image(
-                        image: AssetImage(widget.img),
+                      child: Image.network(
+                        widget.img,
                         width: 320,
                         height: 60,
                         fit: BoxFit.cover,
@@ -90,6 +90,7 @@ class _RecommendedCardState extends State<RecommendedCard> {
                   padding: const EdgeInsets.all(5.0),
                   child: Text(
                     widget.title,
+                    maxLines: 2,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
@@ -170,7 +171,7 @@ class _RecommendedCardState extends State<RecommendedCard> {
                         style: TextStyle(fontSize: 14),
                       ),
                       Text(
-                        'US\$ ' + widget.price,
+                        'EGP ' + widget.price,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
@@ -350,7 +351,7 @@ class _RecommendedCardState extends State<RecommendedCard> {
 //                   child: Column(
 //                     children: [
 //                       Text(
-//                         'US\$ ' + widget.oldPrice,
+//                         'EGP\$ ' + widget.oldPrice,
 //                         style: TextStyle(
 //                           color: Color.fromRGBO(143, 143, 143, 1),
 //                           fontSize: 10,
@@ -364,7 +365,7 @@ class _RecommendedCardState extends State<RecommendedCard> {
 //                             style: TextStyle(fontSize: 12),
 //                           ),
 //                           Text(
-//                             'US\$ ' + widget.price,
+//                             'EGP\$ ' + widget.price,
 //                             style: TextStyle(
 //                               fontWeight: FontWeight.bold,
 //                               fontSize: 15,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:klook2/components/login.dart';
+import 'package:klook2/components/userInfoEmaill.dart';
 import './carousel.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'dart:math';
@@ -9,9 +11,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import './carousel.dart';
 import 'package:klook2/components/circularLoading.dart';
 
+import 'bookingConfirm.dart';
+
 class ActivityDetails extends StatefulWidget {
   final String id;
-  ActivityDetails({this.id});
+  final String title;
+  ActivityDetails({this.id, this.title});
   @override
   _ActivityDetailsState createState() => _ActivityDetailsState();
 }
@@ -32,7 +37,7 @@ class _ActivityDetailsState extends State<ActivityDetails> {
   String price;
   String rate;
   String review;
-  Map<String , dynamic> data ;
+  Map<String, dynamic> data;
 
   final _nbItems = 6;
   final _itemHeight = 200.0;
@@ -43,37 +48,67 @@ class _ActivityDetailsState extends State<ActivityDetails> {
 
   @override
   Widget build(BuildContext context) {
- 
-    FirebaseFirestore.instance
+
+    if(widget.id != null   ){
+      FirebaseFirestore.instance
         .collection('ToursCollection')
         .doc(widget.id)
         .get()
-        .then((value) =>{
-          if (value.exists) { 
-            setState(() {
-              data = value.data() ;
-              title = value.data()["Title"];
-              city = value.data()["City"];
-              section = value.data()["Section"];
-              image = value.data()["Image"];
-              booked = value.data()["Booked"];
-              categories = value.data()["Categories"];
-              date = value.data()["Date"];
-              distance = value.data()["Distance"];
-              oldPrice = value.data()["OldPrice"];
-              price = value.data()["Price"];
-              rate = value.data()["Rate"];
-              review = value.data()["Review"];
-            })
-          } 
-        });
+        .then((value) => {
+              if (value.exists)
+                {
+                  setState(() {
+                    data = value.data();
+                    title = value.data()["Title"];
+                    city = value.data()["City"];
+                    section = value.data()["Section"];
+                    image = value.data()["Image"];
+                    booked = value.data()["Booked"];
+                    categories = value.data()["Categories"];
+                    date = value.data()["Date"];
+                    distance = value.data()["Distance"];
+                    oldPrice = value.data()["OldPrice"];
+                    price = value.data()["Price"];
+                    rate = value.data()["Rate"];
+                    review = value.data()["Review"];
+                  })
+                }
+            });
 
-        if(data == null) {
-             return CircularLoading();
-        }
-        else {
-        
- 
+    }
+
+    if(widget.title != null) {
+       FirebaseFirestore.instance
+        .collection('ToursCollection')
+        .where('Title', isEqualTo: widget.title)
+        .get()
+        .then((QuerySnapshot querySnapshot) => {
+              querySnapshot.docs.forEach((doc) {
+                setState(() {
+                  data = doc.data();
+                  title = doc["Title"];
+                  city = doc["City"];
+                  section = doc["Section"];
+                  image = doc["Image"];
+                  booked = doc["Booked"];
+                  categories = doc["Categories"];
+                  date = doc["Date"];
+                  distance = doc["Distance"];
+                  oldPrice = doc["OldPrice"];
+                  price = doc["Price"];
+                  rate = doc["Rate"];
+                  review = doc["Review"];
+                });
+              })
+            });
+
+    }
+    
+
+  
+    if (data == null) {
+      return CircularLoading();
+    } else {
       return Scaffold(
         body: CustomScrollView(
           slivers: <Widget>[
@@ -165,7 +200,8 @@ class _ActivityDetailsState extends State<ActivityDetails> {
                           Padding(
                             padding: const EdgeInsets.fromLTRB(20, 10, 0, 10),
                             child: Row(children: [
-                              Icon(
+                               Expanded(child: Row(children: [
+                                 Icon(
                                 Icons.star_rate,
                                 color: Colors.orange[300],
                                 size: 14.0,
@@ -187,11 +223,14 @@ class _ActivityDetailsState extends State<ActivityDetails> {
                                   ],
                                 ),
                               ),
-                              Text(
+                               ],), flex: 4),
+                                Expanded(child: Row(children: [
+                                   Text(
                                 ' | ',
                                 style: TextStyle(
                                     color: Colors.grey[200], fontSize: 20),
                               ),
+
                               Icon(
                                 Icons.supervisor_account,
                                 color: Colors.grey[300],
@@ -202,6 +241,10 @@ class _ActivityDetailsState extends State<ActivityDetails> {
                                 style: TextStyle(
                                     color: Colors.grey[350], fontSize: 14),
                               ),
+                                 ]) ,flex : 4
+                                )
+                              
+                             
                             ]),
                           ),
                           Padding(
@@ -403,9 +446,8 @@ class _ActivityDetailsState extends State<ActivityDetails> {
                                   fontWeight: FontWeight.bold,
                                   color: Colors.deepOrange),
                             ),
-                         
                             TextSpan(
-                                text: " us\$  ${oldPrice } ",
+                                text: " us\$  ${oldPrice} ",
                                 style: TextStyle(
                                     color: Colors.grey[400],
                                     decoration: TextDecoration.lineThrough)),
@@ -416,6 +458,33 @@ class _ActivityDetailsState extends State<ActivityDetails> {
                   Expanded(
                       child: ElevatedButton(
                         onPressed: () {
+                          UserInfoEmaill.userEmaill.length > 2
+                              ? Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => BookingCalender(
+                                            title: title,
+                                            date: date,
+                                            price: price,
+                                            image: image,
+                                          )))
+                              // widget.addBooking(
+                              //     UserInfoEmaill.userEmaill,
+                              //     title,
+                              //     2,
+                              //     2,
+                              //     date,
+                              //     image,
+                              //     2,
+                              //     price,
+                              //     12,
+                              //     3,
+                              //     'section')
+                              : Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LoginPage()),
+                                );
                           // if (_formKey.currentState.validate()) {
                           //   Navigator.push(
                           //     context,
@@ -435,7 +504,6 @@ class _ActivityDetailsState extends State<ActivityDetails> {
               )),
         ),
       );
-        }
     }
   }
-
+}

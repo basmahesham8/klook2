@@ -68,7 +68,7 @@ class _SignInState extends State<SignIn> {
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
             Text(
-              'Sign Up',
+              'Sign In',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
             SizedBox(height: 20.0),
@@ -114,12 +114,13 @@ class _SignInState extends State<SignIn> {
                                       .then((value) => {
                                             UserInfoEmaill.userEmaill =
                                                 widget.emailController.text,
-                                            Navigator.of(context).pushReplacement(
-                                                MaterialPageRoute(
-                                                    builder: (context) => Home(
-                                                        // userName: widget
-                                                        //     .emailController.text,
-                                                        )))
+                                            Navigator.pop(context)
+                                            // Navigator.of(context).pushReplacement(
+                                            //     MaterialPageRoute(
+                                            //         builder: (context) => Home(
+                                            //             // userName: widget
+                                            //             //     .emailController.text,
+                                            //             )))
                                           });
                                 },
                                 padding: EdgeInsets.all(10.0),

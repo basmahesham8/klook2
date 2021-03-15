@@ -130,38 +130,6 @@ class _SignUpState extends State<SignUp> {
                                   side: BorderSide(color: Colors.orange[900]),
                                 ),
                                 onPressed: () {
-                                  // widget.auth
-                                  //     .signInWithEmailAndPassword(
-                                  //         email: widget.emailController.text,
-                                  //         password:
-                                  //             widget.passwordController.text)
-                                  //     .then((_) {
-                                  //   widget.getUser(widget.emailController.text,
-                                  //       widget.passwordController.text);
-                                  // Navigator.of(context).pushReplacement(
-                                  //     MaterialPageRoute(
-                                  //         builder: (context) =>
-                                  //             HomeScreen()));
-                                  // FutureBuilder<QuerySnapshot>(
-                                  //     future: FirebaseFirestore.instance
-                                  //         .collection('users')
-                                  //         .where('Email',
-                                  //             isEqualTo:
-                                  //                 widget.emailController.text)
-                                  //         .get(),
-                                  //     builder: (context, snapshot) {
-                                  //       if (!snapshot.hasData) {
-                                  //         return new CircularProgressIndicator();
-                                  //       }
-
-                                  //       final List<DocumentSnapshot>
-                                  //           documents = snapshot.data.docs;
-                                  //       documents
-                                  //           .map((doc) => Text(doc['Name']),
-                                  //               print('object'))
-                                  //           .toList();
-                                  //     });
-                                  ////////////////////////////////////
                                   widget.auth
                                       .createUserWithEmailAndPassword(
                                           email: widget.emailController.text,
@@ -177,18 +145,19 @@ class _SignUpState extends State<SignUp> {
                                     widget.emailController.text;
                                     widget.getemail(
                                         'widget.emailController.text');
-                                    Navigator.of(context)
-                                        .pushReplacement(MaterialPageRoute(
-                                            builder: (context) => Booking(
-                                                  userName:
-                                                      'widget.emailController.text',
-                                                )));
+                                    // Navigator.of(context)
+                                    //     .pushReplacement(MaterialPageRoute(
+                                    //         builder: (context) => Booking(
+                                    //               userName:
+                                    //                   'widget.emailController.text',
+                                    //             ))
+                                    //             );
                                   });
                                 },
                                 padding: EdgeInsets.all(10.0),
                                 color: Colors.orange[900],
                                 textColor: Colors.white,
-                                child: Text("Sign in",
+                                child: Text("Sign Up",
                                     style: TextStyle(fontSize: 15)),
                               ),
                             ],

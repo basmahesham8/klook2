@@ -132,7 +132,8 @@ class _LoginPageState extends State<LoginPage> {
                   MaterialButton(
                     // child: Text('Logout'),
                     onPressed: () {
-                      UserInfoEmaill.userEmaill = '1';
+                      // UserInfoEmaill.userEmaill = '1';
+                      _doSomething();
                       widget.auth.signOut();
                     },
                     padding: EdgeInsets.all(10.0),
@@ -144,5 +145,13 @@ class _LoginPageState extends State<LoginPage> {
               ),
       ),
     );
+  }
+
+  void _doSomething() {
+    // Using the callback State.setState() is the only way to get the build
+    // method to rerun with the updated state value.
+    setState(() {
+      UserInfoEmaill.userEmaill = '1';
+    });
   }
 }

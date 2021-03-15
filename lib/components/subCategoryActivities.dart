@@ -19,6 +19,9 @@ class SubCategoryActivities extends StatefulWidget {
 class _SubCategoryActivitiesState extends State<SubCategoryActivities> {
   @override
   Widget build(BuildContext context) {
+
+  
+
     return Scaffold(
       body:FutureBuilder<QuerySnapshot>(
         

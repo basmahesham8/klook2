@@ -8,11 +8,14 @@ import 'package:klook2/components/userInfoEmaill.dart';
 // import 'package:carousel_slider/carousel_slider.dart';
 // import 'package:klook2/components/Card.dart';
 // import 'package:klook2/components/tourCard.dart';
+// import 'package:intl/intl_browser.dart';
+import 'package:date_format/date_format.dart';
 
 class Booking extends StatefulWidget {
   bool dataHas = false;
   final String userName;
-
+  Timestamp time; //from firebase
+// DateTime.fromMicrosecondsSinceEpoch(time.microsecondsSinceEpoch);
   // SignUp sign;
   // var usernamee = SignUp.userEmail;
 
@@ -105,36 +108,36 @@ class _BookingState extends State<Booking> {
                                         Divider(
                                           thickness: 1,
                                         ),
-                                        DropdownButton<String>(
-                                          value: dropdownValue,
-                                          icon: Icon(Icons.arrow_drop_down),
-                                          iconSize: 24,
-                                          elevation: 16,
-                                          autofocus: true,
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 20),
-                                          underline: Container(
-                                            height: 0,
-                                            // color: Colors.deepPurpleAccent,
-                                          ),
-                                          onChanged: (String newValue) {
-                                            setState(() {
-                                              dropdownValue = newValue;
-                                            });
-                                          },
-                                          items: <String>[
-                                            'Bookings',
-                                            'Invaild Bookings',
-                                            'Archived Bookings'
-                                          ].map<DropdownMenuItem<String>>(
-                                              (String value) {
-                                            return DropdownMenuItem<String>(
-                                              value: value,
-                                              child: Text(value),
-                                            );
-                                          }).toList(),
-                                        ),
+                                        // DropdownButton<String>(
+                                        //   value: dropdownValue,
+                                        //   icon: Icon(Icons.arrow_drop_down),
+                                        //   iconSize: 24,
+                                        //   elevation: 16,
+                                        //   autofocus: true,
+                                        //   style: TextStyle(
+                                        //       color: Colors.black,
+                                        //       fontSize: 20),
+                                        //   underline: Container(
+                                        //     height: 0,
+                                        //     // color: Colors.deepPurpleAccent,
+                                        //   ),
+                                        //   onChanged: (String newValue) {
+                                        //     setState(() {
+                                        //       dropdownValue = newValue;
+                                        //     });
+                                        //   },
+                                        //   items: <String>[
+                                        //     'Bookings',
+                                        //     'Invaild Bookings',
+                                        //     'Archived Bookings'
+                                        //   ].map<DropdownMenuItem<String>>(
+                                        //       (String value) {
+                                        //     return DropdownMenuItem<String>(
+                                        //       value: value,
+                                        //       child: Text(value),
+                                        //     );
+                                        //   }).toList(),
+                                        // ),
                                         SizedBox(
                                           height: 130,
                                         ),
@@ -186,7 +189,7 @@ class _BookingState extends State<Booking> {
                                                     bottom: true,
                                                     right: false,
                                                     child: Text(
-                                                      'My Bookings',
+                                                      'My Bookings now',
                                                       style: TextStyle(
                                                           fontSize: 20,
                                                           color: Colors.black,
@@ -258,6 +261,12 @@ class _BookingState extends State<Booking> {
                                               // booked: doc['Booked'],
                                               // categories: doc['Categories'],
                                               date: doc['Date'].toString(),
+                                              //date: 'doc[Date].todate',
+                                              // date: formatDate(doc['Date'],
+                                              //     [MM, ' ', d, ',', yyyy]),
+                                              //  * 1000)
+                                              // .toString(),
+
                                               price: doc['Price'],
                                               // rate: doc['Rate'],
                                               // review: doc['Review'],
