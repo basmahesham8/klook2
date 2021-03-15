@@ -167,7 +167,7 @@ class _TopThingsCardState extends State<TopThingsCard> {
                         style: TextStyle(fontSize: 14),
                       ),
                       Text(
-                        'US\$ ' + widget.price,
+                        'EGP ' + widget.price,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18,

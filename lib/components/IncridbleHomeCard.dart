@@ -31,9 +31,9 @@ class _IncredibleCardState extends State<IncredibleCard> {
                   child: Stack(
                     children: <Widget>[
                       Container(
-                        height: 262,
-                        child: Image(
-                          image: AssetImage(widget.img),
+                        height: 267,
+                        child: Image.network(
+                          widget.img,
                           width: 290,
                           height: 260,
                           fit: BoxFit.cover,

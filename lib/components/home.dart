@@ -44,7 +44,7 @@ class _HomeState extends State<Home> {
                   bottomRight: Radius.circular(15),
                 ),
                 child: Container(
-                  color: Colors.deepOrange,
+                  color: Colors.orange,
                   width: 390,
                   height: 60,
                   child: Padding(
@@ -1455,43 +1455,80 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                           ),
-                          Container(
-                            height: 250,
-                            // width: 175,
-                            child: ListView(
-                              scrollDirection: Axis.horizontal,
-                              children: <Widget>[
-                                getInspired(
-                                  img: 'images/home/1.webp',
-                                  title: 'After Tea Cruise',
-                                  city: 'London',
-                                  price: ' 47.05',
-                                  rate: '4.4',
-                                  total: '24',
+
+                          FutureBuilder<QuerySnapshot>(
+                            future: FirebaseFirestore.instance
+                                .collection('ToursCollection')
+                                .where('Section', isEqualTo: 'Get Inspired')
+                                // .where('City', isEqualTo: 'Cairo')
+                                .get(),
+                            builder: (context, snapshot) {
+                              if (!snapshot.hasData) {
+                                return new CircularProgressIndicator();
+                              }
+
+                              final List<DocumentSnapshot> documents =
+                                  snapshot.data.docs;
+                              return Container(
+                                height: 250,
+                                // width: 175,
+                                child: ListView(
+                                  scrollDirection: Axis.horizontal,
+                                  children: documents
+                                      .map(
+                                        (doc) => GetInspiredCard(
+                                          img: doc['Image'],
+                                          title: doc['Title'],
+                                          city: doc['City'],
+                                          rate: doc['Rate'],
+                                          total: doc['Review'],
+                                          price: doc['Price'],
+                                        ),
+                                      )
+                                      .toList(),
                                 ),
-                                // recentlyCard(
-                                //   img: 'images/home/1.webp',
-                                //   title: 'camel and bike tour in Giza Pyramids',
-                                //   city: 'cairo',
-                                //   price: ' 2,195',
-                                //   date: 'tommorow',
-                                // ),
-                                // recentlyCard(
-                                //   img: 'images/home/1.webp',
-                                //   title: 'camel and bike tour in Giza Pyramids',
-                                //   city: 'cairo',
-                                //   price: ' 2,195',
-                                //   date: 'tommorow',
-                                // ),
-                              ],
-                            ),
+                              );
+                            },
                           ),
+
+                          //         Container(
+                          //           height: 250,
+                          //           // width: 175,
+                          //           child: ListView(
+                          //             scrollDirection: Axis.horizontal,
+                          //             children: <Widget>[
+                          //               getInspired(
+                          //                 img: 'images/home/1.webp',
+                          //                 title: 'After Tea Cruise',
+                          //                 city: 'London',
+                          //                 price: ' 47.05',
+                          //                 rate: '4.4',
+                          //                 total: '24',
+                          //               ),
+                          //               // recentlyCard(
+                          //               //   img: 'images/home/1.webp',
+                          //               //   title: 'camel and bike tour in Giza Pyramids',
+                          //               //   city: 'cairo',
+                          //               //   price: ' 2,195',
+                          //               //   date: 'tommorow',
+                          //               // ),
+                          //               // recentlyCard(
+                          //               //   img: 'images/home/1.webp',
+                          //               //   title: 'camel and bike tour in Giza Pyramids',
+                          //               //   city: 'cairo',
+                          //               //   price: ' 2,195',
+                          //               //   date: 'tommorow',
+                          //               // ),
+                          //             ],
+                          //           ),
+                          //         ),
                         ],
                       ),
                     ),
                   ),
                 ],
               ),
+
               SizedBox(
                 height: 25,
               ),
@@ -1553,39 +1590,81 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                             ),
-                            Container(
-                              height: 250,
-                              // width: 175,
-                              child: ListView(
-                                scrollDirection: Axis.horizontal,
-                                children: <Widget>[
-                                  rediscoverCard(
-                                    img: 'images/home/1.webp',
-                                    title: 'After Tea Cruise',
-                                    city: 'London',
-                                    price: ' 47.05',
-                                    rate: '4.4',
-                                    total: '24',
+
+                            FutureBuilder<QuerySnapshot>(
+                              future: FirebaseFirestore.instance
+                                  .collection('ToursCollection')
+                                  .where('Section', isEqualTo: 'Near in cairo')
+                                  // .where('City', isEqualTo: 'Cairo')
+                                  .get(),
+                              builder: (context, snapshot) {
+                                if (!snapshot.hasData) {
+                                  return new CircularProgressIndicator();
+                                }
+
+                                final List<DocumentSnapshot> documents =
+                                    snapshot.data.docs;
+                                return Container(
+                                  height: 250,
+                                  // width: 175,
+                                  child: ListView(
+                                    scrollDirection: Axis.horizontal,
+                                    children: documents
+                                        .map(
+                                          (doc) => RediscoverCard(
+                                            img: doc['Image'],
+                                            title: doc['Title'],
+                                            city: doc['City'],
+                                            rate: doc['Rate'],
+                                            total: doc['Review'],
+                                            price: doc['Price'],
+                                            // img: 'images/home/1.webp',
+                                            //         title: 'After Tea Cruise',
+                                            //         city: 'London',
+                                            //         price: ' 47.05',
+                                            //         rate: '4.4',
+                                            //         total: '24',
+                                          ),
+                                        )
+                                        .toList(),
                                   ),
-                                  // recentlyCard(
-                                  //   img: 'images/home/1.webp',
-                                  //   title:
-                                  //       'camel and bike tour in Giza Pyramids',
-                                  //   city: 'cairo',
-                                  //   price: ' 2,195',
-                                  //   date: 'tommorow',
-                                  // ),
-                                  // recentlyCard(
-                                  //   img: 'images/home/1.webp',
-                                  //   title:
-                                  //       'camel and bike tour in Giza Pyramids',
-                                  //   city: 'cairo',
-                                  //   price: ' 2,195',
-                                  //   date: 'tommorow',
-                                  // ),
-                                ],
-                              ),
+                                );
+                              },
                             ),
+
+                            // Container(
+                            //   height: 250,
+                            //   // width: 175,
+                            //   child: ListView(
+                            //     scrollDirection: Axis.horizontal,
+                            //     children: <Widget>[
+                            //       rediscoverCard(
+                            //         img: 'images/home/1.webp',
+                            //         title: 'After Tea Cruise',
+                            //         city: 'London',
+                            //         price: ' 47.05',
+                            //         rate: '4.4',
+                            //         total: '24',
+                            //       ),
+                            //       // recentlyCard(
+                            //       //   img: 'images/home/1.webp',
+                            //       //   title:
+                            //       //       'camel and bike tour in Giza Pyramids',
+                            //       //   city: 'cairo',
+                            //       //   price: ' 2,195',
+                            //       //   date: 'tommorow',
+                            //       // ),
+                            //       // recentlyCard(
+                            //       //   img: 'images/home/1.webp',
+                            //       //   title:
+                            //       //       'camel and bike tour in Giza Pyramids',
+                            //       //   city: 'cairo',
+                            //       //   price: ' 2,195',
+                            //       //   date: 'tommorow',
+                            //       // ),
+                            //     ],
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),
@@ -1614,43 +1693,75 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                   ),
-                  Container(
-                    height: 270,
-                    width: 390,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: <Widget>[
-                        IncredibleCard(
-                          img: 'images/home/Incridible/1.webp',
-                          city: 'Mauritius',
+
+                  FutureBuilder<QuerySnapshot>(
+                    future: FirebaseFirestore.instance
+                        .collection('Cities')
+                        // .where('Section', isEqualTo: 'Near in cairo')
+                        // .where('City', isEqualTo: 'Cairo')
+                        .get(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+                        return new CircularProgressIndicator();
+                      }
+
+                      final List<DocumentSnapshot> documents =
+                          snapshot.data.docs;
+                      return Container(
+                        height: 275,
+                        width: 390,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: documents
+                              .map(
+                                (doc) => IncredibleCard(
+                                  img: doc['Image'],
+                                  city: doc['City1'],
+                                ),
+                              )
+                              .toList(),
                         ),
-                        IncredibleCard(
-                          img: 'images/home/Incridible/2.webp',
-                          city: 'Cape Town',
-                        ),
-                        IncredibleCard(
-                          img: 'images/home/Incridible/3.webp',
-                          city: 'Singapore',
-                        ),
-                        IncredibleCard(
-                          img: 'images/home/Incridible/4.webp',
-                          city: 'Hong Kong',
-                        ),
-                        IncredibleCard(
-                          img: 'images/home/Incridible/5.webp',
-                          city: 'Taipei',
-                        ),
-                        IncredibleCard(
-                          img: 'images/home/Incridible/6.webp',
-                          city: 'Bangkok',
-                        ),
-                        IncredibleCard(
-                          img: 'images/home/Incridible/7.webp',
-                          city: 'Taichung',
-                        ),
-                      ],
-                    ),
+                      );
+                    },
                   ),
+
+                  // Container(
+                  //   height: 270,
+                  //   width: 390,
+                  //   child: ListView(
+                  //     scrollDirection: Axis.horizontal,
+                  //     children: <Widget>[
+                  //       IncredibleCard(
+                  //         img: 'images/home/Incridible/1.webp',
+                  //         city: 'Mauritius',
+                  //       ),
+                  //       IncredibleCard(
+                  //         img: 'images/home/Incridible/2.webp',
+                  //         city: 'Cape Town',
+                  //       ),
+                  //       IncredibleCard(
+                  //         img: 'images/home/Incridible/3.webp',
+                  //         city: 'Singapore',
+                  //       ),
+                  //       IncredibleCard(
+                  //         img: 'images/home/Incridible/4.webp',
+                  //         city: 'Hong Kong',
+                  //       ),
+                  //       IncredibleCard(
+                  //         img: 'images/home/Incridible/5.webp',
+                  //         city: 'Taipei',
+                  //       ),
+                  //       IncredibleCard(
+                  //         img: 'images/home/Incridible/6.webp',
+                  //         city: 'Bangkok',
+                  //       ),
+                  //       IncredibleCard(
+                  //         img: 'images/home/Incridible/7.webp',
+                  //         city: 'Taichung',
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               ),
               SizedBox(
@@ -1695,58 +1806,86 @@ class _HomeState extends State<Home> {
                     ),
                   ),
 
+                  FutureBuilder<QuerySnapshot>(
+                    future: FirebaseFirestore.instance
+                        .collection('ToursCollection')
+                        .where('Section', isEqualTo: 'Klook Recommended')
+                        // .where('City', isEqualTo: 'Cairo')
+                        .get(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+                        return new CircularProgressIndicator();
+                      }
+
+                      final List<DocumentSnapshot> documents =
+                          snapshot.data.docs;
+                      return Container(
+                        height: 320,
+                        width: 390,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: documents
+                              .map(
+                                (doc) => RecommendedCard(
+                                  img: doc['Image'],
+                                  city: doc['City'],
+                                  title: doc['Title'],
+                                  type: doc['Type'],
+                                  rate: doc['Rate'],
+                                  total: doc['Review'],
+                                  booked: doc['Booked'],
+                                  price: doc['Price'],
+                                  oldPrice: doc['OldPrice'],
+                                ),
+                              )
+                              .toList(),
+                        ),
+                      );
+                    },
+                  ),
+
                   // Container(
-                  //   width: 300,
-                  //   child: Text(
-                  //     'Incredible experiences whenever you are-chosen by our travel curators',
-                  //     style: TextStyle(
-                  //       color: Colors.grey,
-                  //       fontSize: 11,
-                  //     ),
+                  //   height: 320,
+                  //   width: 390,
+                  //   child: ListView(
+                  //     scrollDirection: Axis.horizontal,
+                  //     children: <Widget>[
+                  //       recommendedCard(
+                  //         img: 'images/home/2.PNG',
+                  //         title: 'Windsor Castle Ticket',
+                  //         type: 'Attractions',
+                  //         rate: '5.0',
+                  //         total: '1',
+                  //         booked: '100K+',
+                  //         price: ' 273.50',
+                  //         city: 'London',
+                  //         oldPrice: '32.55',
+                  //       ),
+                  //       recommendedCard(
+                  //         img: 'images/home/2.PNG',
+                  //         title: 'Windsor Castle Ticket',
+                  //         type: 'Attractions',
+                  //         rate: '5.0',
+                  //         total: '1',
+                  //         booked: '100K+',
+                  //         price: ' 273.50',
+                  //         city: 'London',
+                  //         oldPrice: '32.55',
+                  //       ),
+                  //       recommendedCard(
+                  //         img: 'images/home/2.PNG',
+                  //         title: 'Windsor Castle Ticket',
+                  //         type: 'Attractions',
+                  //         rate: '5.0',
+                  //         total: '1',
+                  //         booked: '100K+',
+                  //         price: ' 273.50',
+                  //         city: 'London',
+                  //         oldPrice: '32.55',
+                  //       ),
+                  //     ],
                   //   ),
                   // ),
-                  Container(
-                    height: 320,
-                    width: 390,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: <Widget>[
-                        recommendedCard(
-                          img: 'images/home/2.PNG',
-                          title: 'Windsor Castle Ticket',
-                          type: 'Attractions',
-                          rate: '5.0',
-                          total: '1',
-                          booked: '100K+',
-                          price: ' 273.50',
-                          city: 'London',
-                          oldPrice: '32.55',
-                        ),
-                        recommendedCard(
-                          img: 'images/home/2.PNG',
-                          title: 'Windsor Castle Ticket',
-                          type: 'Attractions',
-                          rate: '5.0',
-                          total: '1',
-                          booked: '100K+',
-                          price: ' 273.50',
-                          city: 'London',
-                          oldPrice: '32.55',
-                        ),
-                        recommendedCard(
-                          img: 'images/home/2.PNG',
-                          title: 'Windsor Castle Ticket',
-                          type: 'Attractions',
-                          rate: '5.0',
-                          total: '1',
-                          booked: '100K+',
-                          price: ' 273.50',
-                          city: 'London',
-                          oldPrice: '32.55',
-                        ),
-                      ],
-                    ),
-                  ),
                 ],
               ),
               SizedBox(
@@ -1781,7 +1920,7 @@ class _HomeState extends State<Home> {
               //             Container(
               //               width: 280,
               //               child: Text(
-              //                 '\'Mobile 10\' to get US\$1.3 off your first booking',
+              //                 '\'Mobile 10\' to get EGP\$1.3 off your first booking',
               //                 style: TextStyle(
               //                   color: Colors.white,
               //                   fontWeight: FontWeight.bold,
@@ -1852,7 +1991,7 @@ class _HomeState extends State<Home> {
               //             Container(
               //               width: 280,
               //               child: Text(
-              //                 '\'Mobile 10\' to get US\$1.3 off your first booking',
+              //                 '\'Mobile 10\' to get EGP\$1.3 off your first booking',
               //                 style: TextStyle(
               //                   color: Colors.white,
               //                   fontWeight: FontWeight.bold,
