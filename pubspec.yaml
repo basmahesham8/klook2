@@ -59,6 +59,23 @@ flutter:
     - assets/
     - images/home/2.PNG
     - images/home/3.jfif
+    - images/home/3.jpg
+    - images/home/4.jpg
+    - images/home/5.jpg
+    - images/home/topThings/1.webp
+    - images/home/topThings/2.webp
+    - images/home/topThings/3.webp
+    - images/home/topThings/4.webp
+    - images/home/topThings/5.webp
+    - images/home/topThings/6.webp
+    - images/home/topThings/7.webp
+    - images/home/Incridible/1.webp
+    - images/home/Incridible/2.webp
+    - images/home/Incridible/3.webp
+    - images/home/Incridible/4.webp
+    - images/home/Incridible/5.webp
+    - images/home/Incridible/6.webp
+    - images/home/Incridible/7.webp
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -93,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.explore),
-            label: 'Home',
+            label: 'Cairo',
           ),
           BottomNavigationBarItem(
             icon: Icon(

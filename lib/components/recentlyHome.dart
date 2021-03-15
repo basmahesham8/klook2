@@ -7,7 +7,13 @@ class RecentlyHomeCard extends StatefulWidget {
   final String title;
   final String date;
 
-  RecentlyHomeCard({this.img, this.city, this.date, this.title, this.price});
+  RecentlyHomeCard({
+    this.img,
+    this.city,
+    this.date,
+    this.title,
+    this.price,
+  });
   @override
   _RecentlyHomeCardState createState() => _RecentlyHomeCardState();
 }
@@ -27,11 +33,12 @@ class _RecentlyHomeCardState extends State<RecentlyHomeCard> {
                   children: <Widget>[
                     Container(
                       height: 120,
-                      child: Image(
-                        image: AssetImage(widget.img),
+                      child: Image.network(
+                        widget.img,
+                        // image: AssetImage(widget.img),
                         width: 175,
                         height: 60,
-                        fit: BoxFit.fitWidth,
+                        fit: BoxFit.cover,
                       ),
                     ),
                     Padding(
@@ -69,6 +76,7 @@ class _RecentlyHomeCardState extends State<RecentlyHomeCard> {
                   padding: const EdgeInsets.all(5.0),
                   child: Text(
                     widget.title,
+                    maxLines: 2,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
