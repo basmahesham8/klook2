@@ -48,6 +48,7 @@ class _BookedCardState extends State<BookedCard> {
                     child: Text(
                       widget.title,
                       maxLines: 2,
+                      // softWrap: s,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
@@ -63,9 +64,13 @@ class _BookedCardState extends State<BookedCard> {
                   Container(
                     child: Column(
                       children: [
-                        Text(
-                          widget.date,
-                          style: TextStyle(color: Colors.grey[400]),
+                        Container(
+                          width: 100,
+                          child: Text(
+                            widget.date,
+                            maxLines: 1,
+                            style: TextStyle(color: Colors.grey[400]),
+                          ),
                         ),
                         Text(
                           'person X ' + widget.noPerson,
@@ -83,11 +88,12 @@ class _BookedCardState extends State<BookedCard> {
                     ),
                   ),
                   Container(
-                    child: FadeInImage.assetNetwork(
+                    child: Image.network(
+                      widget.image,
+
                       width: 100,
                       height: 60,
-                      placeholder: '',
-                      image: widget.image,
+                      // placeholder: '',
                       fit: BoxFit.cover,
                     ),
                   )

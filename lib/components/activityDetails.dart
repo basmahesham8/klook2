@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:klook2/components/login.dart';
+import 'package:klook2/components/userInfoEmaill.dart';
 import './carousel.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'dart:math';
@@ -8,6 +10,8 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import './carousel.dart';
 import 'package:klook2/components/circularLoading.dart';
+
+import 'bookingConfirm.dart';
 
 class ActivityDetails extends StatefulWidget {
   final String id;
@@ -454,6 +458,33 @@ class _ActivityDetailsState extends State<ActivityDetails> {
                   Expanded(
                       child: ElevatedButton(
                         onPressed: () {
+                          UserInfoEmaill.userEmaill.length > 2
+                              ? Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => BookingCalender(
+                                            title: title,
+                                            date: date,
+                                            price: price,
+                                            image: image,
+                                          )))
+                              // widget.addBooking(
+                              //     UserInfoEmaill.userEmaill,
+                              //     title,
+                              //     2,
+                              //     2,
+                              //     date,
+                              //     image,
+                              //     2,
+                              //     price,
+                              //     12,
+                              //     3,
+                              //     'section')
+                              : Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LoginPage()),
+                                );
                           // if (_formKey.currentState.validate()) {
                           //   Navigator.push(
                           //     context,

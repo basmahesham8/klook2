@@ -29,11 +29,11 @@ class _RediscoverCardState extends State<RediscoverCard> {
                   children: <Widget>[
                     Container(
                       height: 120,
-                      child: Image(
-                        image: AssetImage(widget.img),
+                      child: Image.network(
+                        widget.img,
                         width: 175,
-                        height: 60,
-                        fit: BoxFit.fitWidth,
+                        height: 70,
+                        fit: BoxFit.cover,
                       ),
                     ),
                     // Padding(
@@ -83,6 +83,7 @@ class _RediscoverCardState extends State<RediscoverCard> {
                   padding: const EdgeInsets.all(5.0),
                   child: Text(
                     widget.title,
+                    maxLines: 2,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
@@ -123,7 +124,7 @@ class _RediscoverCardState extends State<RediscoverCard> {
                   child: Row(
                     children: [
                       Text(
-                        'US\$' + widget.price,
+                        'EGP' + widget.price,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 15,

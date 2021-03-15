@@ -8,11 +8,14 @@ import 'package:klook2/components/userInfoEmaill.dart';
 // import 'package:carousel_slider/carousel_slider.dart';
 // import 'package:klook2/components/Card.dart';
 // import 'package:klook2/components/tourCard.dart';
+// import 'package:intl/intl_browser.dart';
+import 'package:date_format/date_format.dart';
 
 class Booking extends StatefulWidget {
   bool dataHas = false;
   final String userName;
-
+  Timestamp time; //from firebase
+// DateTime.fromMicrosecondsSinceEpoch(time.microsecondsSinceEpoch);
   // SignUp sign;
   // var usernamee = SignUp.userEmail;
 
@@ -63,7 +66,7 @@ class _BookingState extends State<Booking> {
               final List<DocumentSnapshot> documents = snapshot.data.docs;
 
               return SingleChildScrollView(
-                  child: widget.dataHas == false
+                  child: UserInfoEmaill.userEmaill.length < 2
                       ? Column(
                           children: [
                             SingleChildScrollView(
@@ -183,7 +186,7 @@ class _BookingState extends State<Booking> {
                                                     bottom: true,
                                                     right: false,
                                                     child: Text(
-                                                      'My Bookings',
+                                                      'My Bookings now',
                                                       style: TextStyle(
                                                           fontSize: 20,
                                                           color: Colors.black,
@@ -254,7 +257,12 @@ class _BookingState extends State<Booking> {
                                               image: doc['Image'],
                                               // booked: doc['Booked'],
                                               // categories: doc['Categories'],
-                                              date: doc['Date'],
+                                              date: 'doc[Date].todate',
+                                              // date: formatDate(doc['Date'],
+                                              //     [MM, ' ', d, ',', yyyy]),
+                                              //  * 1000)
+                                              // .toString(),
+
                                               price: doc['Price'],
                                               // rate: doc['Rate'],
                                               // review: doc['Review'],

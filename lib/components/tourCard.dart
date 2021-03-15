@@ -45,8 +45,6 @@ class MCard extends StatefulWidget {
 class _MCardState extends State<MCard> {
   @override
   Widget build(BuildContext context) {
-  
-
     return Padding(
         padding: const EdgeInsets.all(16.0),
         child: Card(
@@ -60,10 +58,15 @@ class _MCardState extends State<MCard> {
                 child: Column(children: <Widget>[
                   GestureDetector(
                     onTap: () => Navigator.push(
+<<<<<<< HEAD
                       context, 
                       MaterialPageRoute(builder: (context) => ActivityDetails(id : widget.id)),
+=======
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ActivityDetails(id: widget.id)),
+>>>>>>> 1b3b4631296e43b1e7e6c50dfec98dfcf56b1fb8
                     ),
-
                     child: Container(
                       // alignment: Alignment.center,
                       width: MediaQuery.of(context).size.width - 50.0,
@@ -71,9 +74,9 @@ class _MCardState extends State<MCard> {
                       foregroundDecoration: new BoxDecoration(
                           color: Color.fromRGBO(155, 85, 250, 0.0)),
                       height: 240.0,
-                      child: FadeInImage.assetNetwork(
-                        placeholder: 'images/1.png',
-                        image: widget.image,
+                      child: Image.network(
+                        // placeholder: 'images/1.png',
+                        widget.image,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -82,7 +85,6 @@ class _MCardState extends State<MCard> {
               ),
               Column(
                 children: <Widget>[
-                 
                   Padding(
                       padding: const EdgeInsets.fromLTRB(20, 20, 0, 0),
                       child: Row(
@@ -117,11 +119,10 @@ class _MCardState extends State<MCard> {
                         //   );
                         // }
                       },
-                      child: Text(widget.section , style : TextStyle (color : Colors.white)),
+                      child: Text(widget.section,
+                          style: TextStyle(color: Colors.white)),
                       style: ElevatedButton.styleFrom(
                         primary: Colors.deepOrange,
-                       
-                        
                       ),
                     ),
                   )
@@ -152,7 +153,7 @@ class _MCardState extends State<MCard> {
                         size: 20.0,
                       ),
                     ),
-                     Text.rich(
+                    Text.rich(
                       TextSpan(
                         // text: '4.8', // default text style
 
@@ -162,7 +163,8 @@ class _MCardState extends State<MCard> {
                             style: TextStyle(color: Colors.orange),
                           ),
                           TextSpan(
-                              text: '(${widget.review} reviews) | ${widget.booked} Booked ',
+                              text:
+                                  '(${widget.review} reviews) | ${widget.booked} Booked ',
                               style: TextStyle(color: Colors.grey)),
                         ],
                       ),
@@ -173,7 +175,7 @@ class _MCardState extends State<MCard> {
               margin: const EdgeInsets.all(12.0),
               child: Row(children: <Widget>[
                 Row(children: <Widget>[
-                   Text.rich(
+                  Text.rich(
                     TextSpan(
                       // text: '4.8', // default text style
 
