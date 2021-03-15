@@ -88,11 +88,12 @@ class _BookedCardState extends State<BookedCard> {
                     ),
                   ),
                   Container(
-                    child: FadeInImage.assetNetwork(
+                    child: Image.network(
+                      widget.image,
+
                       width: 100,
                       height: 60,
-                      placeholder: '',
-                      image: widget.image,
+                      // placeholder: '',
                       fit: BoxFit.cover,
                     ),
                   )

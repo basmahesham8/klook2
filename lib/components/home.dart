@@ -44,7 +44,7 @@ class _HomeState extends State<Home> {
                   bottomRight: Radius.circular(15),
                 ),
                 child: Container(
-                  color: Colors.orange,
+                  color: Colors.deepOrange,
                   width: 390,
                   height: 60,
                   child: Padding(

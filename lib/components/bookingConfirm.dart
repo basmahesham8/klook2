@@ -49,7 +49,7 @@ class _BookingCalenderState extends State<BookingCalender> {
     final DateTime picked = await showDatePicker(
         context: context,
         initialDate: selectedDate,
-        firstDate: DateTime(2021, 1),
+        firstDate: DateTime(2021, 3),
         lastDate: DateTime(2101));
     if (picked != null && picked != selectedDate)
       setState(() {
