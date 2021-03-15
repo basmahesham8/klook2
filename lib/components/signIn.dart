@@ -122,6 +122,7 @@ class _SignInState extends State<SignIn> {
                                       .then((value) => {
                                             UserInfoEmaill.userEmaill =
                                                 widget.emailController.text,
+                                            Navigator.pop(context)
                                             // Navigator.of(context).pushReplacement(
                                             //     MaterialPageRoute(
                                             //         builder: (context) => Home(

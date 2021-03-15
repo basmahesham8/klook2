@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:klook2/components/bookingConfirm.dart';
 // import 'package:klook2/components/BookedCard.dart';
 // import 'package:klook2/components/BookedCard.dart';
 // import 'package:klook2/components/bookeingDB.dart';
@@ -24,9 +25,6 @@ import 'package:klook2/components/home.dart';
 import 'package:klook2/components/loading.dart';
 import 'package:klook2/components/circularLoading.dart';
 
-
-
-
 // import 'package:klook2/components/test.dart';
 
 void main() async {
@@ -45,7 +43,6 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(title: 'klook'),
-      
     );
   }
 }
@@ -66,11 +63,14 @@ class _MyHomePageState extends State<MyHomePage> {
     Home(),
     // MCard(),
     Destination(),
+    // BookingCalender(
+    //   title: 'wd fkv skf kdngvk jfbj k kd jv jdjd k',
+    // ),
     //AddUser('fullName', 'company', 'djd'),
     Categories(),
     Booking(),
     LoginPage(),
-    SubCategoryActivities()
+    // SubCategoryActivities()
   ];
 
   void _onItemTapped(int index) {
@@ -123,4 +123,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
