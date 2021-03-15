@@ -40,6 +40,7 @@ dependencies:
   # flutter_typeahead: ^1.9.1
   autocomplete_textfield: ^1.7.3
   date_format: ^2.0.2
+  responsive_framework: ^0.0.15
 
 dev_dependencies:
   flutter_test:

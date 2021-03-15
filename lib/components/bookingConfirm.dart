@@ -66,6 +66,7 @@ class _BookingCalenderState extends State<BookingCalender> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.deepOrange,
         title: Text('Booking Confirm'),
       ),
       body: Container(

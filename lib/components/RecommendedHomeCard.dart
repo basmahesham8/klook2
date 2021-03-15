@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'activityDetails.dart';
+
 class RecommendedCard extends StatefulWidget {
   final String img;
   final String price;
@@ -10,6 +12,8 @@ class RecommendedCard extends StatefulWidget {
   final String booked;
   final String oldPrice;
   final String city;
+  final String id;
+
   RecommendedCard({
     this.img,
     this.booked,
@@ -20,6 +24,7 @@ class RecommendedCard extends StatefulWidget {
     this.price,
     this.oldPrice,
     this.city,
+    this.id,
   });
   @override
   _RecommendedCardState createState() => _RecommendedCardState();
@@ -37,43 +42,50 @@ class _RecommendedCardState extends State<RecommendedCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ///////////////////// image ////////////////////////////////
-                Stack(
-                  children: <Widget>[
-                    Container(
-                      height: 140,
-                      child: Image.network(
-                        widget.img,
-                        width: 320,
-                        height: 60,
-                        fit: BoxFit.cover,
+                GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ActivityDetails(id: widget.id)),
+                  ),
+                  child: Stack(
+                    children: <Widget>[
+                      Container(
+                        height: 140,
+                        child: Image.network(
+                          widget.img,
+                          width: 320,
+                          height: 60,
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                    ),
-                    // Padding(
-                    //   padding: const EdgeInsets.only(top: 3, left: 5),
-                    //   child: Row(
-                    //     mainAxisAlignment: MainAxisAlignment.start,
-                    //     children: [
-                    //       Text(
-                    //         widget.type,
-                    //         style: TextStyle(
-                    //           color: Color.fromRGBO(143, 143, 143, 1),
-                    //           fontSize: 10,
-                    //         ),
-                    //       )
-                    //     ],
-                    //   ),
-                    // ),
-                    // Padding(
-                    //   padding: const EdgeInsets.only(top: 95, left: 5),
-                    //   child: Text(
-                    //     'Bestseller',
-                    //     style: TextStyle(
-                    //       backgroundColor: Colors.deepOrange,
-                    //       color: Colors.white,
-                    //     ),
-                    //   ),
-                    // )
-                  ],
+                      // Padding(
+                      //   padding: const EdgeInsets.only(top: 3, left: 5),
+                      //   child: Row(
+                      //     mainAxisAlignment: MainAxisAlignment.start,
+                      //     children: [
+                      //       Text(
+                      //         widget.type,
+                      //         style: TextStyle(
+                      //           color: Color.fromRGBO(143, 143, 143, 1),
+                      //           fontSize: 10,
+                      //         ),
+                      //       )
+                      //     ],
+                      //   ),
+                      // ),
+                      // Padding(
+                      //   padding: const EdgeInsets.only(top: 95, left: 5),
+                      //   child: Text(
+                      //     'Bestseller',
+                      //     style: TextStyle(
+                      //       backgroundColor: Colors.deepOrange,
+                      //       color: Colors.white,
+                      //     ),
+                      //   ),
+                      // )
+                    ],
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 3, left: 5),

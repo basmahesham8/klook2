@@ -44,7 +44,7 @@ class _BookingState extends State<Booking> {
                 .get(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
-                // widget.dataHas = true;
+                widget.dataHas = true;
                 return Text("Loading");
               }
               widget.check();
@@ -57,7 +57,8 @@ class _BookingState extends State<Booking> {
               final List<DocumentSnapshot> documents = snapshot.data.docs;
 
               return SingleChildScrollView(
-                  child: UserInfoEmaill.userEmaill.length < 2
+                  child: widget.dataHas == false
+                      //  UserInfoEmaill.userEmaill.length < 2
                       ? Column(
                           children: [
                             SingleChildScrollView(
@@ -132,6 +133,9 @@ class _BookingState extends State<Booking> {
                                         SizedBox(
                                           height: 130,
                                         ),
+                                        SizedBox(
+                                          height: 130,
+                                        ),
                                         Center(
                                           child: Container(
                                               child: Image.asset(
@@ -141,16 +145,16 @@ class _BookingState extends State<Booking> {
                                               // ),
                                               ),
                                         ),
-                                        Container(
-                                          padding: const EdgeInsets.only(
-                                              top: 30, bottom: 10),
-                                          child: Text(
-                                            'Popular activities',
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ),
+                                        // Container(
+                                        //   padding: const EdgeInsets.only(
+                                        //       top: 30, bottom: 10),
+                                        //   child: Text(
+                                        //     'Popular activities',
+                                        //     style: TextStyle(
+                                        //         fontSize: 20,
+                                        //         fontWeight: FontWeight.bold),
+                                        //   ),
+                                        // ),
                                       ])
                                   // ]),
                                   ),

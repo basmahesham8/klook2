@@ -175,6 +175,7 @@ class Hotel extends StatelessWidget {
                                         scrollDirection: Axis.horizontal,
                                         children: documents
                                             .map((doc) => VoucherCard(
+                                                      id: doc.id,
                                                       staysImages:
                                                           doc['staysImages'],
                                                       city: doc['city'],

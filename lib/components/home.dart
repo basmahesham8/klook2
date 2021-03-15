@@ -32,6 +32,13 @@ class _HomeState extends State<Home> {
     // 'KLOOK in Indonisia'
   ];
 
+  int _n = 0;
+  void add(value) {
+    setState(() {
+      _n = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -1038,6 +1045,7 @@ class _HomeState extends State<Home> {
                               children: documents
                                   .map(
                                     (doc) => RecentlyHomeCard(
+                                      id: doc.id,
                                       img: doc['Image'],
                                       title: doc['Title'],
                                       city: doc['City'],
@@ -1215,6 +1223,7 @@ class _HomeState extends State<Home> {
                               children: documents
                                   .map(
                                     (doc) => TopThingsCard(
+                                      id: doc.id,
                                       img: doc['Image'],
                                       title: doc['Title'],
                                       type: doc['City'],
@@ -1484,6 +1493,7 @@ class _HomeState extends State<Home> {
                                   children: documents
                                       .map(
                                         (doc) => GetInspiredCard(
+                                          id: doc.id,
                                           img: doc['Image'],
                                           title: doc['Title'],
                                           city: doc['City'],
@@ -1625,6 +1635,8 @@ class _HomeState extends State<Home> {
                                     children: documents
                                         .map(
                                           (doc) => RediscoverCard(
+                                            id: doc.id,
+
                                             img: doc['Image'],
                                             title: doc['Title'],
                                             city: doc['City'],
@@ -1860,6 +1872,7 @@ class _HomeState extends State<Home> {
                           children: documents
                               .map(
                                 (doc) => RecommendedCard(
+                                  id: doc.id,
                                   img: doc['Image'],
                                   city: doc['City'],
                                   title: doc['Title'],

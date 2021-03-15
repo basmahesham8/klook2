@@ -23,37 +23,33 @@ class _SubCategoryActivitiesState extends State<SubCategoryActivities> {
   
 
     return Scaffold(
-      body:FutureBuilder<QuerySnapshot>(
-        
-        future: FirebaseFirestore.instance.collection('ToursCollection').where('Categories', isEqualTo :widget.subCategoryName).get(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return Loading();
-          }
+        body: FutureBuilder<QuerySnapshot>(
+            future: FirebaseFirestore.instance
+                .collection('ToursCollection')
+                .where('Categories', isEqualTo: widget.subCategoryName)
+                .get(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return Loading();
+              }
 
-          final List<DocumentSnapshot> documents = snapshot.data.docs;
+              final List<DocumentSnapshot> documents = snapshot.data.docs;
 
-     
-       
               return ListView(
                   children: documents
                       .map((doc) => MCard(
-                                id :doc.id ,
+                                id: doc.id,
                                 title: doc['Title'],
                                 city: doc['City'],
                                 section: doc['Section'],
                                 image: doc['Image'],
-                                 booked : doc['Booked'],
+                                booked: doc['Booked'],
                                 categories: doc['Categories'],
                                 date: doc['Date'],
-                                 price : doc['Price'],
-                                 rate : doc['Rate'],
-                                 review : doc['Review'],
-                                 distance : doc['Distance'],
-
-
-                                
-
+                                price: doc['Price'],
+                                rate: doc['Rate'],
+                                review: doc['Review'],
+                                distance: doc['Distance'],
                               )
                           // Card(
                           //       child: ListTile(
@@ -63,8 +59,6 @@ class _SubCategoryActivitiesState extends State<SubCategoryActivities> {
                           //     )
                           )
                       .toList());
-            
-        
-        }));
+            }));
   }
 }
