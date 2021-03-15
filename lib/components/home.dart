@@ -28,6 +28,13 @@ class _HomeState extends State<Home> {
     // 'KLOOK in Indonisia'
   ];
 
+  int _n = 0;
+  void add(value) {
+    setState(() {
+      _n = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
