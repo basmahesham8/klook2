@@ -18,7 +18,6 @@ class _DestinationDetailsState extends State<DestinationDetails> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.transparent,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           leading: new IconButton(
@@ -33,13 +32,13 @@ class _DestinationDetailsState extends State<DestinationDetails> {
           actions: <Widget>[
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: IconButton(
-                  icon: Icon(
-                    Icons.shopping_cart_outlined,
-                    color: Colors.grey,
-                    size: 30,
-                  ),
-                  onPressed: () {}),
+              // child: IconButton(
+              //     icon: Icon(
+              //       Icons.shopping_cart_outlined,
+              //       color: Colors.grey,
+              //       size: 30,
+              //     ),
+              //     onPressed: () {}),
             ),
           ],
         ),
@@ -51,6 +50,7 @@ class _DestinationDetailsState extends State<DestinationDetails> {
                   children: <Widget>[
                     Container(
                       height: 605,
+                      //child: Image.network(widget.img),
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage(widget.img),
@@ -261,7 +261,13 @@ class _DestinationDetailsState extends State<DestinationDetails> {
                             .get(),
                         builder: (context, snapshot) {
                           if (!snapshot.hasData) {
-                            return new CircularProgressIndicator();
+                            return Center(
+                              child: Theme(
+                                data: Theme.of(context)
+                                    .copyWith(accentColor: Colors.deepOrange),
+                                child: new CircularProgressIndicator(),
+                              ),
+                            );
                           }
 
                           final List<DocumentSnapshot> documents =
@@ -318,7 +324,13 @@ class _DestinationDetailsState extends State<DestinationDetails> {
                                   .get(),
                               builder: (context, snapshot) {
                                 if (!snapshot.hasData) {
-                                  return new CircularProgressIndicator();
+                                  return Center(
+                                    child: Theme(
+                                      data: Theme.of(context).copyWith(
+                                          accentColor: Colors.deepOrange),
+                                      child: new CircularProgressIndicator(),
+                                    ),
+                                  );
                                 }
 
                                 final List<DocumentSnapshot> documents =

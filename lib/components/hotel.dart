@@ -31,7 +31,13 @@ class Hotel extends StatelessWidget {
                 .get(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
-                return Text("Loading");
+                return Center(
+                  child: Theme(
+                    data: Theme.of(context)
+                        .copyWith(accentColor: Colors.deepOrange),
+                    child: new CircularProgressIndicator(),
+                  ),
+                );
               }
 
               final List<DocumentSnapshot> documents = snapshot.data.docs;
@@ -91,6 +97,7 @@ class Hotel extends StatelessWidget {
                             scrollDirection: Axis.horizontal,
                             children: documents
                                 .map((doc) => StaysCard(
+                                          id: doc.id,
                                           staysImages: doc['staysImages'],
                                           rate: doc['rate'],
                                           stars: doc['stars'],
@@ -150,7 +157,13 @@ class Hotel extends StatelessWidget {
                                   .get(),
                               builder: (context, snapshot) {
                                 if (!snapshot.hasData) {
-                                  return Text("Loading");
+                                  return Center(
+                                    child: Theme(
+                                      data: Theme.of(context).copyWith(
+                                          accentColor: Colors.deepOrange),
+                                      child: new CircularProgressIndicator(),
+                                    ),
+                                  );
                                 }
 
                                 final List<DocumentSnapshot> documents =

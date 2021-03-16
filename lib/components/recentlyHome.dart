@@ -85,12 +85,15 @@ class _RecentlyHomeCardState extends State<RecentlyHomeCard> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(5.0),
-                  child: Text(
-                    widget.title,
-                    maxLines: 2,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
+                  child: Container(
+                    height: 40,
+                    child: Text(
+                      widget.title,
+                      maxLines: 2,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                      ),
                     ),
                   ),
                 ),

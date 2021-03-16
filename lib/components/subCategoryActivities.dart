@@ -23,6 +23,22 @@ class _SubCategoryActivitiesState extends State<SubCategoryActivities> {
   
 
     return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            widget.subCategoryName,
+            style: TextStyle(color: Colors.black, fontSize: 25),
+          ),
+          leading: new IconButton(
+            icon: new Icon(
+              Icons.arrow_back,
+              color: Colors.grey,
+              size: 30,
+            ),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          backgroundColor: Colors.white,
+        ),
+
         body: FutureBuilder<QuerySnapshot>(
             future: FirebaseFirestore.instance
                 .collection('ToursCollection')
@@ -32,9 +48,7 @@ class _SubCategoryActivitiesState extends State<SubCategoryActivities> {
               if (!snapshot.hasData) {
                 return Loading();
               }
-
               final List<DocumentSnapshot> documents = snapshot.data.docs;
-
               return ListView(
                   children: documents
                       .map((doc) => MCard(
@@ -43,13 +57,13 @@ class _SubCategoryActivitiesState extends State<SubCategoryActivities> {
                                 city: doc['City'],
                                 section: doc['Section'],
                                 image: doc['Image'],
-                                booked: doc['Booked'],
+                                booked: doc['Booked'].toString(),
                                 categories: doc['Categories'],
-                                date: doc['Date'],
-                                price: doc['Price'],
-                                rate: doc['Rate'],
-                                review: doc['Review'],
-                                distance: doc['Distance'],
+                                date: doc['Date'].toString(),
+                                price: doc['Price'].toString(),
+                                rate: doc['Rate'].toString(),
+                                review: doc['Review'].toString(),
+                                distance: doc['Distance'].toString(),
                               )
                           // Card(
                           //       child: ListTile(

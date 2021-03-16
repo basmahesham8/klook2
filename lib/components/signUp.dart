@@ -32,18 +32,18 @@ class SignUp extends StatefulWidget {
   }
 
   final CollectionReference users =
-      FirebaseFirestore.instance.collection('users');
+  FirebaseFirestore.instance.collection('users');
   // String iduser = '52563';
   Future<void> addUser(emails, name, passwords) {
     // Call the user's CollectionReference to add a new user
     return users
         .add({
-          'Email': emails, // John Doe
-          'Password': passwords, // Stokes and Sons
-          'Name': name,
-          'Date': now // Stokes and Sons
-          // 'age': age // 42
-        })
+      'Email': emails, // John Doe
+      'Password': passwords, // Stokes and Sons
+      'Name': name,
+      'Date': now // Stokes and Sons
+      // 'age': age // 42
+    })
         .then((value) => print("User Added"))
         .catchError((error) => print("Failed to add user: $error"));
   }
@@ -75,7 +75,7 @@ class _SignUpState extends State<SignUp> {
         child: Padding(
           padding: const EdgeInsets.only(top: 20),
           child:
-              Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+          Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
             Text(
               'Sign Up',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
@@ -93,34 +93,29 @@ class _SignUpState extends State<SignUp> {
                             // mainAxisAlignment:
                             //     MainAxisAlignment.spaceEvenly,
                             children: [
-                              Text('sdfg'),
                               Padding(padding: EdgeInsets.only(bottom: 20)),
                               TextField(
                                 controller: widget.emailController,
                                 cursorColor: Colors.orange[900],
                                 decoration:
-                                    InputDecoration(hintText: 'Email Address'),
+                                InputDecoration(hintText: 'Email Address'),
                               ),
                               Padding(padding: EdgeInsets.only(bottom: 20)),
                               TextField(
                                 controller: widget.nameController,
                                 cursorColor: Colors.orange[900],
                                 decoration:
-                                    InputDecoration(hintText: 'User Name'),
+                                InputDecoration(hintText: 'User Name'),
                               ),
                               Padding(padding: EdgeInsets.only(bottom: 20)),
                               TextField(
                                 controller: widget.passwordController,
 
                                 cursorColor: Colors.orange[900],
-                                // obscureText: true,
+                                obscureText: true,
                                 decoration: InputDecoration(
 
-                                    // focusedBorder: OutlineInputBorder(
-                                    //   borderSide: const BorderSide(
-                                    //       color: Colors.orange,
-                                    //       width: 2.0),
-                                    // ),
+
                                     hintText: 'Password'),
                               ),
                               Padding(padding: EdgeInsets.only(bottom: 20)),
@@ -132,9 +127,9 @@ class _SignUpState extends State<SignUp> {
                                 onPressed: () {
                                   widget.auth
                                       .createUserWithEmailAndPassword(
-                                          email: widget.emailController.text,
-                                          password:
-                                              widget.passwordController.text)
+                                      email: widget.emailController.text,
+                                      password:
+                                      widget.passwordController.text)
                                       .then((_) {
                                     widget.addUser(
                                         widget.emailController.text,
@@ -143,8 +138,9 @@ class _SignUpState extends State<SignUp> {
                                     UserInfoEmaill.userEmaill =
                                         widget.emailController.text;
                                     widget.emailController.text;
-                                    widget.getemail(
-                                        'widget.emailController.text');
+                                    UserInfoEmaill.userEmaill =
+                                        widget.emailController.text;
+                                    Navigator.pop(context);
                                     // Navigator.of(context)
                                     //     .pushReplacement(MaterialPageRoute(
                                     //         builder: (context) => Booking(

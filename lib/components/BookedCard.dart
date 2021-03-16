@@ -40,7 +40,7 @@ class _BookedCardState extends State<BookedCard> {
                   Icon(
                     Icons.bus_alert,
                     color: Colors.deepOrange,
-                    size: 20,
+                    size: 25,
                   ),
                   Padding(padding: EdgeInsets.only(right: 8)),
                   Container(
@@ -51,7 +51,7 @@ class _BookedCardState extends State<BookedCard> {
                       // softWrap: s,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 16,
+                        fontSize: 20,
                       ),
                     ),
                   ),
@@ -69,20 +69,24 @@ class _BookedCardState extends State<BookedCard> {
                           child: Text(
                             widget.date,
                             maxLines: 1,
-                            style: TextStyle(color: Colors.grey[400]),
+                            style: TextStyle(
+                                fontSize: 16, color: Colors.grey[600]),
                           ),
                         ),
                         Text(
                           'person X ' + widget.noPerson,
-                          style: TextStyle(color: Colors.grey[400]),
+                          style:
+                              TextStyle(fontSize: 16, color: Colors.grey[600]),
                         ),
                         Text(
                           widget.userName,
-                          style: TextStyle(color: Colors.grey[400]),
+                          style:
+                              TextStyle(fontSize: 16, color: Colors.grey[600]),
                         ),
                         Text(
                           widget.price,
-                          style: TextStyle(color: Colors.grey[400]),
+                          style:
+                              TextStyle(fontSize: 16, color: Colors.grey[600]),
                         ),
                       ],
                     ),
@@ -90,41 +94,41 @@ class _BookedCardState extends State<BookedCard> {
                   Container(
                     child: Image.network(
                       widget.image,
-
                       width: 100,
                       height: 60,
-                      // placeholder: '',
                       fit: BoxFit.cover,
                     ),
+                    width: 150,
+                    height: 80,
                   )
                 ],
               ),
               Padding(padding: EdgeInsets.only(top: 20)),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 80,
-                  ),
-                  SizedBox(
-                    width: 150,
-                    child: MaterialButton(
-                      shape: RoundedRectangleBorder(
-                          side: BorderSide(color: Colors.grey[850], width: 2)),
-                      onPressed: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(builder: (context) => SignUp()),
-                        // );
-                      },
-                      // padding: EdgeInsets.only(left:10.0),
-                      color: Colors.white,
-                      textColor: Colors.grey[850],
-                      child:
-                          Text("View Voucher", style: TextStyle(fontSize: 17)),
-                    ),
-                  ),
-                ],
-              )
+              // Row(
+              //   children: [
+              //     SizedBox(
+              //       width: 80,
+              //     ),
+              //     SizedBox(
+              //       width: 150,
+              //       child: MaterialButton(
+              //         shape: RoundedRectangleBorder(
+              //             side: BorderSide(color: Colors.grey[850], width: 2)),
+              //         onPressed: () {
+              //           // Navigator.push(
+              //           //   context,
+              //           //   MaterialPageRoute(builder: (context) => SignUp()),
+              //           // );
+              //         },
+              //         // padding: EdgeInsets.only(left:10.0),
+              //         color: Colors.white,
+              //         textColor: Colors.grey[850],
+              //         child:
+              //             Text("View Voucher", style: TextStyle(fontSize: 17)),
+              //       ),
+              //     ),
+              //   ],
+              // )
             ],
           ),
         ),

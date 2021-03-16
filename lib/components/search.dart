@@ -13,9 +13,8 @@ class _SearchState extends State<Search> {
   List<String> added = [];
   String currentText = "";
   GlobalKey<AutoCompleteTextFieldState<String>> key = new GlobalKey();
- List< String> suggestions = [];
+  List<String> suggestions = [];
 //  Set< dynamic> suggestions = [];
-
 
   @override
   Widget build(BuildContext context) {
@@ -28,48 +27,35 @@ class _SearchState extends State<Search> {
               })
             });
 
-              print(added  );
-
-    // return TextField(
-    //   cursorColor: Colors.orange[900],
-    //   //  style : TextStyle (backgroundColor: Colors.white) ,
-    //   // obscureText: true,
-    //   decoration: InputDecoration(
-
-    //     fillColor: Colors.white,
-    //      filled: true,
-    //     icon: Icon(Icons.search_rounded),
-    //     border: new OutlineInputBorder(
-    //       borderRadius: const BorderRadius.all(
-    //         const Radius.circular(30.0),
-    //       ),
-    //     ),
-    //     hintText: 'Search by destination or Activity ',
-    //   ),
-    // );
+    print(added);
 
     return SimpleAutoCompleteTextField(
-      key: key,
-      decoration: new InputDecoration(
-        fillColor: Colors.white,
-        filled: true,
-        icon: Icon(Icons.search_rounded),
-        border: new OutlineInputBorder(
-          borderRadius: const BorderRadius.all(
-            const Radius.circular(30.0),
+        key: key,
+        decoration: new InputDecoration(
+          fillColor: Colors.white,
+          filled: true,
+          icon: Icon(
+            Icons.search_rounded,
+            size: 30,
+            color: Colors.white,
           ),
+
+          border: new OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              const Radius.circular(30.0),
+            ),
+          ),
+          hintText: 'Search by activity',
+          // errorText: "Beans"
         ),
-        hintText: 'Search by destination or Activity ',
-        // errorText: "Beans"
-      ),
-      controller: TextEditingController(text: ""),
-      suggestions: suggestions,
-      textChanged: (text) => currentText = text,
-      // clearOnSubmit: true,
-      textSubmitted: (text) => Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ActivityDetails(title : text)),
-                    )
-    );
+        controller: TextEditingController(text: ""),
+        suggestions: suggestions,
+        textChanged: (text) => currentText = text,
+        // clearOnSubmit: true,
+        textSubmitted: (text) => Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => ActivityDetails(title: text)),
+            ));
   }
 }

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:klook2/components/IncridbleHomeCard.dart';
 import 'package:klook2/components/RecommendedHomeCard.dart';
 import 'package:klook2/components/RediscoverHomeCard.dart';
+import 'package:klook2/components/destinationDetails.dart';
 //import 'package:klook2/components/categories.dart';
 import 'package:klook2/components/recentlyHome.dart';
 import 'package:klook2/components/topHomeCard.dart';
@@ -22,6 +23,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   String search;
+  String images;
+  String cityName;
   String recommended = 'KLOOK in cairo';
   List recommendedCities = [
     'KLOOK in cairo',
@@ -46,26 +49,28 @@ class _HomeState extends State<Home> {
             children: [
               ///////////////////// app bar ///////////////////////////////////
 
-              ClipRRect(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(15),
-                  bottomRight: Radius.circular(15),
-                ),
-                child: Container(
-                  color: Colors.deepOrange,
-                  width: 390,
-                  height: 60,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(width: 310, height: 45, child: Search()),
-                        Icon(
-                          Icons.shopping_cart_outlined,
-                          color: Colors.white,
-                        ),
-                      ],
+              SafeArea(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(0),
+                      bottomRight: Radius.circular(0),
+                      ),
+                  child: Container(
+                    color: Colors.deepOrange,
+                    width: 500,
+                    height: 60,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(width: 400, height: 45, child: Search()),
+                          // Icon(
+                          //   Icons.shopping_cart_outlined,
+                          //   color: Colors.white,
+                          // ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -125,7 +130,7 @@ class _HomeState extends State<Home> {
                   ),
                   child: Container(
                     decoration: const BoxDecoration(
-                      color: Colors.white,
+                      // color: Colors.white,
                       border: Border(
                         top: BorderSide(
                             width: 1.0,
@@ -161,7 +166,7 @@ class _HomeState extends State<Home> {
                                     showSubCategory();
                                   },
                                   child: Container(
-                                    width: 100,
+                                    width: 150,
                                     height: 100,
                                     child: Padding(
                                       padding: const EdgeInsets.only(
@@ -172,6 +177,7 @@ class _HomeState extends State<Home> {
                                           children: [
                                             Icon(
                                               Icons.card_travel_rounded,
+                                              size: 30,
                                               color: Colors.deepOrange,
                                             ),
                                             Padding(
@@ -186,7 +192,7 @@ class _HomeState extends State<Home> {
                                                     child: Text(
                                                       'Experiences',
                                                       style: TextStyle(
-                                                          fontSize: 12.5,
+                                                          fontSize: 15,
                                                           fontWeight:
                                                               FontWeight.bold),
                                                     ),
@@ -252,7 +258,7 @@ class _HomeState extends State<Home> {
                                     print('Card tapped.');
                                   },
                                   child: Container(
-                                    width: 100,
+                                    width: 150,
                                     height: 100,
                                     child: Padding(
                                       padding: const EdgeInsets.only(
@@ -263,6 +269,7 @@ class _HomeState extends State<Home> {
                                           children: [
                                             Icon(
                                               Icons.location_city_rounded,
+                                              size: 30,
                                               color: Color.fromRGBO(
                                                   74, 206, 134, 1),
                                             ),
@@ -272,16 +279,32 @@ class _HomeState extends State<Home> {
                                               child: Padding(
                                                 padding: const EdgeInsets.only(
                                                     top: 2.0, bottom: 2),
-                                                child: Container(
-                                                  width: 110,
-                                                  child: Center(
-                                                    child: Text(
-                                                      'Accomoditions',
-                                                      style: TextStyle(
-                                                          fontSize: 12.5,
-                                                          fontWeight:
-                                                              FontWeight.bold),
+                                                // GestureDetector(
+                                                //   onTap: () => Navigator.push(
+                                                //     context,
+                                                //     MaterialPageRoute(
+                                                //         builder: (context) => ActivityDetails(id: widget.id)),
+                                                //   ),
+
+                                                child: GestureDetector(
+                                                  child: Container(
+                                                    width: 110,
+                                                    child: Center(
+                                                      child: Text(
+                                                        'Accomodations',
+                                                        style: TextStyle(
+                                                            fontSize: 15,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      ),
                                                     ),
+                                                  ),
+                                                  onTap: () => Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            Hotel()),
                                                   ),
                                                 ),
                                               ),
@@ -346,60 +369,60 @@ class _HomeState extends State<Home> {
                             //   ),
                             // ),
                             //////////////////// wifi /////////////////////////////////////////
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 2.5, right: 10, top: 5, bottom: 5),
-                              child: Card(
-                                color: Color.fromRGBO(233, 248, 241, 1),
-                                child: InkWell(
-                                  //       // navigation of small cards
-                                  splashColor: Colors.blue.withAlpha(30),
-                                  onTap: () {
-                                    print('Card tapped.');
-                                  },
-                                  child: Container(
-                                    width: 100,
-                                    height: 100,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 20, bottom: 20),
-                                      child: Align(
-                                        alignment: Alignment.center,
-                                        child: Column(
-                                          children: [
-                                            Icon(
-                                              Icons.rss_feed_rounded,
-                                              color: Color.fromRGBO(
-                                                  74, 206, 134, 1),
-                                            ),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(3.0),
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 2.0, bottom: 2),
-                                                child: Container(
-                                                  width: 110,
-                                                  child: Center(
-                                                    child: Text(
-                                                      'WiFi & SIM',
-                                                      style: TextStyle(
-                                                          fontSize: 11.5,
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
+                            // Padding(
+                            //   padding: const EdgeInsets.only(
+                            //       left: 2.5, right: 10, top: 5, bottom: 5),
+                            //   child: Card(
+                            //     color: Color.fromRGBO(233, 248, 241, 1),
+                            //     child: InkWell(
+                            //       //       // navigation of small cards
+                            //       splashColor: Colors.blue.withAlpha(30),
+                            //       onTap: () {
+                            //         print('Card tapped.');
+                            //       },
+                            //       child: Container(
+                            //         width: 100,
+                            //         height: 100,
+                            //         child: Padding(
+                            //           padding: const EdgeInsets.only(
+                            //               top: 20, bottom: 20),
+                            //           child: Align(
+                            //             alignment: Alignment.center,
+                            //             child: Column(
+                            //               children: [
+                            //                 Icon(
+                            //                   Icons.rss_feed_rounded,
+                            //                   color: Color.fromRGBO(
+                            //                       74, 206, 134, 1),
+                            //                 ),
+                            //                 Padding(
+                            //                   padding:
+                            //                       const EdgeInsets.all(3.0),
+                            //                   child: Padding(
+                            //                     padding: const EdgeInsets.only(
+                            //                         top: 2.0, bottom: 2),
+                            //                     child: Container(
+                            //                       width: 110,
+                            //                       child: Center(
+                            //                         child: Text(
+                            //                           'WiFi & SIM',
+                            //                           style: TextStyle(
+                            //                               fontSize: 11.5,
+                            //                               fontWeight:
+                            //                                   FontWeight.bold),
+                            //                         ),
+                            //                       ),
+                            //                     ),
+                            //                   ),
+                            //                 ),
+                            //               ],
+                            //             ),
+                            //           ),
+                            //         ),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
                             //****** other cards  */
                           ],
                         ),
@@ -486,303 +509,303 @@ class _HomeState extends State<Home> {
 
                         ////////////// second row ///////////////////////
 
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            //card experience /////////////////////////////////
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 10, right: 5, top: 5, bottom: 5),
-                              child: Card(
-                                //  color: Color.fromRGBO(254, 243, 237, 1),
-                                child: InkWell(
-                                  // navigation of small cards
-                                  splashColor: Colors.blue.withAlpha(30),
-                                  onTap: () {
-                                    print('Card tapped.');
-                                  },
-                                  child: Container(
-                                    width: 100,
-                                    height: 100,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 20, bottom: 20),
-                                      child: Align(
-                                        alignment: Alignment.center,
-                                        child: (Column(
-                                          children: [
-                                            Icon(
-                                              Icons.loyalty_outlined,
-                                              color: Colors.deepOrangeAccent,
-                                            ),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(3.0),
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 2.0, bottom: 2),
-                                                child: Container(
-                                                  width: 110,
-                                                  child: Center(
-                                                    child: Text(
-                                                      'Attractions',
-                                                      style: TextStyle(
-                                                          fontSize: 12.5,
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            )
-                                          ],
-                                        )),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-
-                            /////////////////// card transport ////////////////////////
-                            // Card(
-                            //   color: Color.fromRGBO(230, 239, 255, 1),
-                            //   child: InkWell(
-                            //     // navigation of small cards
-                            //     splashColor: Colors.blue.withAlpha(30),
-                            //     onTap: () {
-                            //       print('Card tapped.');
-                            //     },
-                            //     child: Container(
-                            //       width: 106,
-                            //       height: 90,
-                            //       child: Padding(
-                            //         padding: const EdgeInsets.all(20.0),
-                            //         child: (Column(
-                            //           children: [
-                            //             Icon(
-                            //               Icons.electric_moped_rounded,
-                            //               color: Colors.blue,
-                            //             ),
-                            //             Padding(
-                            //               padding: const EdgeInsets.all(2.0),
-                            //               child: Text(
-                            //                 'Transport',
-                            //                 style: TextStyle(
-                            //                     fontSize: 10,
-                            //                     fontWeight: FontWeight.bold),
-                            //               ),
-                            //             )
-                            //           ],
-                            //         )),
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
-
-                            /////////////////////// accomidation cad ///////////////////////
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 2.5, right: 2.5, top: 2.5, bottom: 5),
-                              child: Card(
-                                // color: Color.fromRGBO(233, 248, 241, 1),
-                                child: InkWell(
-                                  // navigation of small cards
-                                  splashColor: Colors.blue.withAlpha(30),
-                                  onTap: () {
-                                    print('Card tapped.');
-                                  },
-                                  child: Container(
-                                    width: 100,
-                                    height: 100,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 20, bottom: 20),
-                                      child: Align(
-                                        alignment: Alignment.center,
-                                        child: (Column(
-                                          children: [
-                                            Icon(
-                                              Icons.beach_access_rounded,
-                                              color: Color.fromRGBO(
-                                                  203, 110, 209, 1),
-                                            ),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(3.0),
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 2.0, bottom: 2),
-                                                child: Container(
-                                                  width: 110,
-                                                  child: Center(
-                                                    child: Text(
-                                                      'Tours',
-                                                      style: TextStyle(
-                                                          fontSize: 12.5,
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            )
-                                          ],
-                                        )),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-
-                            // Padding(
-                            //   padding: const EdgeInsets.only(
-                            //       top: 5, bottom: 5, left: 5, right: 5),
-                            //   child: Card(
-                            //     color: Color.fromRGBO(233, 248, 241, 1),
-                            //     child: InkWell(
-                            //       // navigation of small cards
-                            //       splashColor: Colors.blue.withAlpha(30),
-                            //       onTap: () {
-                            //         print('Card tapped.');
-                            //       },
-                            //       child: GestureDetector(
-                            //         child: Container(
-                            //           width: 110,
-                            //           height: 100,
-                            //           child: Padding(
-                            //             padding: const EdgeInsets.all(20.0),
-                            //             child: (Column(
-                            //               children: [
-                            //                 Icon(
-                            //                   Icons.location_city_rounded,
-                            //                   color: Color.fromRGBO(
-                            //                       74, 206, 134, 1),
-                            //                 ),
-                            //                 Padding(
-                            //                   padding:
-                            //                       const EdgeInsets.all(2.0),
-                            //                   child: Text(
-                            //                     'Accomodation',
-                            //                     style: TextStyle(
-                            //                         fontSize: 9,
-                            //                         fontWeight:
-                            //                             FontWeight.bold),
-                            //                   ),
-                            //                 )
-                            //               ],
-                            //             )),
-                            //           ),
-                            //         ),
-                            //         onTap: () {
-                            //           Navigator.push(
-                            //             context,
-                            //             MaterialPageRoute(
-                            //                 builder: (context) => Hotel()),
-                            //           );
-                            //         },
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
-                            //////////////////// wifi /////////////////////////////////////////
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 2.5, right: 10, top: 5, bottom: 5),
-                              child: Card(
-                                //color: Color.fromRGBO(233, 248, 241, 1),
-                                child: InkWell(
-                                  // navigation of small cards
-                                  splashColor: Colors.blue.withAlpha(30),
-                                  onTap: () {
-                                    print('Card tapped.');
-                                  },
-                                  child: Container(
-                                    width: 100,
-                                    height: 100,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 20, bottom: 20),
-                                      child: Align(
-                                        alignment: Alignment.center,
-                                        child: (Column(
-                                          children: [
-                                            Icon(
-                                              Icons.fastfood_rounded,
-                                              color: Colors.deepOrangeAccent,
-                                            ),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(3.0),
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 2.0, bottom: 2),
-                                                child: Container(
-                                                  width: 110,
-                                                  child: Center(
-                                                    child: Text(
-                                                      'Food & Dining',
-                                                      style: TextStyle(
-                                                          fontSize: 11.5,
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            )
-                                          ],
-                                        )),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-
-                            // Card(
-                            //   child: InkWell(
-                            //     // navigation of small cards
-                            //     splashColor: Colors.blue.withAlpha(30),
-                            //     onTap: () {
-                            //       print('Card tapped.');
-                            //     },
-                            //     child: Container(
-                            //       width: 110,
-                            //       height: 100,
-                            //       child: Padding(
-                            //         padding: const EdgeInsets.all(20.0),
-                            //         child: (Column(
-                            //           children: [
-                            //             Icon(
-                            //               Icons.rss_feed_rounded,
-                            //               color:
-                            //                   Color.fromRGBO(74, 206, 134, 1),
-                            //             ),
-                            //             Padding(
-                            //               padding: const EdgeInsets.all(3.0),
-                            //               child: Padding(
-                            //                 padding: const EdgeInsets.all(2.0),
-                            //                 child: Text(
-                            //                   'Wifi & SIM ',
-                            //                   style: TextStyle(
-                            //                       fontSize: 8,
-                            //                       fontWeight: FontWeight.bold),
-                            //                 ),
-                            //               ),
-                            //             )
-                            //           ],
-                            //         )),
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
-
-                            //************** other cards  */
-                          ],
-                        ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        //   crossAxisAlignment: CrossAxisAlignment.center,
+                        //   children: [
+                        //     //card experience /////////////////////////////////
+                        //     Padding(
+                        //       padding: const EdgeInsets.only(
+                        //           left: 10, right: 5, top: 5, bottom: 5),
+                        //       child: Card(
+                        //         //  color: Color.fromRGBO(254, 243, 237, 1),
+                        //         child: InkWell(
+                        //           // navigation of small cards
+                        //           splashColor: Colors.blue.withAlpha(30),
+                        //           onTap: () {
+                        //             print('Card tapped.');
+                        //           },
+                        //           child: Container(
+                        //             width: 100,
+                        //             height: 100,
+                        //             child: Padding(
+                        //               padding: const EdgeInsets.only(
+                        //                   top: 20, bottom: 20),
+                        //               child: Align(
+                        //                 alignment: Alignment.center,
+                        //                 child: (Column(
+                        //                   children: [
+                        //                     Icon(
+                        //                       Icons.loyalty_outlined,
+                        //                       color: Colors.deepOrangeAccent,
+                        //                     ),
+                        //                     Padding(
+                        //                       padding:
+                        //                           const EdgeInsets.all(3.0),
+                        //                       child: Padding(
+                        //                         padding: const EdgeInsets.only(
+                        //                             top: 2.0, bottom: 2),
+                        //                         child: Container(
+                        //                           width: 110,
+                        //                           child: Center(
+                        //                             child: Text(
+                        //                               'Attractions',
+                        //                               style: TextStyle(
+                        //                                   fontSize: 12.5,
+                        //                                   fontWeight:
+                        //                                       FontWeight.bold),
+                        //                             ),
+                        //                           ),
+                        //                         ),
+                        //                       ),
+                        //                     )
+                        //                   ],
+                        //                 )),
+                        //               ),
+                        //             ),
+                        //           ),
+                        //         ),
+                        //       ),
+                        //     ),
+                        //
+                        //     /////////////////// card transport ////////////////////////
+                        //     // Card(
+                        //     //   color: Color.fromRGBO(230, 239, 255, 1),
+                        //     //   child: InkWell(
+                        //     //     // navigation of small cards
+                        //     //     splashColor: Colors.blue.withAlpha(30),
+                        //     //     onTap: () {
+                        //     //       print('Card tapped.');
+                        //     //     },
+                        //     //     child: Container(
+                        //     //       width: 106,
+                        //     //       height: 90,
+                        //     //       child: Padding(
+                        //     //         padding: const EdgeInsets.all(20.0),
+                        //     //         child: (Column(
+                        //     //           children: [
+                        //     //             Icon(
+                        //     //               Icons.electric_moped_rounded,
+                        //     //               color: Colors.blue,
+                        //     //             ),
+                        //     //             Padding(
+                        //     //               padding: const EdgeInsets.all(2.0),
+                        //     //               child: Text(
+                        //     //                 'Transport',
+                        //     //                 style: TextStyle(
+                        //     //                     fontSize: 10,
+                        //     //                     fontWeight: FontWeight.bold),
+                        //     //               ),
+                        //     //             )
+                        //     //           ],
+                        //     //         )),
+                        //     //       ),
+                        //     //     ),
+                        //     //   ),
+                        //     // ),
+                        //
+                        //     /////////////////////// accomidation cad ///////////////////////
+                        //     Padding(
+                        //       padding: const EdgeInsets.only(
+                        //           left: 2.5, right: 2.5, top: 2.5, bottom: 5),
+                        //       child: Card(
+                        //         // color: Color.fromRGBO(233, 248, 241, 1),
+                        //         child: InkWell(
+                        //           // navigation of small cards
+                        //           splashColor: Colors.blue.withAlpha(30),
+                        //           onTap: () {
+                        //             print('Card tapped.');
+                        //           },
+                        //           child: Container(
+                        //             width: 100,
+                        //             height: 100,
+                        //             child: Padding(
+                        //               padding: const EdgeInsets.only(
+                        //                   top: 20, bottom: 20),
+                        //               child: Align(
+                        //                 alignment: Alignment.center,
+                        //                 child: (Column(
+                        //                   children: [
+                        //                     Icon(
+                        //                       Icons.beach_access_rounded,
+                        //                       color: Color.fromRGBO(
+                        //                           203, 110, 209, 1),
+                        //                     ),
+                        //                     Padding(
+                        //                       padding:
+                        //                           const EdgeInsets.all(3.0),
+                        //                       child: Padding(
+                        //                         padding: const EdgeInsets.only(
+                        //                             top: 2.0, bottom: 2),
+                        //                         child: Container(
+                        //                           width: 110,
+                        //                           child: Center(
+                        //                             child: Text(
+                        //                               'Tours',
+                        //                               style: TextStyle(
+                        //                                   fontSize: 12.5,
+                        //                                   fontWeight:
+                        //                                       FontWeight.bold),
+                        //                             ),
+                        //                           ),
+                        //                         ),
+                        //                       ),
+                        //                     )
+                        //                   ],
+                        //                 )),
+                        //               ),
+                        //             ),
+                        //           ),
+                        //         ),
+                        //       ),
+                        //     ),
+                        //
+                        //     // Padding(
+                        //     //   padding: const EdgeInsets.only(
+                        //     //       top: 5, bottom: 5, left: 5, right: 5),
+                        //     //   child: Card(
+                        //     //     color: Color.fromRGBO(233, 248, 241, 1),
+                        //     //     child: InkWell(
+                        //     //       // navigation of small cards
+                        //     //       splashColor: Colors.blue.withAlpha(30),
+                        //     //       onTap: () {
+                        //     //         print('Card tapped.');
+                        //     //       },
+                        //     //       child: GestureDetector(
+                        //     //         child: Container(
+                        //     //           width: 110,
+                        //     //           height: 100,
+                        //     //           child: Padding(
+                        //     //             padding: const EdgeInsets.all(20.0),
+                        //     //             child: (Column(
+                        //     //               children: [
+                        //     //                 Icon(
+                        //     //                   Icons.location_city_rounded,
+                        //     //                   color: Color.fromRGBO(
+                        //     //                       74, 206, 134, 1),
+                        //     //                 ),
+                        //     //                 Padding(
+                        //     //                   padding:
+                        //     //                       const EdgeInsets.all(2.0),
+                        //     //                   child: Text(
+                        //     //                     'Accomodation',
+                        //     //                     style: TextStyle(
+                        //     //                         fontSize: 9,
+                        //     //                         fontWeight:
+                        //     //                             FontWeight.bold),
+                        //     //                   ),
+                        //     //                 )
+                        //     //               ],
+                        //     //             )),
+                        //     //           ),
+                        //     //         ),
+                        //     //         onTap: () {
+                        //     //           Navigator.push(
+                        //     //             context,
+                        //     //             MaterialPageRoute(
+                        //     //                 builder: (context) => Hotel()),
+                        //     //           );
+                        //     //         },
+                        //     //       ),
+                        //     //     ),
+                        //     //   ),
+                        //     // ),
+                        //     //////////////////// wifi /////////////////////////////////////////
+                        //     Padding(
+                        //       padding: const EdgeInsets.only(
+                        //           left: 2.5, right: 10, top: 5, bottom: 5),
+                        //       child: Card(
+                        //         //color: Color.fromRGBO(233, 248, 241, 1),
+                        //         child: InkWell(
+                        //           // navigation of small cards
+                        //           splashColor: Colors.blue.withAlpha(30),
+                        //           onTap: () {
+                        //             print('Card tapped.');
+                        //           },
+                        //           child: Container(
+                        //             width: 100,
+                        //             height: 100,
+                        //             child: Padding(
+                        //               padding: const EdgeInsets.only(
+                        //                   top: 20, bottom: 20),
+                        //               child: Align(
+                        //                 alignment: Alignment.center,
+                        //                 child: (Column(
+                        //                   children: [
+                        //                     Icon(
+                        //                       Icons.fastfood_rounded,
+                        //                       color: Colors.deepOrangeAccent,
+                        //                     ),
+                        //                     Padding(
+                        //                       padding:
+                        //                           const EdgeInsets.all(3.0),
+                        //                       child: Padding(
+                        //                         padding: const EdgeInsets.only(
+                        //                             top: 2.0, bottom: 2),
+                        //                         child: Container(
+                        //                           width: 110,
+                        //                           child: Center(
+                        //                             child: Text(
+                        //                               'Food & Dining',
+                        //                               style: TextStyle(
+                        //                                   fontSize: 11.5,
+                        //                                   fontWeight:
+                        //                                       FontWeight.bold),
+                        //                             ),
+                        //                           ),
+                        //                         ),
+                        //                       ),
+                        //                     )
+                        //                   ],
+                        //                 )),
+                        //               ),
+                        //             ),
+                        //           ),
+                        //         ),
+                        //       ),
+                        //     ),
+                        //
+                        //     // Card(
+                        //     //   child: InkWell(
+                        //     //     // navigation of small cards
+                        //     //     splashColor: Colors.blue.withAlpha(30),
+                        //     //     onTap: () {
+                        //     //       print('Card tapped.');
+                        //     //     },
+                        //     //     child: Container(
+                        //     //       width: 110,
+                        //     //       height: 100,
+                        //     //       child: Padding(
+                        //     //         padding: const EdgeInsets.all(20.0),
+                        //     //         child: (Column(
+                        //     //           children: [
+                        //     //             Icon(
+                        //     //               Icons.rss_feed_rounded,
+                        //     //               color:
+                        //     //                   Color.fromRGBO(74, 206, 134, 1),
+                        //     //             ),
+                        //     //             Padding(
+                        //     //               padding: const EdgeInsets.all(3.0),
+                        //     //               child: Padding(
+                        //     //                 padding: const EdgeInsets.all(2.0),
+                        //     //                 child: Text(
+                        //     //                   'Wifi & SIM ',
+                        //     //                   style: TextStyle(
+                        //     //                       fontSize: 8,
+                        //     //                       fontWeight: FontWeight.bold),
+                        //     //                 ),
+                        //     //               ),
+                        //     //             )
+                        //     //           ],
+                        //     //         )),
+                        //     //       ),
+                        //     //     ),
+                        //     //   ),
+                        //     // ),
+                        //
+                        //     //************** other cards  */
+                        //   ],
+                        // ),
 
                         // Row(
                         //   children: [
@@ -1002,7 +1025,7 @@ class _HomeState extends State<Home> {
                       padding:
                           const EdgeInsets.only(left: 10, top: 20, bottom: 7),
                       child: Text(
-                        'Recently Viewed',
+                        'Recently added',
                         style: TextStyle(
                           fontSize: 27,
                           fontWeight: FontWeight.bold,
@@ -1020,7 +1043,13 @@ class _HomeState extends State<Home> {
                         .get(),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
-                        return new CircularProgressIndicator();
+                        return Center(
+                          child: Theme(
+                            data: Theme.of(context)
+                                .copyWith(accentColor: Colors.deepOrange),
+                            child: new CircularProgressIndicator(),
+                          ),
+                        );
                       }
 
                       final List<DocumentSnapshot> documents =
@@ -1189,7 +1218,13 @@ class _HomeState extends State<Home> {
                         .get(),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
-                        return new CircularProgressIndicator();
+                        return Center(
+                          child: Theme(
+                            data: Theme.of(context)
+                                .copyWith(accentColor: Colors.deepOrange),
+                            child: new CircularProgressIndicator(),
+                          ),
+                        );
                       }
 
                       final List<DocumentSnapshot> documents =
@@ -1404,7 +1439,7 @@ class _HomeState extends State<Home> {
                   Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('images/home/5.jpg'),
+                        image: AssetImage('images/home/4.jpg'),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -1457,7 +1492,13 @@ class _HomeState extends State<Home> {
                                 .get(),
                             builder: (context, snapshot) {
                               if (!snapshot.hasData) {
-                                return new CircularProgressIndicator();
+                                return Center(
+                                  child: Theme(
+                                    data: Theme.of(context).copyWith(
+                                        accentColor: Colors.deepOrange),
+                                    child: new CircularProgressIndicator(),
+                                  ),
+                                );
                               }
 
                               final List<DocumentSnapshot> documents =
@@ -1593,7 +1634,13 @@ class _HomeState extends State<Home> {
                                   .get(),
                               builder: (context, snapshot) {
                                 if (!snapshot.hasData) {
-                                  return new CircularProgressIndicator();
+                                  return Center(
+                                    child: Theme(
+                                      data: Theme.of(context).copyWith(
+                                          accentColor: Colors.deepOrange),
+                                      child: new CircularProgressIndicator(),
+                                    ),
+                                  );
                                 }
 
                                 final List<DocumentSnapshot> documents =
@@ -1690,74 +1737,88 @@ class _HomeState extends State<Home> {
                     ),
                   ),
 
-                  FutureBuilder<QuerySnapshot>(
-                    future: FirebaseFirestore.instance
-                        .collection('Cities')
-                        // .where('Section', isEqualTo: 'Near in cairo')
-                        // .where('City', isEqualTo: 'Cairo')
-                        .get(),
-                    builder: (context, snapshot) {
-                      if (!snapshot.hasData) {
-                        return new CircularProgressIndicator();
-                      }
+                  // FutureBuilder<QuerySnapshot>(
+                  //   future: FirebaseFirestore.instance
+                  //       .collection('Cities')
+                  //       // .where('Section', isEqualTo: 'Near in cairo')
+                  //       // .where('City', isEqualTo: 'Cairo')
+                  //       .get(),
+                  //   builder: (context, snapshot) {
+                  //     if (!snapshot.hasData) {
+                  //       return new CircularProgressIndicator();
+                  //     }
 
-                      final List<DocumentSnapshot> documents =
-                          snapshot.data.docs;
-                      return Container(
-                        height: 275,
-                        width: 390,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: documents
-                              .map(
-                                (doc) => IncredibleCard(
-                                  img: doc['Image'],
-                                  city: doc['City1'],
-                                ),
-                              )
-                              .toList(),
-                        ),
-                      );
-                    },
-                  ),
-
-                  // Container(
-                  //   height: 270,
-                  //   width: 390,
-                  //   child: ListView(
-                  //     scrollDirection: Axis.horizontal,
-                  //     children: <Widget>[
-                  //       IncredibleCard(
-                  //         img: 'images/home/Incridible/1.webp',
-                  //         city: 'Mauritius',
+                  //     final List<DocumentSnapshot> documents =
+                  //         snapshot.data.docs;
+                  //     return GestureDetector(
+                  //       child: Container(
+                  //         height: 275,
+                  //         width: 390,
+                  //         child: ListView(
+                  //           scrollDirection: Axis.horizontal,
+                  //           children: documents
+                  //               .map(
+                  //                 (doc) => IncredibleCard(
+                  //                   img: doc['Image'],
+                  //                   city: doc['City1'],
+                  //                 ),
+                  //               )
+                  //               .toList(),
+                  //         ),
                   //       ),
-                  //       IncredibleCard(
-                  //         img: 'images/home/Incridible/2.webp',
-                  //         city: 'Cape Town',
-                  //       ),
-                  //       IncredibleCard(
-                  //         img: 'images/home/Incridible/3.webp',
-                  //         city: 'Singapore',
-                  //       ),
-                  //       IncredibleCard(
-                  //         img: 'images/home/Incridible/4.webp',
-                  //         city: 'Hong Kong',
-                  //       ),
-                  //       IncredibleCard(
-                  //         img: 'images/home/Incridible/5.webp',
-                  //         city: 'Taipei',
-                  //       ),
-                  //       IncredibleCard(
-                  //         img: 'images/home/Incridible/6.webp',
-                  //         city: 'Bangkok',
-                  //       ),
-                  //       IncredibleCard(
-                  //         img: 'images/home/Incridible/7.webp',
-                  //         city: 'Taichung',
-                  //       ),
-                  //     ],
-                  //   ),
+                  //       onTap: () {
+                  //         Navigator.push(
+                  //           context,
+                  //           MaterialPageRoute(
+                  //               builder: (context) => DestinationDetails(
+                  //                   img: images, text: cityName)),
+                  //         );
+                  //       },
+                  //     );
+                  //   },
                   // ),
+
+                  Container(
+                    height: 290,
+                    width: 390,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: <Widget>[
+                        IncredibleCard(
+                          img: 'images/cairo.png',
+                          city: 'Cairo',
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10.0),
+                          child: IncredibleCard(
+                            img: 'images/sharm.png',
+                            city: 'Sharm El Sheikh',
+                          ),
+                        ),
+                        // IncredibleCard(
+                        //   img: 'images/home/Incridible/3.webp',
+                        //   city: 'Singapore',
+                        // ),
+                        // IncredibleCard(
+                        //   img: 'images/home/Incridible/4.webp',
+                        //   city: 'Hong Kong',
+                        // ),
+                        // IncredibleCard(
+                        //   img: 'images/home/Incridible/5.webp',
+                        //   city: 'Taipei',
+                        // ),
+                        // IncredibleCard(
+                        //   img: 'images/home/Incridible/6.webp',
+                        //   city: 'Bangkok',
+                        // ),
+                        // IncredibleCard(
+                        //   img: 'images/home/Incridible/7.webp',
+                        //   city: 'Taichung',
+                        // ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
               SizedBox(
@@ -1810,7 +1871,13 @@ class _HomeState extends State<Home> {
                         .get(),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
-                        return new CircularProgressIndicator();
+                        return Center(
+                          child: Theme(
+                            data: Theme.of(context)
+                                .copyWith(accentColor: Colors.deepOrange),
+                            child: new CircularProgressIndicator(),
+                          ),
+                        );
                       }
 
                       final List<DocumentSnapshot> documents =

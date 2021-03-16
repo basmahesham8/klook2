@@ -2,22 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:klook2/components/BookedCard.dart';
-import 'package:klook2/components/signUp.dart';
+
 import 'package:klook2/components/userInfoEmaill.dart';
-// import 'package:carousel_pro/carousel_pro.dart';
-// import 'package:carousel_slider/carousel_slider.dart';
-// import 'package:klook2/components/Card.dart';
-// import 'package:klook2/components/tourCard.dart';
-// import 'package:intl/intl_browser.dart';
-import 'package:date_format/date_format.dart';
 
 class Booking extends StatefulWidget {
   bool dataHas = false;
   final String userName;
   Timestamp time; //from firebase
-// DateTime.fromMicrosecondsSinceEpoch(time.microsecondsSinceEpoch);
-  // SignUp sign;
-  // var usernamee = SignUp.userEmail;
 
   String userIS;
   Booking({Key key, this.userName = ''}) : super(key: key);
@@ -109,35 +100,38 @@ class _BookingState extends State<Booking> {
                                         Divider(
                                           thickness: 1,
                                         ),
-                                        DropdownButton<String>(
-                                          value: dropdownValue,
-                                          icon: Icon(Icons.arrow_drop_down),
-                                          iconSize: 24,
-                                          elevation: 16,
-                                          autofocus: true,
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 20),
-                                          underline: Container(
-                                            height: 0,
-                                            // color: Colors.deepPurpleAccent,
-                                          ),
-                                          onChanged: (String newValue) {
-                                            setState(() {
-                                              dropdownValue = newValue;
-                                            });
-                                          },
-                                          items: <String>[
-                                            'Bookings',
-                                            'Invaild Bookings',
-                                            'Archived Bookings'
-                                          ].map<DropdownMenuItem<String>>(
-                                              (String value) {
-                                            return DropdownMenuItem<String>(
-                                              value: value,
-                                              child: Text(value),
-                                            );
-                                          }).toList(),
+                                        // DropdownButton<String>(
+                                        //   value: dropdownValue,
+                                        //   icon: Icon(Icons.arrow_drop_down),
+                                        //   iconSize: 24,
+                                        //   elevation: 16,
+                                        //   autofocus: true,
+                                        //   style: TextStyle(
+                                        //       color: Colors.black,
+                                        //       fontSize: 20),
+                                        //   underline: Container(
+                                        //     height: 0,
+                                        //     // color: Colors.deepPurpleAccent,
+                                        //   ),
+                                        //   onChanged: (String newValue) {
+                                        //     setState(() {
+                                        //       dropdownValue = newValue;
+                                        //     });
+                                        //   },
+                                        //   items: <String>[
+                                        //     'Bookings',
+                                        //     'Invaild Bookings',
+                                        //     'Archived Bookings'
+                                        //   ].map<DropdownMenuItem<String>>(
+                                        //       (String value) {
+                                        //     return DropdownMenuItem<String>(
+                                        //       value: value,
+                                        //       child: Text(value),
+                                        //     );
+                                        //   }).toList(),
+                                        // ),
+                                        SizedBox(
+                                          height: 130,
                                         ),
                                         SizedBox(
                                           height: 130,
@@ -210,43 +204,43 @@ class _BookingState extends State<Booking> {
                                           Divider(
                                             thickness: 1,
                                           ),
-                                          DropdownButton<String>(
-                                            value: dropdownValue,
-                                            icon: Icon(Icons.arrow_drop_down),
-                                            iconSize: 24,
-                                            elevation: 16,
-                                            autofocus: true,
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 20),
-                                            underline: Container(
-                                              height: 0,
-                                              // color: Colors.deepPurpleAccent,
-                                            ),
-                                            onChanged: (String newValue) {
-                                              setState(() {
-                                                dropdownValue = newValue;
-                                              });
-                                            },
-                                            items: <String>[
-                                              'Bookings',
-                                              'Invaild Bookings',
-                                              'Archived Bookings'
-                                            ].map<DropdownMenuItem<String>>(
-                                                (String value) {
-                                              return DropdownMenuItem<String>(
-                                                value: value,
-                                                child: Text(value),
-                                              );
-                                            }).toList(),
-                                          ),
+                                          // DropdownButton<String>(
+                                          //   value: dropdownValue,
+                                          //   icon: Icon(Icons.arrow_drop_down),
+                                          //   iconSize: 24,
+                                          //   elevation: 16,
+                                          //   autofocus: true,
+                                          //   style: TextStyle(
+                                          //       color: Colors.black,
+                                          //       fontSize: 20),
+                                          //   underline: Container(
+                                          //     height: 0,
+                                          //     // color: Colors.deepPurpleAccent,
+                                          //   ),
+                                          //   onChanged: (String newValue) {
+                                          //     setState(() {
+                                          //       dropdownValue = newValue;
+                                          //     });
+                                          //   },
+                                          //   items: <String>[
+                                          //     'Bookings',
+                                          //     'Invaild Bookings',
+                                          //     'Archived Bookings'
+                                          //   ].map<DropdownMenuItem<String>>(
+                                          //       (String value) {
+                                          //     return DropdownMenuItem<String>(
+                                          //       value: value,
+                                          //       child: Text(value),
+                                          //     );
+                                          //   }).toList(),
+                                          // ),
                                         ])
                                     // ]),
                                     ),
                               ),
                               Container(
                                 margin: EdgeInsets.all(15),
-                                height: 480,
+                                height: 680,
                                 width: 400,
                                 child: ListView(
                                     scrollDirection: Axis.vertical,
@@ -261,7 +255,8 @@ class _BookingState extends State<Booking> {
                                               image: doc['Image'],
                                               // booked: doc['Booked'],
                                               // categories: doc['Categories'],
-                                              date: 'doc[Date].todate',
+                                              date: doc['Date'].toString(),
+                                              //date: 'doc[Date].todate',
                                               // date: formatDate(doc['Date'],
                                               //     [MM, ' ', d, ',', yyyy]),
                                               //  * 1000)

@@ -22,27 +22,62 @@ class _BookingCalenderState extends State<BookingCalender> {
   DateTime selectedDate = DateTime.now();
 
   final CollectionReference users =
-      FirebaseFirestore.instance.collection('Booking');
+  FirebaseFirestore.instance.collection('Booking');
   Future<void> addBooking(emails, title, adults, children, date, image, olders,
       price, sIM, noPerson, sectionName) {
     // Call the user's CollectionReference to add a new user
     return users
         .add({
-          'Email': emails, // John Doe
-          'Title': title,
-          'Adults': adults,
-          'Children': children,
-          'Date': date,
-          'Image': image,
-          'Olders': olders,
-          'Price': price,
-          'SIM': sIM,
-          'noPerson': noPerson,
-          'sectionName': sectionName // Stokes and Sons
-          // 'age': age // 42
-        })
+      'Email': emails, // John Doe
+      'Title': title,
+      'Adults': adults,
+      'Children': children,
+      'Date': date,
+      'Image': image,
+      'Olders': olders,
+      'Price': price,
+      'SIM': sIM,
+      'noPerson': noPerson,
+      'sectionName': sectionName // Stokes and Sons
+      // 'age': age // 42
+    })
         .then((value) => print("User Added"))
         .catchError((error) => print("Failed to add user: $error"));
+  }
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Row(
+            children: [
+              Icon(
+                Icons.notification_important,
+                color: Colors.deepOrange,
+              ),
+            ],
+          ),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('Booked Successfully'),
+                // Text('Would you like to approve of this message?'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Ok'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   Future<void> _selectDate(BuildContext context) async {
@@ -152,7 +187,7 @@ class _BookingCalenderState extends State<BookingCalender> {
                       child: new FloatingActionButton(
                         shape: RoundedRectangleBorder(
                             side:
-                                BorderSide(color: Colors.deepOrange, width: 1)),
+                            BorderSide(color: Colors.deepOrange, width: 1)),
                         onPressed: add,
                         child: new Icon(
                           Icons.add,
@@ -170,7 +205,7 @@ class _BookingCalenderState extends State<BookingCalender> {
                       child: new FloatingActionButton(
                         shape: RoundedRectangleBorder(
                             side:
-                                BorderSide(color: Colors.deepOrange, width: 1)),
+                            BorderSide(color: Colors.deepOrange, width: 1)),
                         focusColor: Colors.deepOrange,
                         hoverColor: Colors.deepOrange,
                         onPressed: minus,
@@ -215,7 +250,7 @@ class _BookingCalenderState extends State<BookingCalender> {
                       child: new FloatingActionButton(
                         shape: RoundedRectangleBorder(
                             side:
-                                BorderSide(color: Colors.deepOrange, width: 1)),
+                            BorderSide(color: Colors.deepOrange, width: 1)),
                         onPressed: addm,
                         child: new Icon(
                           Icons.add,
@@ -233,7 +268,7 @@ class _BookingCalenderState extends State<BookingCalender> {
                       child: new FloatingActionButton(
                         shape: RoundedRectangleBorder(
                             side:
-                                BorderSide(color: Colors.deepOrange, width: 1)),
+                            BorderSide(color: Colors.deepOrange, width: 1)),
                         focusColor: Colors.deepOrange,
                         hoverColor: Colors.deepOrange,
                         onPressed: minusm,
@@ -275,7 +310,7 @@ class _BookingCalenderState extends State<BookingCalender> {
                       child: new FloatingActionButton(
                         shape: RoundedRectangleBorder(
                             side:
-                                BorderSide(color: Colors.deepOrange, width: 1)),
+                            BorderSide(color: Colors.deepOrange, width: 1)),
                         onPressed: addv,
                         child: new Icon(
                           Icons.add,
@@ -293,7 +328,7 @@ class _BookingCalenderState extends State<BookingCalender> {
                       child: new FloatingActionButton(
                         shape: RoundedRectangleBorder(
                             side:
-                                BorderSide(color: Colors.deepOrange, width: 1)),
+                            BorderSide(color: Colors.deepOrange, width: 1)),
                         focusColor: Colors.deepOrange,
                         hoverColor: Colors.deepOrange,
                         onPressed: minusv,
@@ -313,6 +348,7 @@ class _BookingCalenderState extends State<BookingCalender> {
               height: 50,
               child: MaterialButton(
                 onPressed: () {
+                  _showMyDialog();
                   noperson();
                   addBooking(
                       UserInfoEmaill.userEmaill,
@@ -326,8 +362,8 @@ class _BookingCalenderState extends State<BookingCalender> {
                       'SIM',
                       _noperson,
                       'section');
-                  Navigator.pop(context);
-                  Navigator.pop(context);
+                  // Navigator.pop(context);
+                  // Navigator.pop(context);
                   // Navigator.pop(context);
                   // Navigator.pop(context);
                 },
